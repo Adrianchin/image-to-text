@@ -6,11 +6,12 @@ import './App.css';
 function App() {
 /*Note setstate is async, remember that 
 you want to use consol log (or other stuff inside code) 
-outside the function, otehrwise it will return with async properties*/
+outside the function, otherwise it will return with async properties*/
 
   const [input, setInput] = useState('');
   const [imageURL, setImageURL] = useState('');
 
+/* Old promise function below
   const onImageSubmit = () => {
     let data = JSON.stringify({
       link: input
@@ -25,19 +26,35 @@ outside the function, otehrwise it will return with async properties*/
     .then(response => response.json())
     .then(console.log)
   }
+*/
 
-  const onImageInput = (event) => {
-    setInput(event.target.value);
-  };
-
-  console.log("Input is", input);
+//New Async Await function
+const onImageSubmit = () => {
+  let data = JSON.stringify({
+    link: input
+  });
+  async function fetchImageInfo() {
+    const response = await fetch('http://localhost:3000/image', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: data
+    })
+    const imageInformation = await response.json();
+    console.log(imageInformation);
+  }
+  fetchImageInfo();
+}
 
   const onButtonSubmit = () => {
     setImageURL(input);
     onImageSubmit();
   }
-
   console.log("imageURL is", imageURL);
+
+  const onImageInput = (event) => {
+    setInput(event.target.value);
+  };
+  console.log("Input is", input);
 
 return (
   <div>
