@@ -10,6 +10,7 @@ outside the function, otherwise it will return with async properties*/
 
   const [input, setInput] = useState('');
   const [imageURL, setImageURL] = useState('');
+  const [googleData, setGoogleData] = useState('');
 
 /* Old promise function below
   const onImageSubmit = () => {
@@ -40,10 +41,12 @@ const onImageSubmit = () => {
       body: data
     })
     const imageInformation = await response.json();
-    console.log(imageInformation);
+    //console.log("This is the image info returned", imageInformation);
+    setGoogleData(imageInformation);
   }
   fetchImageInfo();
 }
+console.log("Fetched setGoogleData", googleData)
 
   const onButtonSubmit = () => {
     setImageURL(input);
