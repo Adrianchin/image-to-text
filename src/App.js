@@ -46,6 +46,8 @@ const onImageSubmit = () => {
   }
   fetchImageInfo();
 }
+
+//Note: We place console log outside the async function because anything inside it will be async, so it will consol log earty! We only wany after everything runs!!
 console.log("Fetched setGoogleData", googleData)
 
   const onButtonSubmit = () => {
