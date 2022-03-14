@@ -30,22 +30,6 @@ outside the function, otherwise it will return with async properties*/
   }
 */
 
-/* Working on
-const calculateBoxLocation = () => {
-  const image = document.getElementById("inputimage");
-  var imageWidth = image.width;
-  var imageHeight = image.height;
-  console.log("image width:", imageWidth, ", image height:", imageHeight)
-  console.log("this is bounding box info googleData", googleData)
-    return {
-    topRow: imageHeight-googleData[0].boundingPoly.vertices[0].y,
-    rightColumn: imageWidth-googleData[0].boundingPoly.vertices[1].x,
-    leftColumn: googleData[0].boundingPoly.vertices[0].x,
-    bottomRow: googleData[0].boundingPoly.vertices[0].y
-    };
-  }
-*/
-
 //New Async Await function, googleData has the information from the API
 const onImageSubmit = () => {
       let data = JSON.stringify({
@@ -58,7 +42,7 @@ const onImageSubmit = () => {
         body: data
       })
       const imageInformation = await response.json();
-      //console.log("This is the image info returned", imageInformation);
+
       setGoogleData(imageInformation);
 
       const image = document.getElementById("inputimage");
@@ -78,8 +62,6 @@ const onImageSubmit = () => {
   fetchImageInfo();
 }
 console.log("This is google data in box state", box);
-
-//console.log("This is box information", box); Working
 
 const ImageWithText = () => {  
   return(
