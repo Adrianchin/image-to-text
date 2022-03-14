@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ImageInput from './components/imageinput';
 import 'tachyons';
 import './App.css';
@@ -11,6 +11,7 @@ outside the function, otherwise it will return with async properties*/
   const [input, setInput] = useState('');
   const [imageURL, setImageURL] = useState('');
   const [googleData, setGoogleData] = useState('');
+  const [box, setBox] = useState("");
 
 /* Old promise function below
   const onImageSubmit = () => {
@@ -35,7 +36,7 @@ const onImageSubmit = () => {
     link: input
   });
   async function fetchImageInfo() {
-    const response = await fetch('http://localhost:3000/image', {
+    const response = await fetch('http://localhost:3002/image', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: data
@@ -47,10 +48,29 @@ const onImageSubmit = () => {
   fetchImageInfo();
 }
 
-const ImageWithText = () => {
+/*
+var img = new Image();
+  img.onload = function () {
+  var imageWidth = this.width;
+  var imageHeight = this.height;
+  console.log("image width:", imageWidth, ", image height:", imageHeight)
+  console.log("this is one value", googleData[0].boundingPoly.vertices)
+    return {
+    topRow: imageHeight-googleData[3].boundingPoly.vertices[0].y,
+    rightColumn: imageWidth-googleData[0].boundingPoly.vertices[1].x,
+    leftColumn: googleData[0].boundingPoly.vertices[0].x,
+    bottomRow: googleData[0].boundingPoly.vertices[0].y
+    };
+  }
+  img.src = imageURL;
+*/
+const ImageWithText = () => {  
   return(
     <div className = "center">
-      <img id="inputimage" src={imageURL}/>
+      <div className = "absolute">
+        <img id="inputimage" src={imageURL}/>
+        <div className = "boundingbox" style={{top: 1, right: 1, left: 1, bottom: 1}}></div>
+      </div>
     </div>
   );
 }
@@ -91,7 +111,9 @@ return (
         </button>
       </div>
     </div>
-    <ImageWithText/>
+    <div>
+      <ImageWithText/>
+    </div>
   </div>
   );
 }
