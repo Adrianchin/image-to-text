@@ -30,46 +30,63 @@ outside the function, otherwise it will return with async properties*/
   }
 */
 
-//New Async Await function, googleData has the information from the API
-const onImageSubmit = () => {
-  let data = JSON.stringify({
-    link: input
-  });
-  async function fetchImageInfo() {
-    const response = await fetch('http://localhost:3002/image', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: data
-    })
-    const imageInformation = await response.json();
-    //console.log("This is the image info returned", imageInformation);
-    setGoogleData(imageInformation);
-  }
-  fetchImageInfo();
-}
-
-/*
-var img = new Image();
-  img.onload = function () {
-  var imageWidth = this.width;
-  var imageHeight = this.height;
+/* Working on
+const calculateBoxLocation = () => {
+  const image = document.getElementById("inputimage");
+  var imageWidth = image.width;
+  var imageHeight = image.height;
   console.log("image width:", imageWidth, ", image height:", imageHeight)
-  console.log("this is one value", googleData[0].boundingPoly.vertices)
+  console.log("this is bounding box info googleData", googleData)
     return {
-    topRow: imageHeight-googleData[3].boundingPoly.vertices[0].y,
+    topRow: imageHeight-googleData[0].boundingPoly.vertices[0].y,
     rightColumn: imageWidth-googleData[0].boundingPoly.vertices[1].x,
     leftColumn: googleData[0].boundingPoly.vertices[0].x,
     bottomRow: googleData[0].boundingPoly.vertices[0].y
     };
   }
-  img.src = imageURL;
 */
+
+//New Async Await function, googleData has the information from the API
+const onImageSubmit = () => {
+      let data = JSON.stringify({
+        link: input
+      });
+    async function fetchImageInfo() {
+      const response = await fetch('http://localhost:3000/image', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: data
+      })
+      const imageInformation = await response.json();
+      //console.log("This is the image info returned", imageInformation);
+      setGoogleData(imageInformation);
+
+      const image = document.getElementById("inputimage");
+      var imageWidth = image.width;
+      var imageHeight = image.height;
+      console.log("image width:", imageWidth, ", image height:", imageHeight)
+
+      const imageBox={
+      topRow: imageHeight-imageInformation[0].boundingPoly.vertices[3].y,
+      rightColumn: imageWidth-imageInformation[0].boundingPoly.vertices[1].x,
+      leftColumn: imageInformation[0].boundingPoly.vertices[0].x,
+      bottomRow: imageInformation[0].boundingPoly.vertices[0].y
+      };
+
+      setBox(imageBox);
+    }
+  fetchImageInfo();
+}
+console.log("This is google data in box state", box);
+
+//console.log("This is box information", box); Working
+
 const ImageWithText = () => {  
   return(
     <div className = "center">
       <div className = "absolute">
         <img id="inputimage" src={imageURL}/>
-        <div className = "boundingbox" style={{top: 1, right: 1, left: 1, bottom: 1}}></div>
+        <div className = "boundingbox" style={{top: box.topRow, right: box.rightColumn, left: box.leftColumn, bottom: box.bottomRow}}></div>
       </div>
     </div>
   );
@@ -77,18 +94,18 @@ const ImageWithText = () => {
 
 
 //Note: We place console log outside the async function because anything inside it will be async, so it will consol log earty! We only wany after everything runs!!
-console.log("Fetched setGoogleData", googleData)
+console.log("Fetched GoogleData", googleData)
 
   const onButtonSubmit = () => {
     setImageURL(input);
     onImageSubmit();
   }
-  console.log("imageURL is", imageURL);
+// console.log("imageURL is", imageURL);
 
   const onImageInput = (event) => {
     setInput(event.target.value);
   };
-  console.log("Input is", input);
+//  console.log("Input is", input);
 
 return (
   <div>
