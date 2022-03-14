@@ -29,7 +29,7 @@ outside the function, otherwise it will return with async properties*/
   }
 */
 
-//New Async Await function
+//New Async Await function, googleData has the information from the API
 const onImageSubmit = () => {
   let data = JSON.stringify({
     link: input
@@ -46,6 +46,15 @@ const onImageSubmit = () => {
   }
   fetchImageInfo();
 }
+
+const ImageWithText = () => {
+  return(
+    <div className = "center">
+      <img id="inputimage" src={imageURL}/>
+    </div>
+  );
+}
+
 
 //Note: We place console log outside the async function because anything inside it will be async, so it will consol log earty! We only wany after everything runs!!
 console.log("Fetched setGoogleData", googleData)
@@ -82,6 +91,7 @@ return (
         </button>
       </div>
     </div>
+    <ImageWithText/>
   </div>
   );
 }
