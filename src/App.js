@@ -30,7 +30,7 @@ outside the function, otherwise it will return with async properties*/
   }
 */
 
-//New Async Await function, googleData has the information from the API
+//New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, but everything outside is NOT. Await means anything below it awaits.
 const onImageSubmit = () => {
       let data = JSON.stringify({
         link: input
