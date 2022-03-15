@@ -30,11 +30,31 @@ outside the function, otherwise it will return with async properties*/
   }
 */
 
+  //Loads origonal image size for ratio
+
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, but everything outside is NOT. Await means anything below it awaits.
 const onImageSubmit = () => {
       let data = JSON.stringify({
         link: input
       });
+
+      //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
+      var img = new Image();
+      var originalHeight;
+      var originalWidth;
+      var imageRatioWidth=1;
+      var imageRatioHeight=1;
+
+      //loads hyperlink image properties
+      img.onload = function(){
+      originalHeight = img.height;
+      originalWidth = img.width;
+      console.log("this is original height of the image:", originalHeight);
+      console.log("this is original width of the image:", originalWidth);
+      }
+      img.src = input;
+    
+      //Async fetch
     async function fetchImageInfo() {
       const response = await fetch('http://localhost:3000/image', {
         method: 'POST',
@@ -43,45 +63,51 @@ const onImageSubmit = () => {
       })
       const imageInformation = await response.json();
 
-      setGoogleData(imageInformation);
-
+      //Calculates the image displayed on page
       const image = document.getElementById("inputimage");
       var imageWidth = image.width;
       var imageHeight = image.height;
-      console.log("image width:", imageWidth, ", image height:", imageHeight)
+      console.log("image width:", imageWidth, ", image height:", imageHeight);
+
+      //Calculates ratio for page/original
+      imageRatioWidth=imageWidth/originalWidth;
+      imageRatioHeight=imageHeight/originalHeight;
+
+      console.log("This is image ratio width",imageRatioWidth);
+      console.log("This is image ratio width",imageRatioHeight);
 
       const imageBox={
-      topRow: imageHeight-imageInformation[0].boundingPoly.vertices[3].y,
-      rightColumn: imageWidth-imageInformation[0].boundingPoly.vertices[1].x,
-      leftColumn: imageInformation[0].boundingPoly.vertices[0].x,
-      bottomRow: imageInformation[0].boundingPoly.vertices[0].y
+      top: imageHeight-imageInformation[0].boundingPoly.vertices[3].y*imageRatioHeight,
+      right: imageWidth-imageInformation[0].boundingPoly.vertices[1].x*imageRatioWidth,
+      left: imageInformation[0].boundingPoly.vertices[0].x*imageRatioWidth,
+      bottom: imageInformation[0].boundingPoly.vertices[0].y*imageRatioHeight
       };
-
+      
       setBox(imageBox);
-    }
+      setGoogleData(imageInformation);
+    };
   fetchImageInfo();
-}
+};
 console.log("This is google data in box state", box);
+console.log("Fetched GoogleData", googleData);
+
 
 const ImageWithText = () => {  
   return(
     <div className = "center">
       <div className = "absolute">
-        <img id="inputimage" src={imageURL}/>
-        <div className = "boundingbox" style={{top: box.topRow, right: box.rightColumn, left: box.leftColumn, bottom: box.bottomRow}}></div>
+        <img id="inputimage" src={imageURL} width='800px' height='auto'/>
+        <div className = "boundingbox" 
+        style={{top: box.top, right: box.right, left: box.left, bottom: box.bottom}}></div>
       </div>
     </div>
   );
-}
+};
 
-
-//Note: We place console log outside the async function because anything inside it will be async, so it will consol log earty! We only wany after everything runs!!
-console.log("Fetched GoogleData", googleData)
-
-  const onButtonSubmit = () => {
+const onButtonSubmit = () => {
     setImageURL(input);
     onImageSubmit();
-  }
+  };
 // console.log("imageURL is", imageURL);
 
   const onImageInput = (event) => {
@@ -115,6 +141,6 @@ return (
     </div>
   </div>
   );
-}
+};
 
 export default App;
