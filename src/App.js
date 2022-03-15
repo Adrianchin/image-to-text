@@ -8,8 +8,10 @@ function App() {
 you want to use consol log (or other stuff inside code) 
 outside the function, otherwise it will return with async properties*/
 
-  const [input, setInput] = useState('');
+  const [imageInput, setImageInput] = useState('');
+  const [textInput, setTextInput] = useState('');
   const [imageURL, setImageURL] = useState('');
+  const [textToDeepL, setTextToDeepL] = useState('');
   const [googleData, setGoogleData] = useState('');
   const [box, setBox] = useState("");
   const[imageText, setImageText] = useState("");
@@ -36,7 +38,7 @@ outside the function, otherwise it will return with async properties*/
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, but everything outside is NOT. Await means anything below it awaits.
 const onImageSubmit = () => {
       let data = JSON.stringify({
-        link: input
+        link: imageInput
       });
 
       //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
@@ -50,13 +52,14 @@ const onImageSubmit = () => {
       img.onload = function(){
       originalHeight = img.height;
       originalWidth = img.width;
-      console.log("this is original height of the image:", originalHeight);
-      console.log("this is original width of the image:", originalWidth);
+      // console.log("this is original height of the image:", originalHeight);
+      // console.log("this is original width of the image:", originalWidth);
       }
-      img.src = input;
+      img.src = imageInput;
     
       //Async fetch
     async function fetchImageInfo() {
+      try{
       const response = await fetch('http://localhost:3000/image', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -74,8 +77,8 @@ const onImageSubmit = () => {
       imageRatioWidth=imageWidth/originalWidth;
       imageRatioHeight=imageHeight/originalHeight;
 
-      console.log("This is image ratio width",imageRatioWidth);
-      console.log("This is image ratio width",imageRatioHeight);
+     // console.log("This is image ratio width",imageRatioWidth);
+     // console.log("This is image ratio width",imageRatioHeight);
 
       const imageBox={
       top: imageHeight-imageInformation[0].boundingPoly.vertices[3].y*imageRatioHeight,
@@ -87,7 +90,10 @@ const onImageSubmit = () => {
       setBox(imageBox);
       setGoogleData(imageInformation);
       setImageText(imageInformation[0].description);
-    };
+    } catch(error) {
+      console.log("Error fetching API response for image, try again")
+      };
+    }
   fetchImageInfo();
 };
 console.log("This is google data in box state", box);
@@ -107,7 +113,7 @@ const ImageWithText = () => {
   return(
     <div className = "center">
       <div className = "absolute">
-        <img id="inputimage" src={imageURL} width='800px' height='auto'/>
+        <img id="inputimage" src={imageURL} width='600px' height='auto'/>
         <div className = "boundingbox" 
         style={{top: box.top, right: box.right, left: box.left, bottom: box.bottom}}></div>
       </div>
@@ -115,41 +121,78 @@ const ImageWithText = () => {
   );
 };
 
-const onButtonSubmit = () => {
-    setImageURL(input);
+const onImageButtonSubmit = () => {
+  //Note: I think this is async, so I cannot use imageInput as it is in que, and onImageSubmit runs and imageInput is old!
+    setImageURL(imageInput);
+    //calls onImageSubmit for API send
     onImageSubmit();
   };
 // console.log("imageURL is", imageURL);
 
   const onImageInput = (event) => {
-    setInput(event.target.value);
+    setImageInput(event.target.value);
   };
+//  console.log("Image Input is", imageInput);
+
+const onTextButtonSubmit = () => {
+  setTextToDeepL(textInput);
+  //calls onTextSubmit for API send
+  //onTextSubmit();
+};
+// console.log("Text to DeepL is", imageURL);
+
+const onTextInput = (event) => {
+  setTextInput(event.target.value);
+};
 //  console.log("Input is", input);
 
 return (
   <div>
-    <p className = 'f3 center'>
-        Test for google api
-    </p>
-    <JapaneseText/>
-    <div className='center'>
-      <div 
-      className='form center pa4 br3 shadow-5'
-      >
-        <input 
-        className='f4 pa2 w-70 center' 
-        type='text' 
-        onChange={onImageInput}/>
-        <button 
-        className='w-30 grow f4 link ph3 pv2 dib white bg-light-purple'
-        onClick={onButtonSubmit}
+    <div>
+      <p className = 'f3 center'>
+        Test for DeepL api
+      </p>
+      <div className='center'>
+        <div 
+        className='form center pa4 br3 shadow-5'
         >
-          Img URL Please
-        </button>
+          <input 
+          className='f4 pa2 w-70 center' 
+          type='text' 
+          onChange={onTextInput}/>
+          <button 
+          className='w-30 grow f4 link ph3 pv2 dib white bg-light-purple'
+          onClick={onTextButtonSubmit}
+          >
+            Img URL Please
+          </button>
+        </div>
       </div>
     </div>
     <div>
-      <ImageWithText/>
+      <p className = 'f3 center'>
+          Test for Google Image api
+      </p>
+      <JapaneseText/>
+      <div className='center'>
+        <div 
+        className='form center pa4 br3 shadow-5'
+        >
+          <input 
+          className='f4 pa2 w-70 center' 
+          type='text' 
+          onChange={onImageInput}/>
+          <button 
+          className='w-30 grow f4 link ph3 pv2 dib white bg-light-purple'
+          onClick={onImageButtonSubmit}
+          >
+            Img URL Please
+          </button>
+        </div>
+      </div>
+      <div>
+        <ImageWithText/>
+      </div>
     </div>
   </div>
   );
