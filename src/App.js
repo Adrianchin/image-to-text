@@ -12,6 +12,7 @@ outside the function, otherwise it will return with async properties*/
   const [imageURL, setImageURL] = useState('');
   const [googleData, setGoogleData] = useState('');
   const [box, setBox] = useState("");
+  const[imageText, setImageText] = useState("");
 
 /* Old promise function below
   const onImageSubmit = () => {
@@ -85,12 +86,22 @@ const onImageSubmit = () => {
       
       setBox(imageBox);
       setGoogleData(imageInformation);
+      setImageText(imageInformation[0].description);
     };
   fetchImageInfo();
 };
 console.log("This is google data in box state", box);
 console.log("Fetched GoogleData", googleData);
+console.log("Image Text", imageText);
 
+const JapaneseText = () => {
+  return(
+    <div className = "center">
+      <h3>{`This is the image text`}</h3>
+      <h5>{`${imageText}`}</h5>
+    </div>
+  );
+}
 
 const ImageWithText = () => {  
   return(
@@ -120,6 +131,7 @@ return (
     <p className = 'f3 center'>
         Test for google api
     </p>
+    <JapaneseText/>
     <div className='center'>
       <div 
       className='form center pa4 br3 shadow-5'
