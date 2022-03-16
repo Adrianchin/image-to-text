@@ -96,6 +96,7 @@ const onImageSubmit = () => {
     }
   fetchImageInfo();
 };
+
 console.log("This is google data in box state", box);
 console.log("Fetched GoogleData", googleData);
 console.log("Image Text", imageText);
@@ -164,7 +165,7 @@ return (
           className='w-30 grow f4 link ph3 pv2 dib white bg-light-purple'
           onClick={onTextButtonSubmit}
           >
-            Img URL Please
+            Translation Text Please
           </button>
         </div>
       </div>
