@@ -140,12 +140,12 @@ const onTextButtonSubmit = () => {
   //calls onTextSubmit for API send
   //onTextSubmit();
 };
-// console.log("Text to DeepL is", imageURL);
+//console.log("Text to DeepL is", textToDeepL);
 
 const onTextInput = (event) => {
   setTextInput(event.target.value);
 };
-//  console.log("Input is", input);
+//console.log("Text input is", textInput);
 
 return (
   <div>
