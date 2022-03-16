@@ -97,9 +97,9 @@ const onImageSubmit = () => {
   fetchImageInfo();
 };
 
-console.log("This is google data in box state", box);
-console.log("Fetched GoogleData", googleData);
-console.log("Image Text", imageText);
+//console.log("This is google data in box state", box);
+//console.log("Fetched GoogleData", googleData);
+//console.log("Image Text", imageText);
 
 const JapaneseText = () => {
   return(
