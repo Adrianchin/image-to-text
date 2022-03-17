@@ -8,12 +8,22 @@ function App() {
 you want to use consol log (or other stuff inside code) 
 outside the function, otherwise it will return with async properties*/
 
+  //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState('');
-  const [textInput, setTextInput] = useState('');
+  //Displays the image URL of the picture. May not need, combine with imageInput? Linked in image. May be redundant. 
   const [imageURL, setImageURL] = useState('');
-  const [googleData, setGoogleData] = useState('');
+  //Text Input for Json. May be changed to global var? 
+  const [textInput, setTextInput] = useState('');
+  
+  //Not really used right now but contains all info. May not need?
+  //const [googleData, setGoogleData] = useState('');
+
+
+  //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState('');
+  //Displays box from Google API
   const [box, setBox] = useState("");
+  //Displays to user what is on the image
   const [imageText, setImageText] = useState("");
 
 /* Old promise function below
@@ -88,7 +98,7 @@ const onImageSubmit = () => {
       };
       
       setBox(imageBox);
-      setGoogleData(imageInformation);
+      // Entire Dataset - setGoogleData(imageInformation);
       setImageText(imageInformation[0].description);
     } catch(error) {
       console.log("Error fetching API response for image, try again")
@@ -98,7 +108,7 @@ const onImageSubmit = () => {
 };
 
 //console.log("This is google data in box state", box);
-console.log("Fetched GoogleData", googleData);
+//console.log("Fetched GoogleData", googleData);
 //console.log("Image Text", imageText);
 
 const onTextSubmit = () => {
