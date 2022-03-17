@@ -11,10 +11,10 @@ outside the function, otherwise it will return with async properties*/
   const [imageInput, setImageInput] = useState('');
   const [textInput, setTextInput] = useState('');
   const [imageURL, setImageURL] = useState('');
-  const [textToDeepL, setTextToDeepL] = useState('');
   const [googleData, setGoogleData] = useState('');
+  const [translatedText, setTranslatedText] = useState('');
   const [box, setBox] = useState("");
-  const[imageText, setImageText] = useState("");
+  const [imageText, setImageText] = useState("");
 
 /* Old promise function below
   const onImageSubmit = () => {
@@ -37,16 +37,16 @@ outside the function, otherwise it will return with async properties*/
 
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, but everything outside is NOT. Await means anything below it awaits.
 const onImageSubmit = () => {
-      let data = JSON.stringify({
+      let imageData = JSON.stringify({
         link: imageInput
       });
 
       //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
-      var img = new Image();
-      var originalHeight;
-      var originalWidth;
-      var imageRatioWidth=1;
-      var imageRatioHeight=1;
+      let img = new Image();
+      let originalHeight;
+      let originalWidth;
+      let imageRatioWidth=1;
+      let imageRatioHeight=1;
 
       //loads hyperlink image properties
       img.onload = function(){
@@ -57,20 +57,20 @@ const onImageSubmit = () => {
       }
       img.src = imageInput;
     
-      //Async fetch
+      //Async fetch for google image to text
     async function fetchImageInfo() {
       try{
       const response = await fetch('http://localhost:3000/image', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: data
+        body: imageData
       })
       const imageInformation = await response.json();
 
       //Calculates the image displayed on page
       const image = document.getElementById("inputimage");
-      var imageWidth = image.width;
-      var imageHeight = image.height;
+      let imageWidth = image.width;
+      let imageHeight = image.height;
       console.log("image width:", imageWidth, ", image height:", imageHeight);
 
       //Calculates ratio for page/original
@@ -98,14 +98,42 @@ const onImageSubmit = () => {
 };
 
 //console.log("This is google data in box state", box);
-//console.log("Fetched GoogleData", googleData);
+console.log("Fetched GoogleData", googleData);
 //console.log("Image Text", imageText);
+
+const onTextSubmit = () => {
+  let textData = JSON.stringify({
+    textFromImage: textInput
+  });
+  
+  async function fetchTextTranslation() {
+    const response = await fetch(`http://localhost:3000/textfortranslation`, {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: textData
+    })
+    const translatedTextInfo = await response.json();
+    setTranslatedText(translatedTextInfo.translations[0].text);
+  };
+  fetchTextTranslation();
+};
+
+//tests for translated text
+console.log("This is the translated text:", translatedText);
+
+//Outputs
 
 const JapaneseText = () => {
   return(
     <div className = "center">
-      <h3>{`This is the image text`}</h3>
-      <h5>{`${imageText}`}</h5>
+      <div>
+        <h3>{`This is the image text`}</h3>
+        <h5>{`${imageText}`}</h5>
+      </div>
+      <div>
+        <h3>{`This is the translated text`}</h3>
+        <h5>{`${translatedText}`}</h5>
+      </div>
     </div>
   );
 }
@@ -124,10 +152,11 @@ const ImageWithText = () => {
 
 const onImageButtonSubmit = () => {
   //Note: I think this is async, so I cannot use imageInput as it is in que, and onImageSubmit runs and imageInput is old!
-    setImageURL(imageInput);
-    //calls onImageSubmit for API send
-    onImageSubmit();
-  };
+  //This is reset to setState because we need to render the image!! Otherwise dont need this.
+  setImageURL(imageInput);
+  //calls onImageSubmit for API send
+  onImageSubmit();
+};
 // console.log("imageURL is", imageURL);
 
   const onImageInput = (event) => {
@@ -136,11 +165,9 @@ const onImageButtonSubmit = () => {
 //  console.log("Image Input is", imageInput);
 
 const onTextButtonSubmit = () => {
-  setTextToDeepL(textInput);
   //calls onTextSubmit for API send
-  //onTextSubmit();
+  onTextSubmit();
 };
-//console.log("Text to DeepL is", textToDeepL);
 
 const onTextInput = (event) => {
   setTextInput(event.target.value);
