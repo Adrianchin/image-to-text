@@ -16,7 +16,7 @@ outside the function, otherwise it will return with async properties*/
   const [textInput, setTextInput] = useState('');
   
   //Not really used right now but contains all info. May not need?
-  //const [googleData, setGoogleData] = useState('');
+  const [googleData, setGoogleData] = useState('');
 
 
   //Displays translated text from DeepL
@@ -98,7 +98,7 @@ const onImageSubmit = () => {
       };
       
       setBox(imageBox);
-      // Entire Dataset - setGoogleData(imageInformation);
+      setGoogleData(imageInformation);
       setImageText(imageInformation[0].description);
     } catch(error) {
       console.log("Error fetching API response for image, try again")
@@ -108,7 +108,7 @@ const onImageSubmit = () => {
 };
 
 //console.log("This is google data in box state", box);
-//console.log("Fetched GoogleData", googleData);
+console.log("Fetched GoogleData", googleData);
 //console.log("Image Text", imageText);
 
 const onTextSubmit = () => {
