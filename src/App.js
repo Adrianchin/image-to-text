@@ -70,7 +70,7 @@ const onImageSubmit = () => {
       //Async fetch for google image to text
     async function fetchImageInfo() {
       try{
-      const response = await fetch('http://localhost:3000/image', {
+      const response = await fetch('http://localhost:3000/imagelinkphoto', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: imageData
