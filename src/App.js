@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import ImageInput from './components/imageinput';
+import ImageSubmit from './components/imageinput/ImageSubmit';
 import 'tachyons';
 import './App.css';
 
@@ -186,6 +187,9 @@ const onTextInput = (event) => {
 
 return (
   <div>
+    <div>
+    <ImageSubmit/>
+    </div>
     <div>
       <p className = 'f3 center'>
         Test for DeepL api
