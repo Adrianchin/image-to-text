@@ -3,18 +3,12 @@ import React, {useState} from 'react';
 function ImageSubmit() {
 
     const [file, setFile] = useState(null);
-    //const [fileName, setFileName] = useState(null);
 
     const onFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(file);
         const formData = new FormData();
         formData.append('myImage', file);
-        //formData.append('fileName', filename);
         console.log(formData);
-        // const config = {
-        //     headers: {'content-type': 'multipart/form-data'}
-        // };
         try{
             const response = await fetch("http://localhost:3000/upload", {
             method: 'POST',
@@ -30,7 +24,6 @@ function ImageSubmit() {
 
     const onChange = (event) => {
         setFile(event.target.files[0]);
-        //setFileName(event.target.files[0].name);
     }
 
     return (
