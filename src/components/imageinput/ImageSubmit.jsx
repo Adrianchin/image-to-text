@@ -1,6 +1,11 @@
 import React, {useState} from 'react';
 
-function ImageSubmit() {
+function ImageSubmit(props) {
+    const setImageText=props.setImageText;
+    const setUploadBox=props.setUploadBox;
+    const setImageURL=props.setImageURL;
+    const setImageSize=props.setImageSize;
+    const setUploadImageTest=props.setUploadImageTest;
 
     const [file, setFile] = useState(null);
 
@@ -24,17 +29,24 @@ function ImageSubmit() {
         //const GoogleDataSubmitted=uploadresponse;
         const ImageTextSubmitted=imageInformation[0].description;
         
+        //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left.
         const rawImageBox={
-            top: imageInformation[0].boundingPoly.vertices[3].y,
+            top: imageInformation[0].boundingPoly.vertices[0].y,
             right: imageInformation[0].boundingPoly.vertices[1].x,
             left: imageInformation[0].boundingPoly.vertices[0].x,
-            bottom: imageInformation[0].boundingPoly.vertices[0].y
+            bottom: imageSize.height-imageInformation[0].boundingPoly.vertices[2].y
             };
         
-        console.log("This is the image text:", ImageTextSubmitted)
-        console.log("This is the image box:", rawImageBox)
-        console.log("This is the image location:", imageLocation)
-        console.log("This is the image size", imageSize)
+        console.log("This is the image text:", ImageTextSubmitted);
+        console.log("This is the image box:", rawImageBox);
+        console.log("This is the image location:", imageLocation);
+        console.log("This is the image size", imageSize);
+
+        setImageText(ImageTextSubmitted);
+        setUploadBox(rawImageBox);
+        setImageURL(imageLocation);
+        setImageSize(imageSize);
+        setUploadImageTest(true);
 
         } catch(error) {
             console.log("Error submitting photo", error)
