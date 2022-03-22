@@ -14,9 +14,28 @@ function ImageSubmit() {
             method: 'POST',
             body:formData 
         })
-        const uploadresponse = await response.json();
-        console.log("Response for upload:", uploadresponse)
+        const imageInformation = await response.json();
+        const imageLocation=imageInformation[imageInformation.length-2];
+        const imageSize=imageInformation[imageInformation.length-1];
+
+        console.log("Response for upload:", imageInformation)
             //alert("The file is successfully uploaded!");
+        
+        //const GoogleDataSubmitted=uploadresponse;
+        const ImageTextSubmitted=imageInformation[0].description;
+        
+        const rawImageBox={
+            top: imageInformation[0].boundingPoly.vertices[3].y,
+            right: imageInformation[0].boundingPoly.vertices[1].x,
+            left: imageInformation[0].boundingPoly.vertices[0].x,
+            bottom: imageInformation[0].boundingPoly.vertices[0].y
+            };
+        
+        console.log("This is the image text:", ImageTextSubmitted)
+        console.log("This is the image box:", rawImageBox)
+        console.log("This is the image location:", imageLocation)
+        console.log("This is the image size", imageSize)
+
         } catch(error) {
             console.log("Error submitting photo", error)
         }

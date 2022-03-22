@@ -15,10 +15,6 @@ outside the function, otherwise it will return with async properties*/
   const [imageURL, setImageURL] = useState('');
   //Text Input for Json. May be changed to global var? 
   const [textInput, setTextInput] = useState('');
-  
-  //Not really used right now but contains all info. May not need?
-  const [googleData, setGoogleData] = useState('');
-
 
   //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState('');
@@ -27,24 +23,15 @@ outside the function, otherwise it will return with async properties*/
   //Displays to user what is on the image
   const [imageText, setImageText] = useState("");
 
-/* Old promise function below
-  const onImageSubmit = () => {
-    let data = JSON.stringify({
-      link: input
-    });
-    console.log("This is data to be put into my post request", data)
-    console.log("On image submit", input)
-    fetch('http://localhost:3000/image', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: data
-    })
-    .then(response => response.json())
-    .then(console.log)
-  }
-*/
-
-  //Loads origonal image size for ratio
+  //Global variables
+  let imageWidth;
+  let imageHeight;
+  //let GoogleData;
+  let imageBox;
+  
+  //Used for calculating the original picture diaplayed, need to be global for html and upload
+  let originalHeight;
+  let originalWidth;
 
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, but everything outside is NOT. Await means anything below it awaits.
 const onImageSubmit = () => {
@@ -52,19 +39,12 @@ const onImageSubmit = () => {
         link: imageInput
       });
 
-      //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
+      //creates variables for function (placeholder) for html
       let img = new Image();
-      let originalHeight;
-      let originalWidth;
-      let imageRatioWidth=1;
-      let imageRatioHeight=1;
 
-      //loads hyperlink image properties
       img.onload = function(){
       originalHeight = img.height;
       originalWidth = img.width;
-      // console.log("this is original height of the image:", originalHeight);
-      // console.log("this is original width of the image:", originalWidth);
       }
       img.src = imageInput;
     
@@ -78,38 +58,25 @@ const onImageSubmit = () => {
       })
       const imageInformation = await response.json();
 
-      //Calculates the image displayed on page
-      const image = document.getElementById("inputimage");
-      let imageWidth = image.width;
-      let imageHeight = image.height;
-      console.log("image width:", imageWidth, ", image height:", imageHeight);
-
-      //Calculates ratio for page/original
-      imageRatioWidth=imageWidth/originalWidth;
-      imageRatioHeight=imageHeight/originalHeight;
-
-     // console.log("This is image ratio width",imageRatioWidth);
-     // console.log("This is image ratio width",imageRatioHeight);
-
-      const imageBox={
-      top: imageHeight-imageInformation[0].boundingPoly.vertices[3].y*imageRatioHeight,
-      right: imageWidth-imageInformation[0].boundingPoly.vertices[1].x*imageRatioWidth,
-      left: imageInformation[0].boundingPoly.vertices[0].x*imageRatioWidth,
-      bottom: imageInformation[0].boundingPoly.vertices[0].y*imageRatioHeight
+      imageBox={
+      top: imageInformation[0].boundingPoly.vertices[3].y,
+      right: imageInformation[0].boundingPoly.vertices[1].x,
+      left: imageInformation[0].boundingPoly.vertices[0].x,
+      bottom: imageInformation[0].boundingPoly.vertices[0].y
       };
-      
-      setBox(imageBox);
-      setGoogleData(imageInformation);
+
+      //GoogleData=imageInformation;
+      ImageSubmitBoxCalculation();
       setImageText(imageInformation[0].description);
     } catch(error) {
       console.log("Error fetching API response for image, try again")
-      };
-    }
+    };
+  }
   fetchImageInfo();
 };
 
 //console.log("This is google data in box state", box);
-console.log("Fetched GoogleData", googleData);
+//console.log("Fetched GoogleData", googleData);
 //console.log("Image Text", imageText);
 
 const onTextSubmit = () => {
@@ -160,6 +127,29 @@ const ImageWithText = () => {
     </div>
   );
 };
+
+const ImageSubmitBoxCalculation = () => {
+  //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
+  const image = document.getElementById("inputimage");
+  imageWidth = image.width;
+  imageHeight = image.height;
+  console.log("image width:", imageWidth, ", image height:", imageHeight);
+
+  //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
+  let imageRatioWidth=1;
+  let imageRatioHeight=1;
+
+  imageRatioWidth=imageWidth/originalWidth;
+  imageRatioHeight=imageHeight/originalHeight;
+  console.log(originalHeight);
+   setBox({
+    top: imageHeight-imageBox.top*imageRatioHeight,
+    right: imageWidth-imageBox.right*imageRatioWidth,
+    left: imageBox.left*imageRatioWidth,
+    bottom: imageBox.bottom*imageRatioHeight
+    });
+}
+
 
 const onImageButtonSubmit = () => {
   //Note: I think this is async, so I cannot use imageInput as it is in que, and onImageSubmit runs and imageInput is old!
