@@ -6,6 +6,7 @@ function ImageSubmit(props) {
     const setImageURL=props.setImageURL;
     const setImageSize=props.setImageSize;
     const setUploadImageTest=props.setUploadImageTest;
+    const setTranslatedText=props.setTranslatedText;
 
     const [file, setFile] = useState(null);
 
@@ -13,7 +14,7 @@ function ImageSubmit(props) {
         event.preventDefault();
         const formData = new FormData();
         formData.append('myImage', file);
-        console.log(formData);
+        //console.log(formData);
         try{
             const response = await fetch("http://localhost:3000/upload", {
             method: 'POST',
@@ -22,6 +23,23 @@ function ImageSubmit(props) {
         const imageInformation = await response.json();
         const imageLocation=imageInformation[imageInformation.length-2];
         const imageSize=imageInformation[imageInformation.length-1];
+
+        const uploadedURL = `http://localhost:3000/uploadpicture?imageLocation=${imageLocation}`
+        console.log("Uploaded Image URL :",uploadedURL);
+
+        async function imageFetch() {
+            console.log("Test")
+            try{
+            const response = await fetch(uploadedURL, {
+                method: 'GET'
+            })
+                const imageFetchResponse = await response.json();
+                console.log("This is the image fetchresponse", imageFetchResponse);
+
+            }catch(error){
+                console.log("Error fetching picture from server", error)
+            }};
+            imageFetch();
 
         console.log("Response for upload:", imageInformation)
             //alert("The file is successfully uploaded!");
@@ -37,14 +55,40 @@ function ImageSubmit(props) {
             bottom: imageSize.height-imageInformation[0].boundingPoly.vertices[2].y
             };
         
+        //Send to API for translation
+        const uploadTextSubmit = () => {
+            let textData = JSON.stringify({
+                textFromImage: imageInformation[0].description
+            });
+            
+            async function fetchTextTranslation() {
+                try{
+                    const response = await fetch(`http://localhost:3000/textfortranslation`, {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: textData
+                    })
+                    const translatedTextInfo = await response.json();
+                    setTranslatedText(translatedTextInfo.translations[0].text);
+
+                    console.log("This is the translated text uploaded", translatedTextInfo);
+                
+                }catch(error){
+                    console.log("Error fetching API response for text, try again", error)
+                };
+            };
+            fetchTextTranslation();
+        };
+        uploadTextSubmit();
+
         console.log("This is the image text:", ImageTextSubmitted);
         console.log("This is the image box:", rawImageBox);
-        console.log("This is the image location:", imageLocation);
+        console.log("This is the image local location:", imageLocation);
         console.log("This is the image size", imageSize);
 
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
-        setImageURL(imageLocation);
+        setImageURL(uploadedURL);
         setImageSize(imageSize);
         setUploadImageTest(true);
 

@@ -24,7 +24,7 @@ outside the function, otherwise it will return with async properties*/
   //Required to trigger image function from uploaded image
   const [uploadImageTest, setUploadImageTest] = useState(false);
   //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
-  const [uploadBox, setUploadBox] = useState(false);
+  const [uploadBox, setUploadBox] = useState("");
 
   //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState('');
@@ -81,6 +81,30 @@ const onImageSubmit = () => {
       ImageSubmitBoxCalculation();
 
       setImageText(imageInformation[0].description);
+
+      //Send to API for translation
+      const linkTextSubmit = () => {
+        let textData = JSON.stringify({
+          textFromImage: imageInformation[0].description
+        });
+        
+        async function fetchTextTranslation() {
+          try{
+            const response = await fetch(`http://localhost:3000/textfortranslation`, {
+              method: "POST",
+              headers: {'Content-Type': 'application/json'},
+              body: textData
+            })
+            const translatedTextInfo = await response.json();
+            setTranslatedText(translatedTextInfo.translations[0].text);
+          }catch(error){
+            console.log("Error fetching API response for text, try again")
+          };
+        };
+        fetchTextTranslation();
+      };
+      linkTextSubmit();
+      
     } catch(error) {
       console.log("Error fetching API response for image, try again")
     };
@@ -88,6 +112,7 @@ const onImageSubmit = () => {
   fetchImageInfo();
 };
 
+//Used for manual text input, try to combine, used 3x with just the top changed
 const onTextSubmit = () => {
   let textData = JSON.stringify({
     textFromImage: textInput
@@ -106,7 +131,7 @@ const onTextSubmit = () => {
 };
 
 //tests for translated text
-console.log("This is the translated text:", translatedText);
+//console.log("This is the translated text:", translatedText);
 
 //Outputs
 const JapaneseText = () => {
@@ -125,11 +150,11 @@ const JapaneseText = () => {
 }
 
 const ImageWithText = () => {  
-  console.log(box)
+  //console.log("box dimensions",box)
   return(
     <div className = "center">
       <div className = "absolute">
-        <img id="inputimage" src={imageURL /* testImage */} width='600px' height='auto'/>
+        <img id="inputimage" src={imageURL} width='600px' height='auto'/>
         <div className = "boundingbox" 
         style={{top: box.top, right: box.right, left: box.left, bottom: box.bottom}}></div>
       </div>
@@ -144,26 +169,28 @@ if (uploadImageTest===true){
     let originalHeight=imageSize.height;
     let originalWidth=imageSize.width;
 
-    //console.log("This is the original height: Upload", originalHeight)
-    //console.log("This is the original width: Upload", originalWidth)
+    console.log("This is the original height: Upload", originalHeight)
+    console.log("This is the original width: Upload", originalWidth)
 
     //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
     const image = document.getElementById("inputimage");
     let imageWidth = image.width;
     let imageHeight = image.height;
 
-    //console.log("image width:", imageWidth, ", image height:", imageHeight);
+    console.log("image width:", imageWidth, ", image height:", imageHeight);
     
     //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
     let imageRatioWidth=1;
     let imageRatioHeight=1;
 
     imageRatioWidth=imageWidth/originalWidth;
-    imageRatioHeight=imageHeight/originalHeight;
 
-    //console.log("ImageRatioHeight:",imageRatioHeight)
-    //console.log("ImageRatiowidth:",imageRatioWidth)
-    //console.log("UploadBox:",uploadBox)
+    //THIS IS CAUSING ISSUES
+    imageRatioHeight=imageRatioWidth //imageHeight/originalHeight;
+
+    console.log("ImageRatioHeight:",imageRatioHeight)
+    console.log("ImageRatiowidth:",imageRatioWidth)
+    console.log("UploadBox:",uploadBox)
     
     setBox({
       top: uploadBox.top*imageRatioHeight,
@@ -208,7 +235,8 @@ return (
     setUploadBox={setUploadBox}
     setImageURL={setImageURL} 
     setImageSize={setImageSize}
-    setUploadImageTest={setUploadImageTest}/>
+    setUploadImageTest={setUploadImageTest}
+    setTranslatedText={setTranslatedText}/>
     </div>
     <div>
       <p className = 'f3 center'>
