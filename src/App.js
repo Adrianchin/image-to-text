@@ -158,10 +158,17 @@ const JapaneseText = () => {
 */
 
 function ImageDisplay () { 
-const imageRef = useRef(); 
-  useEffect(() => {
-    let currentHeight=imageRef.current.clientHeight;
-    let currentWidth=imageRef.current.clientWidth; 
+
+//const imageRef = useRef(); 
+  //useEffect(() => {
+    //let currentHeight=imageRef.current.clientHeight;
+    //let currentWidth=imageRef.current.clientWidth; 
+    const onImgLoad=({target:img})=>{
+      const{offsetHeight,offsetWidth}=img;
+      console.log(offsetHeight,offsetWidth);
+      let currentHeight=offsetHeight;
+      let currentWidth=offsetWidth; 
+    
     console.log("Image Current Height Dimenstions", currentHeight);
     console.log("Image Current Width Dimenstions", currentWidth);
 
@@ -183,20 +190,9 @@ const imageRef = useRef();
         console.log("This is the original height: Link", linkOriginalImageSize.height)
         console.log("This is the original width: Link", linkOriginalImageSize.width)
 
-        //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
-        /*
-        const image = document.getElementById("inputimage");
-        let imageWidth = image.width;
-        let imageHeight = image.height;
 
-        console.log("image width:", imageWidth, ", image height:", imageHeight);
-        */
-        //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
-        let imageRatioWidth=1;
-        let imageRatioHeight=1;
-
-        imageRatioWidth=currentWidth/linkOriginalImageSize.width;
-        imageRatioHeight=currentHeight/linkOriginalImageSize.height;
+        let imageRatioWidth=currentWidth/linkOriginalImageSize.width;
+        let imageRatioHeight=currentHeight/linkOriginalImageSize.height;
 
         console.log("Link ImageRatioHeight:",imageRatioHeight)
         console.log("Link ImageRatiowidth:",imageRatioWidth)
@@ -234,20 +230,6 @@ const imageRef = useRef();
         console.log("This is the original height: Upload", originalHeight)
         console.log("This is the original width: Upload", originalWidth)
 
-        //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
-        
-        /*
-        const image = document.getElementById("inputimage");
-        let imageWidth = image.width;
-        let imageHeight = image.height;
-        
-        console.log("image width:", imageWidth, ", image height:", imageHeight);
-        */
-
-        //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
-        //let imageRatioWidth=1;
-        //let imageRatioHeight=1;
-
         let imageRatioWidth=currentWidth/originalWidth;
         let imageRatioHeight=currentHeight/originalHeight;
 
@@ -266,18 +248,19 @@ const imageRef = useRef();
       ImageSubmitBoxCalculationUpload();
       console.log("This is Box after calculation", box)
       };
-
-  }, [imageRef]);
+    }
+  //}, [imageRef]);
 
   console.log("Test2")
   console.log("This is Box before render", box)
 
   return(
-    <div className = "center">
-      <div className = "absolute">
-        <img id="inputimage" src={imageURL} width='600px' height='auto' ref={imageRef}/>
+    <div className="center">
+      <div className="absolute">
+        <img id="inputimage" src={imageURL} width='600px' height='auto' onLoad={onImgLoad} /*ref={imageRef}*//>
         <div className = "boundingbox" 
-        style={{top: box.top, right: box.right, left: box.left, bottom: box.bottom}}></div>
+        style={{top: box.top, right: box.right, left: box.left, bottom: box.bottom}}>
+        </div>
       </div>
     </div>
   );
