@@ -24,7 +24,7 @@ function ImageSubmit(props) {
         const imageLocation=imageInformation[imageInformation.length-2];
         const imageSize=imageInformation[imageInformation.length-1];
 
-        const uploadedURL = `http://localhost:3000/uploadpicture?imageLocation=${imageLocation}`
+        const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`
         console.log("Uploaded Image URL :",uploadedURL);
 
         async function imageFetch() {
