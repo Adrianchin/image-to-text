@@ -4,7 +4,7 @@ function ImageSubmit(props) {
     const setImageText=props.setImageText;
     const setUploadBox=props.setUploadBox;
     const setImageURL=props.setImageURL;
-    const setImageSize=props.setImageSize;
+    const setUploadOriginalImageSize=props.setUploadOriginalImageSize;
     const setUploadImageTest=props.setUploadImageTest;
     const setTranslatedText=props.setTranslatedText;
 
@@ -89,7 +89,7 @@ function ImageSubmit(props) {
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
         setImageURL(uploadedURL);
-        setImageSize(imageSize);
+        setUploadOriginalImageSize(imageSize);
         setUploadImageTest(true);
 
         } catch(error) {

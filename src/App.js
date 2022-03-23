@@ -1,6 +1,6 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import ImageSubmit from './components/imageinput/ImageSubmit';
-import TextSubmittal from './components/imageinput/TextSubmittal';
+import LinkSubmittal from './components/imageinput/LinkSubmittal';
 import TextToDeepL from './components/imageinput/TextToDeepL';
 import 'tachyons';
 import './App.css';
@@ -17,14 +17,18 @@ outside the function, otherwise it will return with async properties*/
   //Displays the image URL of the picture. I think I need so we dont display the image in a moving text 
   const [imageURL, setImageURL] = useState('');
 
-  //Required to move image size from child to parent
-  const [imageSize, setImageSize] = useState('');
-  //Required to move image size from child to parent
-  const [originalImageSize, setOriginalImageSize] = useState('');
+  //Required to move image size from child to parent in upload
+  const [uploadOriginalImageSize, setUploadOriginalImageSize] = useState('');
+  //Required to move image size from child to parent in link
+  const [linkOriginalImageSize, setLinkOriginalImageSize] = useState('');
   //Required to trigger image function from uploaded image
   const [uploadImageTest, setUploadImageTest] = useState(false);
+  //Required to trigger image function from link submitted image
+  const [linkImageTest, setLinkImageTest] = useState(false);
   //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
   const [uploadBox, setUploadBox] = useState("");
+  //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
+  const [linkBox, setLinkBox] = useState("");
 
   //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState('');
@@ -155,51 +159,119 @@ const JapaneseText = () => {
 
 function ImageDisplay () { 
 const imageRef = useRef(); 
+  useEffect(() => {
+    let currentHeight=imageRef.current.clientHeight;
+    let currentWidth=imageRef.current.clientWidth; 
+    console.log("Image Current Height Dimenstions", currentHeight);
+    console.log("Image Current Width Dimenstions", currentWidth);
 
-  //I need to triger this if I upload, as the function is slightly different from the other calculation. 
-  //Need to structure like this because of update, render, update requirement.
-  if (uploadImageTest===true){
-    const ImageSubmitBoxCalculationUpload = () => {
-      let originalHeight=imageSize.height;
-      let originalWidth=imageSize.width;
+    //I need to triger this if I upload, as the function is slightly different from the other calculation. 
+    //Need to structure like this because of update, render, update requirement.
 
-      console.log("This is the original height: Upload", originalHeight)
-      console.log("This is the original width: Upload", originalWidth)
+      //IMAGE LINK PATH!!!!!
+    if (linkImageTest===true){
+      //IMAGE LINK PATH!!!!!
+      console.log("Test linkImageTest")
 
-      //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
+      const ImageSubmitBoxCalculationUpload = () => {
+        
+        //IMAGE LINK PATH!!!!!
 
-      const image = document.getElementById("inputimage");
-      let imageWidth = image.width;
-      let imageHeight = image.height;
+        console.log("Image Current Height Dimenstions in linkImagetest", currentHeight);
+        console.log("Image Current Width Dimenstions in linkImagetest", currentWidth);
 
-      console.log("image width:", imageWidth, ", image height:", imageHeight);
-    
-      //let imageWidth = width;
-      //let imageHeight = height;
+        console.log("This is the original height: Link", linkOriginalImageSize.height)
+        console.log("This is the original width: Link", linkOriginalImageSize.width)
 
-      //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
-      let imageRatioWidth=1;
-      let imageRatioHeight=1;
+        //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
+        /*
+        const image = document.getElementById("inputimage");
+        let imageWidth = image.width;
+        let imageHeight = image.height;
 
-      imageRatioWidth=imageWidth/originalWidth;
+        console.log("image width:", imageWidth, ", image height:", imageHeight);
+        */
+        //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
+        let imageRatioWidth=1;
+        let imageRatioHeight=1;
 
-      imageRatioHeight= imageRatioWidth //imageHeight/originalHeight;
+        imageRatioWidth=currentWidth/linkOriginalImageSize.width;
+        imageRatioHeight=currentHeight/linkOriginalImageSize.height;
 
-      console.log("ImageRatioHeight:",imageRatioHeight)
-      console.log("ImageRatiowidth:",imageRatioWidth)
-      console.log("UploadBox:",uploadBox)
-      
-      setBox({
-        top: uploadBox.top*imageRatioHeight,
-        right: imageWidth-uploadBox.right*imageRatioWidth,
-        left: uploadBox.left*imageRatioWidth,
-        bottom: uploadBox.bottom*imageRatioHeight
-        });
-        setUploadImageTest(false);
-      }
-    ImageSubmitBoxCalculationUpload();
-  }
-  //console.log("box dimensions",box)
+        console.log("Link ImageRatioHeight:",imageRatioHeight)
+        console.log("Link ImageRatiowidth:",imageRatioWidth)
+        console.log("linkBox:",linkBox)
+        
+        setBox({
+          top: linkBox.top*imageRatioHeight,
+          right: currentWidth-linkBox.right*imageRatioWidth,
+          left: linkBox.left*imageRatioWidth,
+          bottom: linkBox.bottom*imageRatioHeight
+          });
+          setLinkImageTest(false);
+        }
+      ImageSubmitBoxCalculationUpload();
+    };
+
+    //I need to triger this if I upload, as the function is slightly different from the other calculation. 
+    //Need to structure like this because of update, render, update requirement.
+
+      //IMAGE UPLOAD PATH!!!!!
+    if (uploadImageTest===true){
+      //IMAGE UPLOAD PATH!!!!!
+      console.log("Image Current Height Dimenstions in uploadImagetest", currentHeight);
+      console.log("Image Current Width Dimenstions in uploadImagetest", currentWidth);
+
+      console.log("Test uploadImageTest")
+
+      const ImageSubmitBoxCalculationUpload = () => {
+
+        //IMAGE UPLOAD PATH!!!!!
+
+        let originalHeight=uploadOriginalImageSize.height;
+        let originalWidth=uploadOriginalImageSize.width;
+
+        console.log("This is the original height: Upload", originalHeight)
+        console.log("This is the original width: Upload", originalWidth)
+
+        //Calculates the image displayed on page, called with global variables imageWidth and imageHeight
+        
+        /*
+        const image = document.getElementById("inputimage");
+        let imageWidth = image.width;
+        let imageHeight = image.height;
+        
+        console.log("image width:", imageWidth, ", image height:", imageHeight);
+        */
+
+        //creats variables for function (placeholder) Image Ratio=1 because if its 0, it will n/0. Might need to fix later
+        //let imageRatioWidth=1;
+        //let imageRatioHeight=1;
+
+        let imageRatioWidth=currentWidth/originalWidth;
+        let imageRatioHeight=currentHeight/originalHeight;
+
+        console.log("Upload ImageRatioHeight:",imageRatioHeight)
+        console.log("Upload ImageRatiowidth:",imageRatioWidth)
+        console.log("UploadBox:",uploadBox)
+        
+        setBox({
+          top: uploadBox.top*imageRatioHeight,
+          right: currentWidth-uploadBox.right*imageRatioWidth,
+          left: uploadBox.left*imageRatioWidth,
+          bottom: uploadBox.bottom*imageRatioHeight
+          });
+          setUploadImageTest(false);
+        }
+      ImageSubmitBoxCalculationUpload();
+      console.log("This is Box after calculation", box)
+      };
+
+  }, [imageRef]);
+
+  console.log("Test2")
+  console.log("This is Box before render", box)
+
   return(
     <div className = "center">
       <div className = "absolute">
@@ -218,7 +290,7 @@ return (
     setImageText={setImageText} 
     setUploadBox={setUploadBox}
     setImageURL={setImageURL} 
-    setImageSize={setImageSize}
+    setUploadOriginalImageSize={setUploadOriginalImageSize}
     setUploadImageTest={setUploadImageTest}
     setTranslatedText={setTranslatedText}/>
     </div>
@@ -230,12 +302,13 @@ return (
         />
     </div>
     <div>
-      <TextSubmittal
-      setOriginalImageSize={setOriginalImageSize}
-      setBox={setBox}
+      <LinkSubmittal
+      setLinkOriginalImageSize={setLinkOriginalImageSize}
+      setLinkBox={setLinkBox}
       setImageText={setImageText}
       setTranslatedText={setTranslatedText}
       setImageURL={setImageURL}
+      setLinkImageTest={setLinkImageTest}
       />
       <div>
         <ImageDisplay/>
