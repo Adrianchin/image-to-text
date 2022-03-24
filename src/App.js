@@ -37,6 +37,10 @@ outside the function, otherwise it will return with async properties*/
   //Displays to user what is on the image
   const [imageText, setImageText] = useState("");
 
+  const [currentWidth, setCurrentWidth] = useState("");
+  const [currentHeight, setCurrentHeight] = useState("");
+
+
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, 
 //but everything outside is NOT. Await means anything below it awaits.
 /*const onImageSubmit = () => {
@@ -157,6 +161,23 @@ const JapaneseText = () => {
 }
 */
 
+/*
+Current problem: useEffect triggers a refresh of the entire img portion, as does onLoad (the div is tied to the img). Since I need the img for the calculation of the box,
+it needs to be rendered once. Unfortunately, anything re-rendered here means useEffect will be triggered (if var compared is part of the component) and the img is refreshed
+causing onLoad to trigger the function.
+
+Currenty the only way to mitigate this is the following:
+1) Use a true->false evaluation, preventing the 2nd (really, 3rd) pass to not update setBox. Works in both cases
+2) Use a straight value for sizing. This might be the way to go, but assumes the image is sized 1:1 ratio (width and height)
+3) Pass the image 1st, THEN pass the box data.
+4) Maybe evaluate the useEffect with a different setState value that is ONLY triggered when an if statement is true, 
+where valueInitial=/=valueFinal, then setBool(or something), else valueInitial=valueFinal, with useEffect a function of setBool.
+
+I think this problem is unique because I need to refresh this component with a second superimposed piece that is a function of the first itteration. 
+
+First section - good based onImgLoad being the controller.
+second section - playing around with.
+*/ 
 function ImageDisplay () { 
 
 //const imageRef = useRef(); 
@@ -250,10 +271,101 @@ function ImageDisplay () {
       };
     }
   //}, [imageRef]);
+  
+
+
+/*
+  useEffect(() => {
+
+    //I need to triger this if I upload, as the function is slightly different from the other calculation. 
+    //Need to structure like this because of update, render, update requirement.
+
+      //IMAGE LINK PATH!!!!!
+    if (linkImageTest===true){
+      //IMAGE LINK PATH!!!!!
+      console.log("Test linkImageTest")
+
+      const ImageSubmitBoxCalculationUpload = () => {
+        
+        //IMAGE LINK PATH!!!!!
+
+        console.log("Image Current Height Dimenstions in linkImagetest", currentHeight);
+        console.log("Image Current Width Dimenstions in linkImagetest", currentWidth);
+
+        console.log("This is the original height: Link", linkOriginalImageSize.height)
+        console.log("This is the original width: Link", linkOriginalImageSize.width)
+
+
+        let imageRatioWidth=currentWidth/linkOriginalImageSize.width;
+        let imageRatioHeight=currentHeight/linkOriginalImageSize.height;
+
+        console.log("Link ImageRatioHeight:",imageRatioHeight)
+        console.log("Link ImageRatiowidth:",imageRatioWidth)
+        console.log("linkBox:",linkBox)
+        
+        let Box=({
+          top: linkBox.top*imageRatioHeight,
+          right: currentWidth-linkBox.right*imageRatioWidth,
+          left: linkBox.left*imageRatioWidth,
+          bottom: linkBox.bottom*imageRatioHeight
+          });
+          //setLinkImageTest(false);
+          console.log("Test for useEffect")
+        }
+      ImageSubmitBoxCalculationUpload();
+    };
+
+    //I need to triger this if I upload, as the function is slightly different from the other calculation. 
+    //Need to structure like this because of update, render, update requirement.
+
+      //IMAGE UPLOAD PATH!!!!!
+    if (uploadImageTest===true){
+      //IMAGE UPLOAD PATH!!!!!
+      console.log("Image Current Height Dimenstions in uploadImagetest", currentHeight);
+      console.log("Image Current Width Dimenstions in uploadImagetest", currentWidth);
+
+      console.log("Test uploadImageTest")
+
+      const ImageSubmitBoxCalculationUpload = () => {
+
+        //IMAGE UPLOAD PATH!!!!!
+
+        let originalHeight=uploadOriginalImageSize.height;
+        let originalWidth=uploadOriginalImageSize.width;
+
+        console.log("This is the original height: Upload", originalHeight)
+        console.log("This is the original width: Upload", originalWidth)
+
+        let imageRatioWidth=currentWidth/originalWidth;
+        let imageRatioHeight=currentHeight/originalHeight;
+
+        console.log("Upload ImageRatioHeight:",imageRatioHeight)
+        console.log("Upload ImageRatiowidth:",imageRatioWidth)
+        console.log("UploadBox:",uploadBox)
+        
+        setBox({
+          top: uploadBox.top*imageRatioHeight,
+          right: currentWidth-uploadBox.right*imageRatioWidth,
+          left: uploadBox.left*imageRatioWidth,
+          bottom: uploadBox.bottom*imageRatioHeight
+          });
+          //setUploadImageTest(false);
+        }
+      ImageSubmitBoxCalculationUpload();
+      console.log("This is Box after calculation", box)
+      };
+  }, [currentHeight, currentWidth]);
 
   console.log("Test2")
   console.log("This is Box before render", box)
 
+  const onImgLoad=({target:img})=>{
+    const{offsetHeight,offsetWidth}=img;
+    console.log(offsetHeight,offsetWidth);
+    setCurrentHeight(offsetHeight);
+    setCurrentWidth(offsetWidth); 
+  }
+*/
   return(
     <div className="center">
       <div className="absolute">
