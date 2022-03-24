@@ -37,8 +37,9 @@ outside the function, otherwise it will return with async properties*/
   //Displays to user what is on the image
   const [imageText, setImageText] = useState("");
 
-  const [currentWidth, setCurrentWidth] = useState("");
-  const [currentHeight, setCurrentHeight] = useState("");
+
+  const [currentWidth, setCurrentWidth] = useState("");//Test Var
+  const [currentHeight, setCurrentHeight] = useState("");//Test Var
 
 
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, 
