@@ -49,8 +49,8 @@ function LinkSubmittal (props) {
         originalHeight = img.height;
         originalWidth = img.width;
 
-        console.log("returned originalHeight:",originalHeight)
-        console.log("returned originalWidth:",originalWidth)
+        //console.log("returned originalHeight:",originalHeight)
+        //console.log("returned originalWidth:",originalWidth)
 
         setLinkOriginalImageSize({
             height: originalHeight,
@@ -107,7 +107,7 @@ function LinkSubmittal (props) {
         //calls onImageSubmit for API send
         onImageSubmit();
       };
-      // console.log("imageURL is", imageURL);
+      //console.log("imageURL is", imageInput);
     const onImageInput = (event) => {
         setImageInput(event.target.value);
     };

@@ -25,7 +25,7 @@ function ImageSubmit(props) {
         const imageSize=imageInformation[imageInformation.length-1];
 
         const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`
-        console.log("Uploaded Image URL :",uploadedURL);
+        //console.log("Uploaded Image URL :",uploadedURL);
 
         async function imageFetch() {
             console.log("Test")
@@ -81,10 +81,10 @@ function ImageSubmit(props) {
         };
         uploadTextSubmit();
 
-        console.log("This is the image text:", ImageTextSubmitted);
-        console.log("This is the image box:", rawImageBox);
-        console.log("This is the image local location:", imageLocation);
-        console.log("This is the image size", imageSize);
+        //console.log("This is the image text:", ImageTextSubmitted);
+        //console.log("This is the image box:", rawImageBox);
+        //console.log("This is the image local location:", imageLocation);
+        //console.log("This is the image size", imageSize);
 
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);

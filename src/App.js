@@ -2,6 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import ImageSubmit from './components/imageinput/ImageSubmit';
 import LinkSubmittal from './components/imageinput/LinkSubmittal';
 import TextToDeepL from './components/imageinput/TextToDeepL';
+import ImageDisplay from './components/imageinput/ImageDisplay';
 import 'tachyons';
 import './App.css';
 //import ImageDisplay from './components/ImageDisplay';
@@ -33,13 +34,15 @@ outside the function, otherwise it will return with async properties*/
   //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState('');
   //Displays box from Google API
-  const [box, setBox] = useState("");
+  //const [box, setBox] = useState("");
   //Displays to user what is on the image
   const [imageText, setImageText] = useState("");
 
 
-  const [currentWidth, setCurrentWidth] = useState("");//Test Var
-  const [currentHeight, setCurrentHeight] = useState("");//Test Var
+console.log("This is the main section", linkImageTest)
+
+  //const [currentWidth, setCurrentWidth] = useState("");//Test Var
+  //const [currentHeight, setCurrentHeight] = useState("");//Test Var
 
 
 //New Async Await function, googleData has the information from the API. Remember, async makes everything in it async, 
@@ -179,8 +182,8 @@ I think this problem is unique because I need to refresh this component with a s
 First section - good based onImgLoad being the controller.
 second section - playing around with.
 */ 
-function ImageDisplay () { 
-
+function ImageDisplay2 () { 
+/*
 //const imageRef = useRef(); 
   //useEffect(() => {
     //let currentHeight=imageRef.current.clientHeight;
@@ -274,7 +277,7 @@ function ImageDisplay () {
   //}, [imageRef]);
   
 
-
+*/
 /*
   useEffect(() => {
 
@@ -304,7 +307,7 @@ function ImageDisplay () {
         console.log("Link ImageRatiowidth:",imageRatioWidth)
         console.log("linkBox:",linkBox)
         
-        let Box=({
+        setBox({
           top: linkBox.top*imageRatioHeight,
           right: currentWidth-linkBox.right*imageRatioWidth,
           left: linkBox.left*imageRatioWidth,
@@ -355,7 +358,7 @@ function ImageDisplay () {
       ImageSubmitBoxCalculationUpload();
       console.log("This is Box after calculation", box)
       };
-  }, [currentHeight, currentWidth]);
+  }, []);
 
   console.log("Test2")
   console.log("This is Box before render", box)
@@ -367,16 +370,7 @@ function ImageDisplay () {
     setCurrentWidth(offsetWidth); 
   }
 */
-  return(
-    <div className="center">
-      <div className="absolute">
-        <img id="inputimage" src={imageURL} width='600px' height='auto' onLoad={onImgLoad} /*ref={imageRef}*//>
-        <div className = "boundingbox" 
-        style={{top: box.top, right: box.right, left: box.left, bottom: box.bottom}}>
-        </div>
-      </div>
-    </div>
-  );
+
 };
 
 return (
@@ -407,7 +401,15 @@ return (
       setLinkImageTest={setLinkImageTest}
       />
       <div>
-        <ImageDisplay/>
+        <ImageDisplay
+        linkImageTest={linkImageTest}
+        linkOriginalImageSize={linkOriginalImageSize}
+        linkBox={linkBox}
+        uploadImageTest={uploadImageTest}
+        uploadOriginalImageSize={uploadOriginalImageSize}
+        uploadBox={uploadBox}
+        imageURL={imageURL}
+        />
       </div>
     </div>
   </div>
