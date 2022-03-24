@@ -19,9 +19,9 @@ outside the function, otherwise it will return with async properties*/
   //Required to move image size from child to parent in link
   const [linkOriginalImageSize, setLinkOriginalImageSize] = useState('');
   //Required to trigger image function from uploaded image
-  const [uploadImageTest, setUploadImageTest] = useState(false);
+  const [uploadImagePath, setUploadImagePath] = useState(false);
   //Required to trigger image function from link submitted image
-  const [linkImageTest, setLinkImageTest] = useState(false);
+  const [linkImagePath, setLinkImagePath] = useState(false);
   //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
   const [uploadBox, setUploadBox] = useState("");
   //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
@@ -42,7 +42,8 @@ return (
     setUploadBox={setUploadBox}
     setImageURL={setImageURL} 
     setUploadOriginalImageSize={setUploadOriginalImageSize}
-    setUploadImageTest={setUploadImageTest}
+    setUploadImagePath={setUploadImagePath}
+    setLinkImagePath={setLinkImagePath}
     setTranslatedText={setTranslatedText}/>
     </div>
     <div>
@@ -59,14 +60,15 @@ return (
       setImageText={setImageText}
       setTranslatedText={setTranslatedText}
       setImageURL={setImageURL}
-      setLinkImageTest={setLinkImageTest}
+      setUploadImagePath={setUploadImagePath}
+      setLinkImagePath={setLinkImagePath}
       />
       <div>
         <ImageDisplay
-        linkImageTest={linkImageTest}
+        linkImagePath={linkImagePath}
         linkOriginalImageSize={linkOriginalImageSize}
         linkBox={linkBox}
-        uploadImageTest={uploadImageTest}
+        uploadImagePath={uploadImagePath}
         uploadOriginalImageSize={uploadOriginalImageSize}
         uploadBox={uploadBox}
         imageURL={imageURL}

@@ -6,12 +6,18 @@ function LinkSubmittal (props) {
     const setImageText=props.setImageText;
     const setTranslatedText=props.setTranslatedText;
     const setImageURL=props.setImageURL;
-    const setLinkImageTest= props.setLinkImageTest;
+    const setLinkImagePath= props.setLinkImagePath;
+    const setUploadImagePath=props.setUploadImagePath;
 
     //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
     const [imageInput, setImageInput] = useState('');
 
+    
+
     function onImageSubmit () {
+
+        setUploadImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
+
         let imageData = JSON.stringify({
         link: imageInput
         });
@@ -25,8 +31,8 @@ function LinkSubmittal (props) {
         body: imageData
         })
         const imageInformation = await response.json();
-        console.log("This is the return from API:", imageInformation)
-        //creates variables for function (placeholder) for html
+
+        console.log("returned linkSubmit from Google API:",imageInformation)
 
         let originalHeight;
         let originalWidth;
@@ -84,7 +90,7 @@ function LinkSubmittal (props) {
 
                 setTranslatedText(translatedTextInfo.translations[0].text);
 
-                setLinkImageTest(true);
+                setLinkImagePath(true);
 
                 }catch(error){
                 console.log("Error fetching API response for text, try again")

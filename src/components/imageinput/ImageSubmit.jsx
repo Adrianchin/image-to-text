@@ -5,12 +5,16 @@ function ImageSubmit(props) {
     const setUploadBox=props.setUploadBox;
     const setImageURL=props.setImageURL;
     const setUploadOriginalImageSize=props.setUploadOriginalImageSize;
-    const setUploadImageTest=props.setUploadImageTest;
+    const setUploadImagePath=props.setUploadImagePath;
     const setTranslatedText=props.setTranslatedText;
+    const setLinkImagePath=props.setLinkImagePath;
 
     const [file, setFile] = useState(null);
 
     const onFormSubmit = async (event) => {
+
+        setLinkImagePath(false);//prevents both calculations from triggering, in onClick so ONLY activated by onclick
+
         event.preventDefault();
         const formData = new FormData();
         formData.append('myImage', file);
@@ -24,8 +28,10 @@ function ImageSubmit(props) {
         const imageLocation=imageInformation[imageInformation.length-2];
         const imageSize=imageInformation[imageInformation.length-1];
 
+        console.log("returned ImageSubmit from Google API:",imageInformation);
+
         const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`
-        //console.log("Uploaded Image URL :",uploadedURL);
+        
 
         async function imageFetch() {
             console.log("Test")
@@ -42,7 +48,6 @@ function ImageSubmit(props) {
             imageFetch();
 
         console.log("Response for upload:", imageInformation)
-            //alert("The file is successfully uploaded!");
         
         //const GoogleDataSubmitted=uploadresponse;
         const ImageTextSubmitted=imageInformation[0].description;
@@ -90,7 +95,7 @@ function ImageSubmit(props) {
         setUploadBox(rawImageBox);
         setImageURL(uploadedURL);
         setUploadOriginalImageSize(imageSize);
-        setUploadImageTest(true);
+        setUploadImagePath(true);
 
         } catch(error) {
             console.log("Error submitting photo", error)

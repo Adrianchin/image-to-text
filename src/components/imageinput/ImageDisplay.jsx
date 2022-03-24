@@ -1,10 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react';
 
 function ImageDisplay (props) { 
-    const linkImageTest = props.linkImageTest;
+    const linkImagePath = props.linkImagePath;
     const linkOriginalImageSize = props.linkOriginalImageSize;
     const linkBox = props.linkBox;
-    const uploadImageTest = props.uploadImageTest;
+    const uploadImagePath = props.uploadImagePath;
     const uploadOriginalImageSize = props.uploadOriginalImageSize;
     const uploadBox = props.uploadBox;
     const imageURL = props.imageURL;
@@ -13,13 +13,14 @@ function ImageDisplay (props) {
     const [currentWidth, setCurrentWidth] = useState("");
     const [currentHeight, setCurrentHeight] = useState("");
 
-    
+    const imageResize="600px"; //used for image width input on <img/>
+
     console.log("This is the image URL in component", imageURL)
     const imageRef = useRef(); 
-    console.log("This is the linkImageTest", linkImageTest)
-    console.log("This is the uploadImageTest", uploadImageTest)
+    console.log("This is the linkImageTest", linkImagePath)
+    console.log("This is the uploadImageTest", uploadImagePath)
     
-    const onImgLoad=({target:img})=>{
+      const onImgLoad=({target:img})=>{
       const{offsetHeight,offsetWidth}=img;
       console.log(offsetHeight,offsetWidth);
       setCurrentHeight(offsetHeight);
@@ -31,9 +32,9 @@ function ImageDisplay (props) {
         //Need to structure like this because of update, render, update requirement.
     
           //IMAGE LINK PATH!!!!!
-        if (linkImageTest===true){
+        if (linkImagePath===true){
           //IMAGE LINK PATH!!!!!
-          console.log("Test linkImageTest", linkImageTest)
+          console.log("Test linkImageTest", linkImagePath)
     
           function ImageSubmitBoxCalculationUpload() {
             
@@ -59,7 +60,6 @@ function ImageDisplay (props) {
               left: linkBox.left*imageRatioWidth,
               bottom: linkBox.bottom*imageRatioHeight
               });
-              console.log("Test for useEffect")
             }
           ImageSubmitBoxCalculationUpload();
         };
@@ -68,12 +68,12 @@ function ImageDisplay (props) {
         //Need to structure like this because of update, render, update requirement.
     
           //IMAGE UPLOAD PATH!!!!!
-        if (uploadImageTest===true){
+        if (uploadImagePath===true){
           //IMAGE UPLOAD PATH!!!!!
           console.log("Image Current Height Dimenstions in uploadImagetest", currentHeight);
           console.log("Image Current Width Dimenstions in uploadImagetest", currentWidth);
     
-          console.log("Test uploadImageTest", uploadImageTest)
+          console.log("Test uploadImageTest", uploadImagePath)
     
           function ImageSubmitBoxCalculationUpload () {
     
@@ -100,9 +100,8 @@ function ImageDisplay (props) {
               });
             }
           ImageSubmitBoxCalculationUpload();
-          console.log("This is Box after calculation", box)
           };
-        }, [linkBox, uploadImageTest, linkImageTest, currentHeight, currentWidth]);
+        }, [linkBox, uploadImagePath, linkImagePath, currentHeight, currentWidth]);
     
       console.log("Test2")
       console.log("This is Box before render", box)
@@ -112,7 +111,7 @@ function ImageDisplay (props) {
           <div className="absolute">
             <img id="inputimage" 
             src={imageURL} 
-            width='600px' 
+            width={imageResize}
             height='auto' 
             onLoad={onImgLoad} 
             ref={imageRef}/>
