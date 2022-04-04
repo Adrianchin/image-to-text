@@ -47,6 +47,7 @@ function LinkSubmittal (props) {
                 image.onerror=reject;
             });
         }
+
         let img = new Image();
         let imgpromise = onLoadPromiseImageFunction(img);
         img.src = imageInput;
@@ -71,6 +72,7 @@ function LinkSubmittal (props) {
         left: imageInformation[0].boundingPoly.vertices[0].x,
         bottom: (originalHeight-imageInformation[0].boundingPoly.vertices[2].y)
         });
+        setLinkImagePath(true);//Sets path for box calculation
 
         //Send to API for translation
         const linkTextSubmit = () => {
@@ -90,8 +92,6 @@ function LinkSubmittal (props) {
 
                 setTranslatedText(translatedTextInfo.translations[0].text);
 
-                setLinkImagePath(true);
-
                 }catch(error){
                 console.log("Error fetching API response for text, try again")
                 };
@@ -99,6 +99,7 @@ function LinkSubmittal (props) {
             fetchTextTranslation();
         };
         linkTextSubmit();
+
     } catch(error) {
         console.log("Error fetching API response for image, try again")
     };

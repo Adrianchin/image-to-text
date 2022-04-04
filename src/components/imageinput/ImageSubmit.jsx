@@ -86,8 +86,8 @@ function ImageSubmit(props) {
         };
         uploadTextSubmit();
 
-        //console.log("This is the image text:", ImageTextSubmitted);
-        //console.log("This is the image box:", rawImageBox);
+        console.log("This is the image text:", ImageTextSubmitted);
+        console.log("This is the image box:", rawImageBox);
         //console.log("This is the image local location:", imageLocation);
         //console.log("This is the image size", imageSize);
 
@@ -95,7 +95,7 @@ function ImageSubmit(props) {
         setUploadBox(rawImageBox);
         setImageURL(uploadedURL);
         setUploadOriginalImageSize(imageSize);
-        setUploadImagePath(true);
+        setUploadImagePath(true);//Sets path for box calculation
 
         } catch(error) {
             console.log("Error submitting photo", error)
