@@ -1,8 +1,9 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState} from 'react';
 import ImageSubmit from './components/imageinput/ImageSubmit';
 import LinkSubmittal from './components/imageinput/LinkSubmittal';
-import TextToDeepL from './components/imageinput/TextToDeepL';
-import ImageDisplay from './components/imageinput/ImageDisplay';
+import TextToDeepL from './components/TextToDeepL';
+import ImageDisplay from './components/ImageDisplay';
+import Tokenizer from './components/Tokenizer';
 import 'tachyons';
 import './App.css';
 
@@ -52,6 +53,9 @@ return (
       translatedText={translatedText}
       imageText={imageText}
         />
+    </div>
+    <div>
+      <Tokenizer/>
     </div>
     <div>
       <LinkSubmittal
