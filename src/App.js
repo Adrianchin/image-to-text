@@ -3,7 +3,7 @@ import ImageSubmit from "./components/imageinput/ImageSubmit";
 import LinkSubmittal from "./components/imageinput/LinkSubmittal";
 import TextToDeepL from "./components/TextToDeepL";
 import ImageDisplay from "./components/ImageDisplay";
-import Tokenizer from "./components/Tokenizer/Tokenizer";
+import Tokenizer from "./components/tokenizer/Tokenizer";
 import "tachyons";
 import "./App.css";
 
