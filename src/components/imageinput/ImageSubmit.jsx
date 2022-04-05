@@ -108,15 +108,17 @@ function ImageSubmit(props) {
 
     return (
         <form onSubmit={onFormSubmit}>
-        <h1> File Upload </h1>
-        <input 
-        type="file" 
-        name="myImage" 
-        onChange={onChange}/>
-        <button 
-        type="submit">
-            Upload
-        </button>
+        <h1 className="center"> File Upload </h1>
+        <div className="center">
+            <input 
+            type="file" 
+            name="myImage" 
+            onChange={onChange}/>
+            <button 
+            type="submit">
+                Upload
+            </button>
+        </div>
         </form>
     )
 };

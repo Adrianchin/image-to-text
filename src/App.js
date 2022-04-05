@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import ImageSubmit from './components/imageinput/ImageSubmit';
-import LinkSubmittal from './components/imageinput/LinkSubmittal';
-import TextToDeepL from './components/TextToDeepL';
-import ImageDisplay from './components/ImageDisplay';
-import Tokenizer from './components/Tokenizer/Tokenizer';
-import 'tachyons';
-import './App.css';
+import React, { useState } from "react";
+import ImageSubmit from "./components/imageinput/ImageSubmit";
+import LinkSubmittal from "./components/imageinput/LinkSubmittal";
+import TextToDeepL from "./components/TextToDeepL";
+import ImageDisplay from "./components/ImageDisplay";
+import Tokenizer from "./components/Tokenizer/Tokenizer";
+import "tachyons";
+import "./App.css";
 
 function App() {
-/*Note setstate is async, remember that 
+  /*Note setstate is async, remember that 
 you want to use consol log (or other stuff inside code) 
 outside the function, otherwise it will return with async properties*/
 
-  //Displays the image URL of the picture. I think I need so we dont display the image in a moving text 
+  //Displays the image URL of the picture. I think I need so we dont display the image in a moving text
   const [imageURL, setImageURL] = useState(null);
 
   //Required to move image size from child to parent in upload
@@ -33,54 +33,53 @@ outside the function, otherwise it will return with async properties*/
   //Displays to user what is on the image
   const [imageText, setImageText] = useState(null);
 
-
-
-return (
-  <div>
-    <div>
-    <ImageSubmit 
-    setImageText={setImageText} 
-    setUploadBox={setUploadBox}
-    setImageURL={setImageURL} 
-    setUploadOriginalImageSize={setUploadOriginalImageSize}
-    setUploadImagePath={setUploadImagePath}
-    setLinkImagePath={setLinkImagePath}
-    setTranslatedText={setTranslatedText}/>
-    </div>
-    <div>
-      <TextToDeepL
-      setTranslatedText={setTranslatedText}
-      translatedText={translatedText}
-      imageText={imageText}
-        />
-    </div>
-    <div>
-      <Tokenizer/>
-    </div>
-    <div>
-      <LinkSubmittal
-      setLinkOriginalImageSize={setLinkOriginalImageSize}
-      setLinkBox={setLinkBox}
-      setImageText={setImageText}
-      setTranslatedText={setTranslatedText}
-      setImageURL={setImageURL}
-      setUploadImagePath={setUploadImagePath}
-      setLinkImagePath={setLinkImagePath}
-      />
+  return (
+    <>
       <div>
-        <ImageDisplay
-        linkImagePath={linkImagePath}
-        linkOriginalImageSize={linkOriginalImageSize}
-        linkBox={linkBox}
-        uploadImagePath={uploadImagePath}
-        uploadOriginalImageSize={uploadOriginalImageSize}
-        uploadBox={uploadBox}
-        imageURL={imageURL}
+        <ImageSubmit
+          setImageText={setImageText}
+          setUploadBox={setUploadBox}
+          setImageURL={setImageURL}
+          setUploadOriginalImageSize={setUploadOriginalImageSize}
+          setUploadImagePath={setUploadImagePath}
+          setLinkImagePath={setLinkImagePath}
+          setTranslatedText={setTranslatedText}
         />
       </div>
-    </div>
-  </div>
+      <div>
+        <LinkSubmittal
+          setLinkOriginalImageSize={setLinkOriginalImageSize}
+          setLinkBox={setLinkBox}
+          setImageText={setImageText}
+          setTranslatedText={setTranslatedText}
+          setImageURL={setImageURL}
+          setUploadImagePath={setUploadImagePath}
+          setLinkImagePath={setLinkImagePath}
+        />
+      </div>
+      <div>
+        <TextToDeepL
+          setTranslatedText={setTranslatedText}
+          translatedText={translatedText}
+          imageText={imageText}
+        />
+      </div>
+      <div>
+        <Tokenizer />
+      </div>
+      <div>
+        <ImageDisplay
+          linkImagePath={linkImagePath}
+          linkOriginalImageSize={linkOriginalImageSize}
+          linkBox={linkBox}
+          uploadImagePath={uploadImagePath}
+          uploadOriginalImageSize={uploadOriginalImageSize}
+          uploadBox={uploadBox}
+          imageURL={imageURL}
+        />
+      </div>
+    </>
   );
-};
+}
 
 export default App;
