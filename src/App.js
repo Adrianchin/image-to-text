@@ -76,11 +76,11 @@ outside the function, otherwise it will return with async properties*/
       </div>
       <div>
         <h3 className="center">{`This is the image text`}</h3>
-        <h5 className="center">{`${imageText}`}</h5>
+        <h1 className="center">{`${imageText}`}</h1>
       </div>
       <div>
         <h3 className="center">{`This is the translated text`}</h3>
-        <h5 className="center">{`${translatedText}`}</h5>
+        <h3 className="center">{`${translatedText}`}</h3>
       </div>
       <div>
       <TokenTextTable 

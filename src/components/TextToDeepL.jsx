@@ -30,7 +30,6 @@ function TextToDeepL(props) {
   const onTextInput = (event) => {
     setTextInput(event.target.value);
   };
-  //console.log("Text input is", textInput);
 
   return (
     <div>

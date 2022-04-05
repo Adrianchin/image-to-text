@@ -18,7 +18,6 @@ function ImageSubmit(props) {
         event.preventDefault();
         const formData = new FormData();
         formData.append('myImage', file);
-        //console.log(formData);
         try{
             const response = await fetch("http://localhost:3000/upload", {
             method: 'POST',
@@ -32,9 +31,7 @@ function ImageSubmit(props) {
 
         const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`
         
-
         async function imageFetch() {
-            console.log("Test")
             try{
             const response = await fetch(uploadedURL, {
                 method: 'GET'
@@ -84,12 +81,7 @@ function ImageSubmit(props) {
             fetchTextTranslation();
         };
         uploadTextSubmit();
-
-        // console.log("This is the image text:", ImageTextSubmitted);
-        // console.log("This is the image box:", rawImageBox);
-        //console.log("This is the image local location:", imageLocation);
-        //console.log("This is the image size", imageSize);
-
+        
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
         setImageURL(uploadedURL);

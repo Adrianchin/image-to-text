@@ -31,20 +31,9 @@ function ImageDisplay (props) {
           //IMAGE LINK PATH!!!!!
           function ImageSubmitBoxCalculationUpload() {
     
-            // console.log("Image Current Height Dimenstions in linkImagetest", currentHeight);
-            // console.log("Image Current Width Dimenstions in linkImagetest", currentWidth);
-    
-            // console.log("This is the original height: Link", linkOriginalImageSize.height)
-            // console.log("This is the original width: Link", linkOriginalImageSize.width)
-    
-    
             let imageRatioWidth=currentWidth/linkOriginalImageSize.width;
             let imageRatioHeight=currentHeight/linkOriginalImageSize.height;
-    
-            // console.log("Link ImageRatioHeight:",imageRatioHeight)
-            // console.log("Link ImageRatiowidth:",imageRatioWidth)
-            // console.log("linkBox:",linkBox)
-            
+
             setBox({
               top: linkBox.top*imageRatioHeight,
               right: currentWidth-linkBox.right*imageRatioWidth,
@@ -61,9 +50,6 @@ function ImageDisplay (props) {
           //IMAGE UPLOAD PATH!!!!!
         if (uploadImagePath===true){
           //IMAGE UPLOAD PATH!!!!!
-          // console.log("Image Current Height Dimenstions in uploadImagetest", currentHeight);
-          // console.log("Image Current Width Dimenstions in uploadImagetest", currentWidth);   
-          // console.log("Test uploadImageTest", uploadImagePath)
     
           function ImageSubmitBoxCalculationUpload () {
     
@@ -72,16 +58,9 @@ function ImageDisplay (props) {
             let originalHeight=uploadOriginalImageSize.height;
             let originalWidth=uploadOriginalImageSize.width;
     
-            // console.log("This is the original height: Upload", originalHeight)
-            // console.log("This is the original width: Upload", originalWidth)
-    
             let imageRatioWidth=currentWidth/originalWidth;
             let imageRatioHeight=currentHeight/originalHeight;
-    
-            // console.log("Upload ImageRatioHeight:",imageRatioHeight)
-            // console.log("Upload ImageRatiowidth:",imageRatioWidth)
-            // console.log("UploadBox:",uploadBox)
-            
+
             setBox({
               top: uploadBox.top*imageRatioHeight,
               right: currentWidth-uploadBox.right*imageRatioWidth,

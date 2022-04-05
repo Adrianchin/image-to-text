@@ -53,9 +53,6 @@ function LinkSubmittal(props) {
         originalHeight = img.height;
         originalWidth = img.width;
 
-        //console.log("returned originalHeight:",originalHeight)
-        //console.log("returned originalWidth:",originalWidth)
-
         setLinkOriginalImageSize({
           height: originalHeight,
           width: originalWidth,
@@ -88,7 +85,7 @@ function LinkSubmittal(props) {
                   body: textData,
                 }
               );
-
+              
               const translatedTextInfo = await response.json();
 
               setTranslatedText(translatedTextInfo.translations[0].text);
@@ -113,11 +110,9 @@ function LinkSubmittal(props) {
     //calls onImageSubmit for API send
     onImageSubmit();
   };
-  //console.log("imageURL is", imageInput);
   const onImageInput = (event) => {
     setImageInput(event.target.value);
   };
-  //  console.log("Image Input is", imageInput);
 
   return (
     <div>
