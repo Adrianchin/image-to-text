@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TokenTextTable from "./Components/TokenTextTable";
+import TokenTextTable from "./TokenTextTable";
 
 function Tokenizer() {
   //Text Input for Json.
