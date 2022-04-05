@@ -93,14 +93,14 @@ function LinkSubmittal(props) {
 
               setTranslatedText(translatedTextInfo.translations[0].text);
             } catch (error) {
-              console.log("Error fetching API response for text, try again");
+              console.log("Error fetching translation API response for text, try again");
             }
           }
           fetchTextTranslation();
         };
         linkTextSubmit();
       } catch (error) {
-        console.log("Error fetching API response for image, try again");
+        console.log("Error fetching API responses for image, try again");
       }
     }
     fetchImageInfo();

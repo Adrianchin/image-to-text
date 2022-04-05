@@ -75,7 +75,6 @@ function ImageSubmit(props) {
                     })
                     const translatedTextInfo = await response.json();
                     setTranslatedText(translatedTextInfo.translations[0].text);
-
                     console.log("This is the translated text uploaded", translatedTextInfo);
                 
                 }catch(error){
@@ -86,8 +85,8 @@ function ImageSubmit(props) {
         };
         uploadTextSubmit();
 
-        console.log("This is the image text:", ImageTextSubmitted);
-        console.log("This is the image box:", rawImageBox);
+        // console.log("This is the image text:", ImageTextSubmitted);
+        // console.log("This is the image box:", rawImageBox);
         //console.log("This is the image local location:", imageLocation);
         //console.log("This is the image size", imageSize);
 
