@@ -4,6 +4,8 @@ import LinkSubmittal from "./components/imageinput/LinkSubmittal";
 import TextToDeepL from "./components/TextToDeepL";
 import ImageDisplay from "./components/ImageDisplay";
 import Tokenizer from "./components/tokenizer/Tokenizer";
+import TokenTextTable from "./components/tokenizer/TokenTextTable";
+
 import "tachyons";
 import "./App.css";
 
@@ -32,6 +34,8 @@ outside the function, otherwise it will return with async properties*/
   const [translatedText, setTranslatedText] = useState(null);
   //Displays to user what is on the image
   const [imageText, setImageText] = useState(null);
+
+  const [tokenizedText, setTokenizedText] = useState(null);
 
   return (
     <>
@@ -65,7 +69,23 @@ outside the function, otherwise it will return with async properties*/
         />
       </div>
       <div>
-        <Tokenizer />
+        <Tokenizer 
+        tokenizedText={tokenizedText}
+        setTokenizedText={setTokenizedText}
+        />
+      </div>
+      <div>
+        <h3 className="center">{`This is the image text`}</h3>
+        <h5 className="center">{`${imageText}`}</h5>
+      </div>
+      <div>
+        <h3 className="center">{`This is the translated text`}</h3>
+        <h5 className="center">{`${translatedText}`}</h5>
+      </div>
+      <div>
+      <TokenTextTable 
+        tokenizedText={tokenizedText}
+      />
       </div>
       <div>
         <ImageDisplay

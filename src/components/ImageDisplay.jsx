@@ -91,12 +91,13 @@ function ImageDisplay (props) {
             }
           ImageSubmitBoxCalculationUpload();
           };
-        }, [linkBox, uploadImagePath, linkImagePath, currentHeight, currentWidth]);
+        }, [linkBox, uploadImagePath, linkImagePath, currentHeight, currentWidth, uploadOriginalImageSize, linkOriginalImageSize, uploadBox]);
     
       return(
         <div className="center">
           <div className="absolute">
             <img id="inputimage" 
+            alt=""
             src={imageURL} 
             width={imageResize}
             height='auto' 

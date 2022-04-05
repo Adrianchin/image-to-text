@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import TokenTextTable from "./TokenTextTable";
 
-function Tokenizer() {
+function Tokenizer(props) {
+  const setTokenizedText = props.setTokenizedText;
+
   //Text Input for Json.
   const [textInput, setTextInput] = useState(null);
-  const [tokenizedText, setTokenizedText] = useState(null);
 
   function onTextSubmit() {
     let textForTokenizing = JSON.stringify({
@@ -33,26 +33,20 @@ function Tokenizer() {
   };
 
   return (
-    <div>
-      <p className="f3 center">Tokenized Text Input</p>
-      <div className="center">
-        <div className="form center pa4 br3 shadow-5">
-          <input
-            className="f4 pa2 w-70 center"
-            type="text"
-            onChange={onTextInput}
-          />
-          <button
-            className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple"
-            onClick={onTextButtonSubmit}
-          >
-            Tokenized Text Please
-          </button>
-        </div>
+    <div className="center">
+      <div className="form center pa4 br3 shadow-5">
+        <input
+          className="f4 pa2 w-70 center"
+          type="text"
+          onChange={onTextInput}
+        />
+        <button
+          className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple"
+          onClick={onTextButtonSubmit}
+        >
+          Tokenized Text Please
+        </button>
       </div>
-      <TokenTextTable 
-        tokenizedText={tokenizedText}
-      />
     </div>
   );
 }

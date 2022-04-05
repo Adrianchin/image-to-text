@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 function TextToDeepL(props) {
   const setTranslatedText = props.setTranslatedText;
-  const translatedText = props.translatedText;
-  const imageText = props.imageText;
 
   //Text Input for Json.
   const [textInput, setTextInput] = useState("");
@@ -50,14 +48,6 @@ function TextToDeepL(props) {
             Translation Text Please
           </button>
         </div>
-      </div>
-      <div>
-        <h3 className="center">{`This is the image text`}</h3>
-        <h5 className="center">{`${imageText}`}</h5>
-      </div>
-      <div>
-        <h3 className="center">{`This is the translated text`}</h3>
-        <h5 className="center">{`${translatedText}`}</h5>
       </div>
     </div>
   );
