@@ -29,11 +29,11 @@ function TextToDeepL(props) {
     fetchTextTranslation();
   }
 
-  const onTextButtonSubmit = () => {
+  function onTextButtonSubmit() {
     onTextSubmit();
   };
 
-  const onTextInput = (event) => {
+  function onTextInput (event) {
     setTextInput(event.target.value);
   };
 

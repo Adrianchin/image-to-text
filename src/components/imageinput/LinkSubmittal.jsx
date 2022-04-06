@@ -71,7 +71,7 @@ function LinkSubmittal(props) {
         setLinkImagePath(true); //Sets path for box calculation
 
         //Send to API for translation
-        const linkTextSubmit = () => {
+        function linkTextSubmit() {
           let textData = JSON.stringify({
             textFromImage: imageInformation[0].description,
           });
@@ -130,7 +130,7 @@ function LinkSubmittal(props) {
     fetchImageInfo();
   }
 
-  const onImageButtonSubmit = () => {
+  function onImageButtonSubmit() {
     //Note: I think this is async, so I cannot use imageInput as it is in que, and onImageSubmit runs and imageInput is old!
     //This is reset to setState because we need to render the image!! Otherwise dont need this.
     setImageURL(imageInput);

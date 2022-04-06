@@ -12,7 +12,7 @@ function ImageSubmit(props) {
 
   const [file, setFile] = useState(null);
 
-  const onFormSubmit = async (event) => {
+  async function onFormSubmit(event) {
     setLinkImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
     event.preventDefault();
     const formData = new FormData();

@@ -30,11 +30,11 @@ function Tokenizer(props) {
     fetchTokenization();
   }
 
-  const onTextButtonSubmit = () => {
+  function onTextButtonSubmit() {
     onTextSubmit();
   };
 
-  const onTextInput = (event) => {
+  function onTextInput(event) {
     setTextInput(event.target.value);
   };
 
