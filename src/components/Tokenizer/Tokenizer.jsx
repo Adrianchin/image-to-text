@@ -41,10 +41,10 @@ function Tokenizer(props) {
           onChange={onTextInput}
         />
         <button
-          className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple"
+          className="w-30 grow f5 link ph3 pv2 dib white bg-light-purple"
           onClick={onTextButtonSubmit}
         >
-          Tokenized Text Please
+          Text to Tokenized 
         </button>
       </div>
     </div>
