@@ -39,71 +39,82 @@ outside the function, otherwise it will return with async properties*/
 
   const [tokenizedText, setTokenizedText] = useState(null);
 
+  const [ifLogin, setIfLogin] = useState(true)
+
   return (
     <>
+    {ifLogin === false
+    ?(<div>
+
+    </div>
+    )
+    :(
       <div>
-        <ImageSubmit
-          setImageText={setImageText}
-          setUploadBox={setUploadBox}
-          setImageURL={setImageURL}
-          setUploadOriginalImageSize={setUploadOriginalImageSize}
-          setUploadImagePath={setUploadImagePath}
-          setLinkImagePath={setLinkImagePath}
-          setTranslatedText={setTranslatedText}
+        <div>
+          <ImageSubmit
+            setImageText={setImageText}
+            setUploadBox={setUploadBox}
+            setImageURL={setImageURL}
+            setUploadOriginalImageSize={setUploadOriginalImageSize}
+            setUploadImagePath={setUploadImagePath}
+            setLinkImagePath={setLinkImagePath}
+            setTranslatedText={setTranslatedText}
+            setTokenizedText={setTokenizedText}
+          />
+        </div>
+        <div>
+          <LinkSubmittal
+            setLinkOriginalImageSize={setLinkOriginalImageSize}
+            setLinkBox={setLinkBox}
+            setImageText={setImageText}
+            setTranslatedText={setTranslatedText}
+            setImageURL={setImageURL}
+            setUploadImagePath={setUploadImagePath}
+            setLinkImagePath={setLinkImagePath}
+            setTokenizedText={setTokenizedText}
+          />
+        </div>
+        <div>
+          <TextToDeepL
+            setTranslatedText={setTranslatedText}
+            translatedText={translatedText}
+            imageText={imageText}
+          />
+        </div>
+        <div>
+          <Tokenizer 
+          tokenizedText={tokenizedText}
           setTokenizedText={setTokenizedText}
+          />
+        </div>
+        <div>
+          <ImageText
+            imageText={imageText}
+          />
+        </div>
+        <div>
+          <TranslatedText
+            translatedText={translatedText}
+          />
+        </div>
+        <div>
+        <TokenTextTable 
+          tokenizedText={tokenizedText}
         />
+        </div>
+        <div>
+          <ImageDisplay
+            linkImagePath={linkImagePath}
+            linkOriginalImageSize={linkOriginalImageSize}
+            linkBox={linkBox}
+            uploadImagePath={uploadImagePath}
+            uploadOriginalImageSize={uploadOriginalImageSize}
+            uploadBox={uploadBox}
+            imageURL={imageURL}
+          />
+        </div>
       </div>
-      <div>
-        <LinkSubmittal
-          setLinkOriginalImageSize={setLinkOriginalImageSize}
-          setLinkBox={setLinkBox}
-          setImageText={setImageText}
-          setTranslatedText={setTranslatedText}
-          setImageURL={setImageURL}
-          setUploadImagePath={setUploadImagePath}
-          setLinkImagePath={setLinkImagePath}
-          setTokenizedText={setTokenizedText}
-        />
-      </div>
-      <div>
-        <TextToDeepL
-          setTranslatedText={setTranslatedText}
-          translatedText={translatedText}
-          imageText={imageText}
-        />
-      </div>
-      <div>
-        <Tokenizer 
-        tokenizedText={tokenizedText}
-        setTokenizedText={setTokenizedText}
-        />
-      </div>
-      <div>
-        <ImageText
-          imageText={imageText}
-        />
-      </div>
-      <div>
-        <TranslatedText
-          translatedText={translatedText}
-        />
-      </div>
-      <div>
-      <TokenTextTable 
-        tokenizedText={tokenizedText}
-      />
-      </div>
-      <div>
-        <ImageDisplay
-          linkImagePath={linkImagePath}
-          linkOriginalImageSize={linkOriginalImageSize}
-          linkBox={linkBox}
-          uploadImagePath={uploadImagePath}
-          uploadOriginalImageSize={uploadOriginalImageSize}
-          uploadBox={uploadBox}
-          imageURL={imageURL}
-        />
-      </div>
+    )}
     </>
   );
 }

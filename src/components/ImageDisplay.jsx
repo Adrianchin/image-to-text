@@ -13,9 +13,10 @@ function ImageDisplay(props) {
   const [currentWidth, setCurrentWidth] = useState("");
   const [currentHeight, setCurrentHeight] = useState("");
 
-  const imageResize = "600px"; //used for image width input on <img/>
+  const imageWidth=600; //initial image size, max size
+  const imgTagWidth=String(imageWidth);// needs to be a string for the input
 
-  const imageRef = useRef();
+  const imageRef = useRef();// Not using, remove?
   const onImgLoad = ({ target: img }) => {
     const { offsetHeight, offsetWidth } = img;
     setCurrentHeight(offsetHeight);
@@ -86,7 +87,7 @@ function ImageDisplay(props) {
           id="inputimage"
           alt=""
           src={imageURL}
-          width={imageResize}
+          width={imgTagWidth}
           height="auto"
           onLoad={onImgLoad}
           ref={imageRef}
