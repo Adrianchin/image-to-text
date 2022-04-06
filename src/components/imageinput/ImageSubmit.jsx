@@ -8,12 +8,12 @@ function ImageSubmit(props) {
   const setUploadImagePath = props.setUploadImagePath;
   const setTranslatedText = props.setTranslatedText;
   const setLinkImagePath = props.setLinkImagePath;
+  const setTokenizedText = props.setTokenizedText;
 
   const [file, setFile] = useState(null);
 
   const onFormSubmit = async (event) => {
     setLinkImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
-
     event.preventDefault();
     const formData = new FormData();
     formData.append("myImage", file);
@@ -58,7 +58,7 @@ function ImageSubmit(props) {
       };
 
       //Send to API for translation
-      const uploadTextSubmit = () => {
+      function uploadTextSubmit () {
         let textData = JSON.stringify({
           textFromImage: imageInformation[0].description,
         });
@@ -88,6 +88,32 @@ function ImageSubmit(props) {
         fetchTextTranslation();
       };
       uploadTextSubmit();
+
+      function tokenizeText() {
+        let textForTokenizing = JSON.stringify({
+          text: imageInformation[0].description,
+        });
+    
+        async function fetchTokenization() {
+          try{
+            const response = await fetch(`http://localhost:3000/tokenizetext`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: textForTokenizing,
+            });
+            const tokenizedText = await response.json();
+            setTokenizedText(tokenizedText);
+            console.log(tokenizedText);
+          }catch (error) {
+            console.log(
+              "Error fetching Token response for text, try again", error
+            );
+          }
+        }
+        fetchTokenization();
+      }
+      tokenizeText()
+      
 
       setImageText(ImageTextSubmitted);
       setUploadBox(rawImageBox);

@@ -50,6 +50,7 @@ outside the function, otherwise it will return with async properties*/
           setUploadImagePath={setUploadImagePath}
           setLinkImagePath={setLinkImagePath}
           setTranslatedText={setTranslatedText}
+          setTokenizedText={setTokenizedText}
         />
       </div>
       <div>
