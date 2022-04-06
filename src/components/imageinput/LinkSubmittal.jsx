@@ -137,7 +137,7 @@ function LinkSubmittal(props) {
     //calls onImageSubmit for API send
     onImageSubmit();
   };
-  const onImageInput = (event) => {
+  function onImageInput (event) {
     setImageInput(event.target.value);
   };
 
