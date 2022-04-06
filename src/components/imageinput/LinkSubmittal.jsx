@@ -8,6 +8,7 @@ function LinkSubmittal(props) {
   const setImageURL = props.setImageURL;
   const setLinkImagePath = props.setLinkImagePath;
   const setUploadImagePath = props.setUploadImagePath;
+  const setTokenizedText = props.setTokenizedText;
 
   //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState("");
@@ -85,9 +86,7 @@ function LinkSubmittal(props) {
                   body: textData,
                 }
               );
-
               const translatedTextInfo = await response.json();
-
               setTranslatedText(translatedTextInfo.translations[0].text);
             } catch (error) {
               console.log(
@@ -98,6 +97,32 @@ function LinkSubmittal(props) {
           fetchTextTranslation();
         };
         linkTextSubmit();
+
+        function tokenizeText() {
+          let textForTokenizing = JSON.stringify({
+            text: imageInformation[0].description,
+          });
+      
+          async function fetchTokenization() {
+            try{
+              const response = await fetch(`http://localhost:3000/tokenizetext`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: textForTokenizing,
+              });
+              const tokenizedText = await response.json();
+              setTokenizedText(tokenizedText);
+              console.log(tokenizedText);
+            }catch (error) {
+              console.log(
+                "Error fetching Token response for text, try again", error
+              );
+            }
+          }
+          fetchTokenization();
+        }
+        tokenizeText()
+
       } catch (error) {
         console.log("Error fetching API responses for image, try again");
       }

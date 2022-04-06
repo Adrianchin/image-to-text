@@ -62,6 +62,7 @@ outside the function, otherwise it will return with async properties*/
           setImageURL={setImageURL}
           setUploadImagePath={setUploadImagePath}
           setLinkImagePath={setLinkImagePath}
+          setTokenizedText={setTokenizedText}
         />
       </div>
       <div>
