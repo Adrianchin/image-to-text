@@ -7,6 +7,9 @@ import Tokenizer from "./components/tokenizer/Tokenizer";
 import TokenTextTable from "./components/tokenizer/TokenTextTable";
 import TranslatedText from "./components/textdisplay/TranslatedText";
 import ImageText from "./components/textdisplay/ImageText";
+import SignIn from "./components/login/SignIn";
+import Register from "./components/login/Register";
+import NavigationBar from "./components/navigation/NavigationBar";
 
 import "tachyons";
 import "./App.css";
@@ -39,82 +42,97 @@ outside the function, otherwise it will return with async properties*/
 
   const [tokenizedText, setTokenizedText] = useState(null);
 
-  const [ifLogin, setIfLogin] = useState(true)
+  const [ifLogin, setIfLogin] = useState(false)
+  const [route, setRoute] = useState("signin")
 
   return (
     <>
-    {ifLogin === false
-    ?(<div>
-
+    <div>
+      <NavigationBar
+        ifLogin={ifLogin}
+        setRoute={setRoute}
+      />
     </div>
-    )
-    :(
-      <div>
-        <div>
-          <ImageSubmit
-            setImageText={setImageText}
-            setUploadBox={setUploadBox}
-            setImageURL={setImageURL}
-            setUploadOriginalImageSize={setUploadOriginalImageSize}
-            setUploadImagePath={setUploadImagePath}
-            setLinkImagePath={setLinkImagePath}
-            setTranslatedText={setTranslatedText}
+      {route === "mainpage"
+        ?(<div>
+          <div>
+            <ImageSubmit
+              setImageText={setImageText}
+              setUploadBox={setUploadBox}
+              setImageURL={setImageURL}
+              setUploadOriginalImageSize={setUploadOriginalImageSize}
+              setUploadImagePath={setUploadImagePath}
+              setLinkImagePath={setLinkImagePath}
+              setTranslatedText={setTranslatedText}
+              setTokenizedText={setTokenizedText}
+            />
+          </div>
+          <div>
+            <LinkSubmittal
+              setLinkOriginalImageSize={setLinkOriginalImageSize}
+              setLinkBox={setLinkBox}
+              setImageText={setImageText}
+              setTranslatedText={setTranslatedText}
+              setImageURL={setImageURL}
+              setUploadImagePath={setUploadImagePath}
+              setLinkImagePath={setLinkImagePath}
+              setTokenizedText={setTokenizedText}
+            />
+          </div>
+          <div>
+            <TextToDeepL
+              setTranslatedText={setTranslatedText}
+              translatedText={translatedText}
+              imageText={imageText}
+            />
+          </div>
+          <div>
+            <Tokenizer 
+            tokenizedText={tokenizedText}
             setTokenizedText={setTokenizedText}
+            />
+          </div>
+          <div>
+            <ImageText
+              imageText={imageText}
+            />
+          </div>
+          <div>
+            <TranslatedText
+              translatedText={translatedText}
+            />
+          </div>
+          <div>
+          <TokenTextTable 
+            tokenizedText={tokenizedText}
           />
-        </div>
-        <div>
-          <LinkSubmittal
-            setLinkOriginalImageSize={setLinkOriginalImageSize}
-            setLinkBox={setLinkBox}
-            setImageText={setImageText}
-            setTranslatedText={setTranslatedText}
-            setImageURL={setImageURL}
-            setUploadImagePath={setUploadImagePath}
-            setLinkImagePath={setLinkImagePath}
-            setTokenizedText={setTokenizedText}
-          />
-        </div>
-        <div>
-          <TextToDeepL
-            setTranslatedText={setTranslatedText}
-            translatedText={translatedText}
-            imageText={imageText}
-          />
-        </div>
-        <div>
-          <Tokenizer 
-          tokenizedText={tokenizedText}
-          setTokenizedText={setTokenizedText}
-          />
-        </div>
-        <div>
-          <ImageText
-            imageText={imageText}
-          />
-        </div>
-        <div>
-          <TranslatedText
-            translatedText={translatedText}
-          />
-        </div>
-        <div>
-        <TokenTextTable 
-          tokenizedText={tokenizedText}
-        />
-        </div>
-        <div>
-          <ImageDisplay
-            linkImagePath={linkImagePath}
-            linkOriginalImageSize={linkOriginalImageSize}
-            linkBox={linkBox}
-            uploadImagePath={uploadImagePath}
-            uploadOriginalImageSize={uploadOriginalImageSize}
-            uploadBox={uploadBox}
-            imageURL={imageURL}
-          />
-        </div>
-      </div>
-    )}
+          </div>
+          <div>
+            <ImageDisplay
+              linkImagePath={linkImagePath}
+              linkOriginalImageSize={linkOriginalImageSize}
+              linkBox={linkBox}
+              uploadImagePath={uploadImagePath}
+              uploadOriginalImageSize={uploadOriginalImageSize}
+              uploadBox={uploadBox}
+              imageURL={imageURL}
+            />
+          </div>
+        </div>)
+        :route === "signin" || route === "signout" 
+          ?(<div>
+            <SignIn
+              setRoute={setRoute}
+            />
+          </div>)       
+        :route === "register"
+          ?(<div>
+            <Register/>
+          </div>)
+        :(<div>
+          
+        </div>)
+      }
     </>
   );
 }
