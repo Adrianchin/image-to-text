@@ -5,6 +5,8 @@ import TextToDeepL from "./components/TextToDeepL";
 import ImageDisplay from "./components/ImageDisplay";
 import Tokenizer from "./components/tokenizer/Tokenizer";
 import TokenTextTable from "./components/tokenizer/TokenTextTable";
+import TranslatedText from "./components/textdisplay/TranslatedText";
+import ImageText from "./components/textdisplay/ImageText";
 
 import "tachyons";
 import "./App.css";
@@ -75,12 +77,14 @@ outside the function, otherwise it will return with async properties*/
         />
       </div>
       <div>
-        <h3 className="center">{`This is the image text`}</h3>
-        <h1 className="center">{`${imageText}`}</h1>
+        <ImageText
+          imageText={imageText}
+        />
       </div>
       <div>
-        <h3 className="center">{`This is the translated text`}</h3>
-        <h3 className="center">{`${translatedText}`}</h3>
+        <TranslatedText
+          translatedText={translatedText}
+        />
       </div>
       <div>
       <TokenTextTable 
