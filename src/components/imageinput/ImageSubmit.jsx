@@ -81,8 +81,7 @@ function ImageSubmit(props) {
             );
           } catch (error) {
             console.log(
-              "Error fetching API response for text, try again",
-              error
+              "Error fetching API response for text, try again", error
             );
           }
         }

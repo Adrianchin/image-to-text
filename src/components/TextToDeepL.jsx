@@ -12,13 +12,19 @@ function TextToDeepL(props) {
     });
 
     async function fetchTextTranslation() {
-      const response = await fetch(`http://localhost:3000/textfortranslation`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: textData,
-      });
-      const translatedTextInfo = await response.json();
-      setTranslatedText(translatedTextInfo.translations[0].text);
+      try{
+        const response = await fetch(`http://localhost:3000/textfortranslation`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: textData,
+        });
+        const translatedTextInfo = await response.json();
+        setTranslatedText(translatedTextInfo.translations[0].text);
+      }catch (error) {
+        console.log(
+          "Error fetching Token response for text, try again", error
+        );
+      }
     }
     fetchTextTranslation();
   }

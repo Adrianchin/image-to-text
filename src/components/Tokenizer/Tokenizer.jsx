@@ -12,14 +12,20 @@ function Tokenizer(props) {
     });
 
     async function fetchTokenization() {
-      const response = await fetch(`http://localhost:3000/tokenizetext`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: textForTokenizing,
-      });
-      const tokenizedText = await response.json();
-      setTokenizedText(tokenizedText);
-      console.log(tokenizedText);
+      try{
+        const response = await fetch(`http://localhost:3000/tokenizetext`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: textForTokenizing,
+        });
+        const tokenizedText = await response.json();
+        setTokenizedText(tokenizedText);
+        console.log(tokenizedText);
+      }catch (error) {
+        console.log(
+          "Error fetching Token response for text, try again", error
+        );
+      }
     }
     fetchTokenization();
   }
