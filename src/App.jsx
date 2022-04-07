@@ -131,7 +131,11 @@ outside the function, otherwise it will return with async properties*/
           </div>)       
         :route === "register"
           ?(<div>
-            <Register/>
+            <Register
+              setIfLogin={setIfLogin}
+              setRoute={setRoute}
+              setUserData={setUserData}
+            />
           </div>)
         :(<div>
           
