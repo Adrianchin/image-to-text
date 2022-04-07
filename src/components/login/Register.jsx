@@ -40,7 +40,7 @@ function Register(props) {
             })
           })
           const signInReturn = await response.json();
-          if (signInReturn.id) {
+          if (signInReturn.username) {
             setUserData(signInReturn);
             setIfLogin(true);
             setRoute("main");

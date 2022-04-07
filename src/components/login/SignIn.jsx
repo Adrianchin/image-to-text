@@ -33,7 +33,8 @@ function SignIn(props) {
           })
         })
         const signInReturn = await response.json();
-        if(signInReturn.id){
+        console.log(signInReturn)
+        if(signInReturn.username){
           setUserData(signInReturn);
           setIfLogin(true);
           setRoute("main");
