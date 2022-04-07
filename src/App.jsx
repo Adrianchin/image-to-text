@@ -42,18 +42,20 @@ outside the function, otherwise it will return with async properties*/
 
   const [tokenizedText, setTokenizedText] = useState(null);
 
-  const [ifLogin, setIfLogin] = useState(false)
-  const [route, setRoute] = useState("signin")
+  const [ifLogin, setIfLogin] = useState(false);
+  const [route, setRoute] = useState("signin");
+  const [userData, setUserData] = useState(null);
 
   return (
     <>
     <div>
       <NavigationBar
         ifLogin={ifLogin}
+        setIfLogin={setIfLogin}
         setRoute={setRoute}
       />
     </div>
-      {route === "mainpage"
+      {route === "main" && ifLogin === true
         ?(<div>
           <div>
             <ImageSubmit
@@ -122,7 +124,9 @@ outside the function, otherwise it will return with async properties*/
         :route === "signin" || route === "signout" 
           ?(<div>
             <SignIn
+              setIfLogin={setIfLogin}
               setRoute={setRoute}
+              setUserData={setUserData}
             />
           </div>)       
         :route === "register"
