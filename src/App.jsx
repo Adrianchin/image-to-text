@@ -15,7 +15,7 @@ import "tachyons";
 import "./App.css";
 
 function App() {
-  /*Note setstate is async, remember that 
+/*Note setstate is async, remember that 
 you want to use consol log (or other stuff inside code) 
 outside the function, otherwise it will return with async properties*/
 
