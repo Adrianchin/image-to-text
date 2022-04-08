@@ -77,6 +77,7 @@ function App() {
               setUploadImagePath={setUploadImagePath}
               setLinkImagePath={setLinkImagePath}
               setTokenizedText={setTokenizedText}
+              userData={userData}
             />
           </div>
           <div>

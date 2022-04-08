@@ -9,100 +9,139 @@ function LinkSubmittal(props) {
   const setLinkImagePath = props.setLinkImagePath;
   const setUploadImagePath = props.setUploadImagePath;
   const setTokenizedText = props.setTokenizedText;
+  const userData = props.userData;
 
   //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState("");
 
-  function onImageSubmit() {
-    setUploadImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
+  async function onImageSubmit() {
 
-    let imageData = JSON.stringify({
-      link: imageInput,
-    });
+    setUploadImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
+    
+    const requestData={
+      imageLinkPath: true,
+      uploadImagePath: false,
+      originalImageSize: null,
+      imageInformation: null,
+      imageURL: null,
+      rawImageBox: null,
+      translatedText: null,
+      tokenizedText: null,
+      date: new Date(),
+      id: userData._id,
+      username: userData.username
+    };
+
+    let imageInformation;
 
     //Async fetch for google image to text
-    async function fetchImageInfo() {
+    async function fetchImageInfo(){
       try {
+
+        requestData.imageURL=imageInput;//For MongoDB
+        setImageURL(imageInput);
+
+        let imageData = JSON.stringify({
+          link: imageInput,
+        });
         const response = await fetch("http://localhost:3000/imagelinkphoto", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: imageData,
         });
-        const imageInformation = await response.json();
+        imageInformation = await response.json();
 
+        requestData.imageInformation=imageInformation;//For MongoDB
+        setImageText(imageInformation[0].description);
+        
         console.log("returned linkSubmit from Google API:", imageInformation);
 
-        let originalHeight;
-        let originalWidth;
-
-        //IMPORTANT: onload is async, so you need to put shit in it and whatever you are
-        //doing with it in the onload function!
-        //Note. I made a promise beause otherwise, onload will be async and we need the outputs
-        //for the box calculations. This is a general onload promise, which we then use for the image
-        function onLoadPromiseImageFunction(image) {
-          return new Promise((resolve, reject) => {
-            image.onload = () => resolve(image);
-            image.onerror = reject;
-          });
+        } catch (error) {
+          console.log("Error fetching API responses for image, try again");
         }
+      }
+      await fetchImageInfo(); //Step 1
 
-        let img = new Image();
-        let imgpromise = onLoadPromiseImageFunction(img);
-        img.src = imageInput;
-        await imgpromise;
-
-        originalHeight = img.height;
-        originalWidth = img.width;
-
-        setLinkOriginalImageSize({
-          height: originalHeight,
-          width: originalWidth,
+      async function imageDimensions(){
+      //IMPORTANT: onload is async, so you need to put shit in it and whatever you are
+      //doing with it in the onload function!
+      //Note. I made a promise beause otherwise, onload will be async and we need the outputs
+      //for the box calculations. This is a general onload promise, which we then use for the image
+      function onLoadPromiseImageFunction(image) {
+        return new Promise((resolve, reject) => {
+          image.onload = () => resolve(image);
+          image.onerror = reject;
         });
-        setImageText(imageInformation[0].description);
-        //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left. I have to take away the Original height from the bottom value
-        //Updates the box for render
-        setLinkBox({
-          top: imageInformation[0].boundingPoly.vertices[0].y,
-          right: imageInformation[0].boundingPoly.vertices[1].x,
-          left: imageInformation[0].boundingPoly.vertices[0].x,
-          bottom:
-            originalHeight - imageInformation[0].boundingPoly.vertices[2].y,
-        });
-        setLinkImagePath(true); //Sets path for box calculation
+      }
 
-        //Send to API for translation
-        function linkTextSubmit() {
-          let textData = JSON.stringify({
-            textFromImage: imageInformation[0].description,
-          });
+      let img = new Image();
+      let imgpromise = onLoadPromiseImageFunction(img);
+      img.src = imageInput;
+      await imgpromise;
 
-          async function fetchTextTranslation() {
-            try {
-              const response = await fetch(
-                `http://localhost:3000/textfortranslation`,
-                {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: textData,
-                }
+      const originalHeight = img.height;
+      const originalWidth = img.width;
+
+      const originalImageSize=({
+        height: originalHeight,
+        width: originalWidth
+      });
+
+      requestData.originalImageSize=originalImageSize;//For MongoDB
+      setLinkOriginalImageSize(originalImageSize);
+
+      //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left. I have to take away the Original height from the bottom value
+      //Updates the box for render
+      const linkBox ={
+        top: imageInformation[0].boundingPoly.vertices[0].y,
+        right: imageInformation[0].boundingPoly.vertices[1].x,
+        left: imageInformation[0].boundingPoly.vertices[0].x,
+        bottom:
+          originalHeight - imageInformation[0].boundingPoly.vertices[2].y,
+      };
+
+      requestData.rawImageBox=linkBox; //For MongoDB
+      setLinkBox(linkBox);
+      
+    }
+    await imageDimensions(); //Step 2, Requires step 1
+    
+    //Send to API for translation
+    async function linkTextSubmit() {
+      let textData = JSON.stringify({
+        textFromImage: imageInformation[0].description,
+      });
+      
+      async function fetchTextTranslation() {
+        try {
+          const response = await fetch(
+              `http://localhost:3000/textfortranslation`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: textData,
+              }
               );
               const translatedTextInfo = await response.json();
+
+              requestData.translatedText=translatedTextInfo.translations[0].text; //For MongoDB
               setTranslatedText(translatedTextInfo.translations[0].text);
+
             } catch (error) {
               console.log(
                 "Error fetching translation API response for text, try again"
-              );
+                );
+              }
             }
-          }
-          fetchTextTranslation();
-        };
-        linkTextSubmit();
-
-        function tokenizeText() {
+            await fetchTextTranslation();
+          };
+        await linkTextSubmit(); //Step 2, Requires step 1
+          
+        async function tokenizeText() {
           let textForTokenizing = JSON.stringify({
             text: imageInformation[0].description,
           });
-      
+          
           async function fetchTokenization() {
             try{
               const response = await fetch(`http://localhost:3000/tokenizetext`, {
@@ -111,7 +150,10 @@ function LinkSubmittal(props) {
                 body: textForTokenizing,
               });
               const tokenizedText = await response.json();
+
+              requestData.tokenizedText=tokenizedText; //For MongoDB
               setTokenizedText(tokenizedText);
+
               console.log(tokenizedText);
             }catch (error) {
               console.log(
@@ -119,21 +161,36 @@ function LinkSubmittal(props) {
               );
             }
           }
-          fetchTokenization();
+          await fetchTokenization(); //Step 2, Requires step 1
         }
-        tokenizeText()
+      await tokenizeText()
 
-      } catch (error) {
-        console.log("Error fetching API responses for image, try again");
-      }
+      async function postData(){
+        try {
+          //console.log("This is before post data", requestData)
+          const response = await fetch(
+            `http://localhost:3000/postdata`,
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(requestData)
+            }
+            );
+            const responsePostData = await response.json();
+            console.log("This is the response from the DB Upload: ", responsePostData)
+            
+          }catch (error) {
+            console.log(
+              "Error posting data to DB", error
+              );
+            }
+          }
+          await postData() //depends on step 1 and 2
+
+      setLinkImagePath(true); //Sets path for box calculation
     }
-    fetchImageInfo();
-  }
 
-  function onImageButtonSubmit() {
-    //Note: I think this is async, so I cannot use imageInput as it is in que, and onImageSubmit runs and imageInput is old!
-    //This is reset to setState because we need to render the image!! Otherwise dont need this.
-    setImageURL(imageInput);
+    function onImageButtonSubmit() {
     //calls onImageSubmit for API send
     onImageSubmit();
   };

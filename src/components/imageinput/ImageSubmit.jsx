@@ -18,13 +18,15 @@ function ImageSubmit(props) {
     const requestData={
       imageLinkPath: false,
       uploadImagePath: true,
+      originalImageSize: null,
       imageInformation: null,
-      uploadedURL: null,
+      imageURL: null,
       rawImageBox: null,
       translatedText: null,
       tokenizedText: null,
       date: new Date(),
-      id: userData._id
+      id: userData._id,
+      username: userData.username
     };
 
     let imageInformation;
@@ -43,14 +45,13 @@ function ImageSubmit(props) {
         });
         imageInformation = await response.json();
 
-        requestData.imageInformation=imageInformation;//For MongoDB
-
+        
         //const GoogleDataSubmitted=uploadresponse;
         ImageTextSubmitted = imageInformation[0].description;
-
+        
         imageLocation = imageInformation[imageInformation.length - 2];
         const imageSize = imageInformation[imageInformation.length - 1];
-
+        
         //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left.
         const rawImageBox = {
           top: imageInformation[0].boundingPoly.vertices[0].y,
@@ -59,13 +60,13 @@ function ImageSubmit(props) {
           bottom: imageSize.height - imageInformation[0].boundingPoly.vertices[2].y,
         };
         //console.log("This is the raw image box: ", rawImageBox)
-
+        
+        requestData.imageInformation=imageInformation;//For MongoDB
+        requestData.rawImageBox=rawImageBox;//For MongoDB
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
         setUploadOriginalImageSize(imageSize);
-
-        requestData.rawImageBox=rawImageBox;//For MongoDB
-
+        
         console.log("returned ImageSubmit from Google API:", imageInformation);
       } catch (error) {
         console.log("Error submitting photo", error);
@@ -77,8 +78,10 @@ function ImageSubmit(props) {
       try {
         const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`;
         console.log(uploadedURL)
+
+        requestData.imageURL = uploadedURL;//For MongoDB
         setImageURL(uploadedURL);
-        requestData.uploadedURL = uploadedURL;//For MongoDB
+
         const response = await fetch(uploadedURL, {
           method: "GET",
         });
@@ -109,8 +112,8 @@ function ImageSubmit(props) {
           const translatedTextInfo = await response.json();
 
           requestData.translatedText=translatedTextInfo.translations[0].text;//For MongoDB
-
           setTranslatedText(translatedTextInfo.translations[0].text);
+
           //console.log("This is the translated text", translatedTextInfo);
         }
         await fetchTextTranslation();
@@ -137,7 +140,6 @@ function ImageSubmit(props) {
           const tokenizedText = await response.json();
 
           requestData.tokenizedText=tokenizedText;//For MongoDB
-
           setTokenizedText(tokenizedText);
 
           //console.log("This is the tokenized text: ", tokenizedText);
