@@ -15,6 +15,9 @@ function ImageSubmit(props) {
   async function onFormSubmit(event) {
     setLinkImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
     event.preventDefault();
+    let imageInformation;
+    let imageLocation;
+    let imageSize;
     const formData = new FormData();
     formData.append("myImage", file);
     try {
@@ -22,12 +25,15 @@ function ImageSubmit(props) {
         method: "POST",
         body: formData,
       });
-      const imageInformation = await response.json();
-      const imageLocation = imageInformation[imageInformation.length - 2];
-      const imageSize = imageInformation[imageInformation.length - 1];
-
+      imageInformation = await response.json();
+      imageLocation = imageInformation[imageInformation.length - 2];
+      imageSize = imageInformation[imageInformation.length - 1];
       console.log("returned ImageSubmit from Google API:", imageInformation);
 
+    } catch (error) {
+      console.log("Error submitting photo", error);
+    }
+    
       const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`;
 
       async function imageFetch() {
@@ -120,9 +126,7 @@ function ImageSubmit(props) {
       setImageURL(uploadedURL);
       setUploadOriginalImageSize(imageSize);
       setUploadImagePath(true); //Sets path for box calculation
-    } catch (error) {
-      console.log("Error submitting photo", error);
-    }
+    
   };
 
   const onChange = (event) => {
