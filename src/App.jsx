@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ImageSubmit from "./components/imageinput/ImageSubmit";
 import LinkSubmittal from "./components/imageinput/LinkSubmittal";
-import TextToDeepL from "./components/TextToDeepL";
-import ImageDisplay from "./components/ImageDisplay";
+import TextToDeepL from "./components/texttodeepl/TextToDeepL";
+import ImageDisplay from "./components/imagedisplay/ImageDisplay";
 import Tokenizer from "./components/tokenizer/Tokenizer";
 import TokenTextTable from "./components/tokenizer/TokenTextTable";
 import TranslatedText from "./components/textdisplay/TranslatedText";
