@@ -16,13 +16,15 @@ function ImageSubmit(props) {
   async function onFormSubmit(event) {
 
     const requestData={
+      imageLinkPath: false,
+      uploadImagePath: true,
       imageInformation: null,
       uploadedURL: null,
       rawImageBox: null,
       translatedText: null,
       tokenizedText: null,
       date: new Date(),
-      _id: userData._id
+      id: userData._id
     };
 
     let imageInformation;
@@ -56,7 +58,7 @@ function ImageSubmit(props) {
           left: imageInformation[0].boundingPoly.vertices[0].x,
           bottom: imageSize.height - imageInformation[0].boundingPoly.vertices[2].y,
         };
-        console.log("This is the raw image box: ", rawImageBox)
+        //console.log("This is the raw image box: ", rawImageBox)
 
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
@@ -109,12 +111,9 @@ function ImageSubmit(props) {
           requestData.translatedText=translatedTextInfo.translations[0].text;//For MongoDB
 
           setTranslatedText(translatedTextInfo.translations[0].text);
-          console.log(
-            "This is the translated text uploaded",
-            translatedTextInfo
-          );
+          //console.log("This is the translated text", translatedTextInfo);
         }
-        fetchTextTranslation();
+        await fetchTextTranslation();
       } catch (error) {
         console.log(
           "Error fetching API response for text, try again", error
@@ -141,10 +140,10 @@ function ImageSubmit(props) {
 
           setTokenizedText(tokenizedText);
 
-          console.log("This is the tokenized text: ", tokenizedText);
+          //console.log("This is the tokenized text: ", tokenizedText);
 
         }
-        fetchTokenization();
+        await fetchTokenization();
       }catch (error) {
         console.log(
           "Error fetching Token response for text, try again", error
@@ -153,31 +152,30 @@ function ImageSubmit(props) {
     }
     await tokenizeText() //depends on step 1
     
-    setUploadImagePath(true); //Sets path for box calculation
-    /*
+    
     async function postData(){
       try {
-        console.log("This is before post data")
+        //console.log("This is before post data", requestData)
         const response = await fetch(
           `http://localhost:3000/postdata`,
           {
-            method: "POST",
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(requestData)
           }
-        );
-        const responsePostData = await response.json();
-        console.log("This is the response from the DB Upload: ", responsePostData)
+          );
+          const responsePostData = await response.json();
+          console.log("This is the response from the DB Upload: ", responsePostData)
+          
+        }catch (error) {
+          console.log(
+            "Error posting data to DB", error
+            );
+          }
+        }
+        await postData() //depends on step 1 and 2
         
-      
-      }catch (error) {
-        console.log(
-          "Error posting data to DB", error
-        );
-      }
-    }
-    await postData() //depends on step 1 and 2
-    */
+        setUploadImagePath(true); //Sets path for box calculation
   };
 
   const onChange = (event) => {

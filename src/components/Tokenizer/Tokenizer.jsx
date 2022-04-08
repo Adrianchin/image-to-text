@@ -20,7 +20,7 @@ function Tokenizer(props) {
         });
         const tokenizedText = await response.json();
         setTokenizedText(tokenizedText);
-        console.log(tokenizedText);
+        //console.log(tokenizedText);
       }catch (error) {
         console.log(
           "Error fetching Token response for text, try again", error
