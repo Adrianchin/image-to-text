@@ -42,7 +42,7 @@ function App() {
   const [tokenizedText, setTokenizedText] = useState(null);
 
   const [ifLogin, setIfLogin] = useState(false);
-  const [route, setRoute] = useState("signin");
+  const [route, setRoute] = useState("other");
   const [userData, setUserData] = useState(null);
 
   return (
@@ -53,10 +53,8 @@ function App() {
         setIfLogin={setIfLogin}
         setRoute={setRoute}
         setUserData={setUserData}
+        userData={userData}
       />
-    </div>
-    <div>
-      <Profile/>
     </div>
       {route === "main" && ifLogin === true
         ?(<div>
@@ -142,8 +140,12 @@ function App() {
               setUserData={setUserData}
             />
           </div>)
+        :route === "profile"
+        ?(<div>
+
+        </div>)
         :(<div>
-          
+          <Profile/>
         </div>)
       }
     </>

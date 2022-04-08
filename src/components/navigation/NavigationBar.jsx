@@ -5,12 +5,33 @@ function Navigation(props) {
   const ifLogin = props.ifLogin;
   const setIfLogin = props.setIfLogin;
   const setUserData = props.setUserData;
+  const userData = props.userData;
 
   function onSignOut(){
     setRoute("signout");
     setIfLogin(false);
     setUserData(null);
   }
+/* May not need, I get this data upon login!
+  async function onProfile(){
+    setRoute("profile")
+    async function getUserData(){
+      try{
+        const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
+        const response = await fetch(getUserDataURL,{
+          method: "GET"
+        })
+        const signInReturn = await response.json();
+        console.log(signInReturn)
+      }catch(error) {
+        console.log(
+          "Error getting profile data: ", error
+        );
+      }
+    }
+  getUserData();
+} 
+*/
 
   if (ifLogin) {
     /* if ifLogin true, show only signout*/
