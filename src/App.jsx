@@ -142,10 +142,12 @@ function App() {
           </div>)
         :route === "profile"
         ?(<div>
-
+          <Profile
+          userData={userData}
+          />
         </div>)
         :(<div>
-          <Profile/>
+          Landing Page
         </div>)
       }
     </>

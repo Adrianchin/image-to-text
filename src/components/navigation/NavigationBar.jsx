@@ -12,7 +12,7 @@ function Navigation(props) {
     setIfLogin(false);
     setUserData(null);
   }
-/* May not need, I get this data upon login!
+
   async function onProfile(){
     setRoute("profile")
     async function getUserData(){
@@ -22,6 +22,8 @@ function Navigation(props) {
           method: "GET"
         })
         const signInReturn = await response.json();
+        userData.profile=signInReturn;
+        setUserData(userData)
         console.log(signInReturn)
       }catch(error) {
         console.log(
@@ -31,7 +33,7 @@ function Navigation(props) {
     }
   getUserData();
 } 
-*/
+
 
   if (ifLogin) {
     /* if ifLogin true, show only signout*/
@@ -51,7 +53,7 @@ function Navigation(props) {
           Main Page
         </p>
         <p
-          onClick={() => setRoute("profile")}
+          onClick={onProfile}
           className="f4 link dim black underline pa2 pointer"
         >
           Profile
