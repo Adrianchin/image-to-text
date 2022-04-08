@@ -4,10 +4,12 @@ function Navigation(props) {
   const setRoute = props.setRoute;
   const ifLogin = props.ifLogin;
   const setIfLogin = props.setIfLogin;
+  const setUserData = props.setUserData;
 
   function onSignOut(){
     setRoute("signout");
     setIfLogin(false);
+    setUserData(null);
   }
 
   if (ifLogin) {

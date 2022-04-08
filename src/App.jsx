@@ -50,6 +50,7 @@ function App() {
         ifLogin={ifLogin}
         setIfLogin={setIfLogin}
         setRoute={setRoute}
+        setUserData={setUserData}
       />
     </div>
       {route === "main" && ifLogin === true
