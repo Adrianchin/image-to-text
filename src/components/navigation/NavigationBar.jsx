@@ -29,6 +29,12 @@ function Navigation(props) {
         >
           Main Page
         </p>
+        <p
+          onClick={() => setRoute("profile")}
+          className="f4 link dim black underline pa2 pointer"
+        >
+          Profile
+        </p>
       </nav>
     );
   } else {

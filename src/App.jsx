@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageSubmit from "./components/imageinput/ImageSubmit";
 import LinkSubmittal from "./components/imageinput/LinkSubmittal";
 import TextToDeepL from "./components/texttodeepl/TextToDeepL";
@@ -10,6 +11,7 @@ import ImageText from "./components/textdisplay/ImageText";
 import SignIn from "./components/login/SignIn";
 import Register from "./components/login/Register";
 import NavigationBar from "./components/navigation/NavigationBar";
+import Profile from "./components/profile/Profile";
 
 import "tachyons";
 import "./App.css";
@@ -52,6 +54,9 @@ function App() {
         setRoute={setRoute}
         setUserData={setUserData}
       />
+    </div>
+    <div>
+      <Profile/>
     </div>
       {route === "main" && ifLogin === true
         ?(<div>
