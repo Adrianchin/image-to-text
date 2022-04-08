@@ -15,9 +15,6 @@ import "tachyons";
 import "./App.css";
 
 function App() {
-/*Note setstate is async, remember that 
-you want to use consol log (or other stuff inside code) 
-outside the function, otherwise it will return with async properties*/
 
   //Displays the image URL of the picture. I think I need so we dont display the image in a moving text
   const [imageURL, setImageURL] = useState(null);
@@ -67,6 +64,7 @@ outside the function, otherwise it will return with async properties*/
               setLinkImagePath={setLinkImagePath}
               setTranslatedText={setTranslatedText}
               setTokenizedText={setTokenizedText}
+              userData={userData}
             />
           </div>
           <div>

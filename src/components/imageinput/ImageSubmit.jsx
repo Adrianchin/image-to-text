@@ -9,124 +9,175 @@ function ImageSubmit(props) {
   const setTranslatedText = props.setTranslatedText;
   const setLinkImagePath = props.setLinkImagePath;
   const setTokenizedText = props.setTokenizedText;
+  const userData = props.userData;
 
   const [file, setFile] = useState(null);
 
   async function onFormSubmit(event) {
-    setLinkImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
-    event.preventDefault();
+
+    const requestData={
+      imageInformation: null,
+      uploadedURL: null,
+      rawImageBox: null,
+      translatedText: null,
+      tokenizedText: null,
+      date: new Date(),
+      _id: userData._id
+    };
+
     let imageInformation;
     let imageLocation;
-    let imageSize;
-    const formData = new FormData();
-    formData.append("myImage", file);
-    try {
-      const response = await fetch("http://localhost:3000/upload", {
-        method: "POST",
-        body: formData,
-      });
-      imageInformation = await response.json();
-      imageLocation = imageInformation[imageInformation.length - 2];
-      imageSize = imageInformation[imageInformation.length - 1];
-      console.log("returned ImageSubmit from Google API:", imageInformation);
+    let ImageTextSubmitted;
 
-    } catch (error) {
-      console.log("Error submitting photo", error);
-    }
-    
-      const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`;
+    setLinkImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
+    async function initiateUploadImage(){
+      try {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append("myImage", file);
+        const response = await fetch("http://localhost:3000/upload", {
+          method: "POST",
+          body: formData,
+        });
+        imageInformation = await response.json();
 
-      async function imageFetch() {
-        try {
-          const response = await fetch(uploadedURL, {
-            method: "GET",
-          });
-          const imageFetchResponse = await response.json();
-          console.log("This is the image fetchresponse", imageFetchResponse);
-        } catch (error) {
-          console.log("Error fetching picture from server", error);
-        }
+        requestData.imageInformation=imageInformation;//For MongoDB
+
+        //const GoogleDataSubmitted=uploadresponse;
+        ImageTextSubmitted = imageInformation[0].description;
+
+        imageLocation = imageInformation[imageInformation.length - 2];
+        const imageSize = imageInformation[imageInformation.length - 1];
+
+        //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left.
+        const rawImageBox = {
+          top: imageInformation[0].boundingPoly.vertices[0].y,
+          right: imageInformation[0].boundingPoly.vertices[1].x,
+          left: imageInformation[0].boundingPoly.vertices[0].x,
+          bottom: imageSize.height - imageInformation[0].boundingPoly.vertices[2].y,
+        };
+        console.log("This is the raw image box: ", rawImageBox)
+
+        setImageText(ImageTextSubmitted);
+        setUploadBox(rawImageBox);
+        setUploadOriginalImageSize(imageSize);
+
+        requestData.rawImageBox=rawImageBox;//For MongoDB
+
+        console.log("returned ImageSubmit from Google API:", imageInformation);
+      } catch (error) {
+        console.log("Error submitting photo", error);
       }
-      imageFetch();
-
-      console.log("Response for upload:", imageInformation);
-
-      //const GoogleDataSubmitted=uploadresponse;
-      const ImageTextSubmitted = imageInformation[0].description;
-
-      //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left.
-      const rawImageBox = {
-        top: imageInformation[0].boundingPoly.vertices[0].y,
-        right: imageInformation[0].boundingPoly.vertices[1].x,
-        left: imageInformation[0].boundingPoly.vertices[0].x,
-        bottom:
-          imageSize.height - imageInformation[0].boundingPoly.vertices[2].y,
-      };
-
-      //Send to API for translation
-      function uploadTextSubmit () {
-        let textData = JSON.stringify({
-          textFromImage: imageInformation[0].description,
-        });
-
-        async function fetchTextTranslation() {
-          try {
-            const response = await fetch(
-              `http://localhost:3000/textfortranslation`,
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: textData,
-              }
-            );
-            const translatedTextInfo = await response.json();
-            setTranslatedText(translatedTextInfo.translations[0].text);
-            console.log(
-              "This is the translated text uploaded",
-              translatedTextInfo
-            );
-          } catch (error) {
-            console.log(
-              "Error fetching API response for text, try again", error
-            );
-          }
-        }
-        fetchTextTranslation();
-      };
-      uploadTextSubmit();
-
-      function tokenizeText() {
-        let textForTokenizing = JSON.stringify({
-          text: imageInformation[0].description,
-        });
+    }
+    await initiateUploadImage() //1st step
     
-        async function fetchTokenization() {
-          try{
-            const response = await fetch(`http://localhost:3000/tokenizetext`, {
+    async function imageFetch() {
+      try {
+        const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`;
+        console.log(uploadedURL)
+        setImageURL(uploadedURL);
+        requestData.uploadedURL = uploadedURL;//For MongoDB
+        const response = await fetch(uploadedURL, {
+          method: "GET",
+        });
+        //const imageFetchResponse = await response.json(); May remove, no response!!!
+        //console.log("This is the image fetchresponse", imageFetchResponse); May remove, no response!!!
+      } catch (error) {
+        console.log("Error fetching picture from server", error);
+      }
+    }
+    await imageFetch(); //depends on step 1
+
+    //Send to API for translation
+    async function translateText() {
+      try {
+      let textData = JSON.stringify({
+        textFromImage: imageInformation[0].description,
+      });
+
+      async function fetchTextTranslation() {
+          const response = await fetch(
+            `http://localhost:3000/textfortranslation`,
+            {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: textForTokenizing,
-            });
-            const tokenizedText = await response.json();
-            setTokenizedText(tokenizedText);
-            console.log(tokenizedText);
-          }catch (error) {
-            console.log(
-              "Error fetching Token response for text, try again", error
-            );
-          }
+              body: textData,
+            }
+          );
+          const translatedTextInfo = await response.json();
+
+          requestData.translatedText=translatedTextInfo.translations[0].text;//For MongoDB
+
+          setTranslatedText(translatedTextInfo.translations[0].text);
+          console.log(
+            "This is the translated text uploaded",
+            translatedTextInfo
+          );
+        }
+        fetchTextTranslation();
+      } catch (error) {
+        console.log(
+          "Error fetching API response for text, try again", error
+        );
+      }
+    };
+    await translateText(); //depends on step 1
+
+    async function tokenizeText() {
+      try{
+      let textForTokenizing = JSON.stringify({
+        text: imageInformation[0].description,
+      });
+  
+      async function fetchTokenization() {
+          const response = await fetch(`http://localhost:3000/tokenizetext`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: textForTokenizing,
+          });
+          const tokenizedText = await response.json();
+
+          requestData.tokenizedText=tokenizedText;//For MongoDB
+
+          setTokenizedText(tokenizedText);
+
+          console.log("This is the tokenized text: ", tokenizedText);
+
         }
         fetchTokenization();
+      }catch (error) {
+        console.log(
+          "Error fetching Token response for text, try again", error
+        );
       }
-      tokenizeText()
-      
-
-      setImageText(ImageTextSubmitted);
-      setUploadBox(rawImageBox);
-      setImageURL(uploadedURL);
-      setUploadOriginalImageSize(imageSize);
-      setUploadImagePath(true); //Sets path for box calculation
+    }
+    await tokenizeText() //depends on step 1
     
+    setUploadImagePath(true); //Sets path for box calculation
+    /*
+    async function postData(){
+      try {
+        console.log("This is before post data")
+        const response = await fetch(
+          `http://localhost:3000/postdata`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+          }
+        );
+        const responsePostData = await response.json();
+        console.log("This is the response from the DB Upload: ", responsePostData)
+        
+      
+      }catch (error) {
+        console.log(
+          "Error posting data to DB", error
+        );
+      }
+    }
+    await postData() //depends on step 1 and 2
+    */
   };
 
   const onChange = (event) => {
