@@ -14,7 +14,6 @@ function Navigation(props) {
   }
 
   async function onProfile(){
-    setRoute("profile")
     async function getUserData(){
       try{
         const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
@@ -32,6 +31,7 @@ function Navigation(props) {
       }
     }
   getUserData();
+  setRoute("profile")
 } 
 
 

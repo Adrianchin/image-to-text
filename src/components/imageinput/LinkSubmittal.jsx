@@ -18,7 +18,7 @@ function LinkSubmittal(props) {
     setUploadImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
 
     const requestData = {
-      imageLinkPath: true,
+      linkImagePath: true,
       uploadImagePath: false,
       originalImageSize: null,
       imageInformation: null,

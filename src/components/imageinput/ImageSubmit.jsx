@@ -16,7 +16,7 @@ function ImageSubmit(props) {
   async function onFormSubmit(event) {
 
     const requestData={
-      imageLinkPath: false,
+      linkImagePath: false,
       uploadImagePath: true,
       originalImageSize: null,
       imageInformation: null,
@@ -63,6 +63,7 @@ function ImageSubmit(props) {
         
         requestData.imageInformation=imageInformation;//For MongoDB
         requestData.rawImageBox=rawImageBox;//For MongoDB
+        requestData.originalImageSize=imageSize;//For MongoDB
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
         setUploadOriginalImageSize(imageSize);

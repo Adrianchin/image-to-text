@@ -12,6 +12,7 @@ import SignIn from "./components/login/SignIn";
 import Register from "./components/login/Register";
 import NavigationBar from "./components/navigation/NavigationBar";
 import Profile from "./components/profile/Profile";
+import DisplayData from "./components/userdata/DisplayData";
 
 import "tachyons";
 import "./App.css";
@@ -44,6 +45,7 @@ function App() {
   const [ifLogin, setIfLogin] = useState(false);
   const [route, setRoute] = useState("other");
   const [userData, setUserData] = useState(null);
+  const [userDisplayData, setUserDisplayData] = useState(null);
 
   return (
     <>
@@ -144,8 +146,16 @@ function App() {
         ?(<div>
           <Profile
           userData={userData}
+          setUserDisplayData={setUserDisplayData}
+          setRoute={setRoute}
           />
         </div>)
+         :route === "displaydata"
+         ?(<div>
+           <DisplayData
+           userDisplayData={userDisplayData}
+           />
+         </div>)
         :(<div>
           Landing Page
         </div>)
