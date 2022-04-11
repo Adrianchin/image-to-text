@@ -29,8 +29,9 @@ function Cards(props) {
     setUserDisplayData(userData.profile[id]);
     setRoute("displaydata");
   }
-
+  
   const cardComponent = userData.profile.map((empty, i) => {
+    //console.log(`This is userData${i} from Cards run: `, userData)
     return (
       <Card style={styles.card}>
         <Card.Img
@@ -51,6 +52,7 @@ function Cards(props) {
       </Card>
     );
   });
+  console.log("This is cardComponent: ", cardComponent)
 
   return (
     <Container>

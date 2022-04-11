@@ -44,8 +44,10 @@ function App() {
 
   const [ifLogin, setIfLogin] = useState(false);
   const [route, setRoute] = useState("other");
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState("");
   const [userDisplayData, setUserDisplayData] = useState(null);
+
+  console.log("This is userData.Profile: ", userData);
 
   return (
     <>
@@ -148,6 +150,8 @@ function App() {
           userData={userData}
           setUserDisplayData={setUserDisplayData}
           setRoute={setRoute}
+
+          setUserData={setUserData}
           />
         </div>)
          :route === "displaydata"

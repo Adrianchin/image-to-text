@@ -21,17 +21,16 @@ function Navigation(props) {
           method: "GET"
         })
         const signInReturn = await response.json();
-        userData.profile=signInReturn;
+        userData.profile =signInReturn;
         setUserData(userData)
-        console.log(signInReturn)
       }catch(error) {
         console.log(
           "Error getting profile data: ", error
-        );
+          );
+        }
       }
-    }
-  getUserData();
-  setRoute("profile")
+    await getUserData();
+    setRoute("profile")
 } 
 
 

@@ -24,8 +24,7 @@ function ImageDisplay(props) {
   };
 
   useEffect(() => {
-    //I need to triger this if I upload, as the function is slightly different from the other calculation.
-    //Need to structure like this because of update, render, update requirement.
+    //I no longer need the 2 paths? Remove....
 
     //IMAGE LINK PATH!!!!!
     if (linkImagePath === true) {
@@ -44,8 +43,7 @@ function ImageDisplay(props) {
       ImageSubmitBoxCalculationUpload();
     }
 
-    //I need to triger this if I upload, as the function is slightly different from the other calculation.
-    //Need to structure like this because of update, render, update requirement.
+    //I no longer need the 2 paths? Remove....
 
     //IMAGE UPLOAD PATH!!!!!
     if (uploadImagePath === true) {
