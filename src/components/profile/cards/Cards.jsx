@@ -102,8 +102,6 @@ function Cards(props) {
     );
   });
 
-  console.log("This is cardComponent: ", cardComponent)
-
   return (
     <Container>
       <Row>{cardComponent}</Row>
