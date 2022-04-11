@@ -64,7 +64,6 @@ function Cards(props) {
         })
         const userDataReturn = await response.json();
         placeholderDataObject.profile =userDataReturn;
-        console.log("This is the placeholderDataObject in Cards:", placeholderDataObject)
         setUserData(placeholderDataObject)
       }catch(error) {
         console.log(
@@ -75,7 +74,6 @@ function Cards(props) {
 
     await deleteDocument();
     await getUserData();
-    console.log("This is userData after getUserData: ", userData)
   }
 
   const cardComponent = userData.profile.map((empty, i) => {

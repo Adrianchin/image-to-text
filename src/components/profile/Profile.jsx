@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Cards from "./cards/Cards";
 
 function Profile(props) {
@@ -8,21 +8,18 @@ const setUserDisplayData = props.setUserDisplayData;
 const setRoute=props.setRoute;
 const setUserData=props.setUserData
 
-/*const [rerender, setRerender] = useState(false);
-
+//Adds update from history to profile upon load
 useEffect(() => {
   async function getUserData(){
     try{
-      const placeholderDataObject = [userData]
+      const placeholderDataObject = Object.create(userData)
       const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
       const response = await fetch(getUserDataURL,{
         method: "GET"
       })
       const signInReturn = await response.json();
-      placeholderDataObject[0].profile = signInReturn;
-      console.log("This is placeholderDataObject Profile: ", placeholderDataObject)
-      console.log("This is signin return on Profile: ", signInReturn)
-      setUserData(placeholderDataObject[0])
+      placeholderDataObject.profile = signInReturn;
+      setUserData(placeholderDataObject)
     }catch(error) {
       console.log(
         "Error getting profile data: ", error
@@ -30,7 +27,7 @@ useEffect(() => {
       }
     }
   getUserData();
-}, [])*/
+}, [])
 
   return (
     <div>

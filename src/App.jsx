@@ -47,7 +47,7 @@ function App() {
   const [userData, setUserData] = useState("");
   const [userDisplayData, setUserDisplayData] = useState(null);
 
-  console.log("This is userData.Profile: ", userData);
+  //console.log("This is userData.Profile: ", userData);
 
   return (
     <>

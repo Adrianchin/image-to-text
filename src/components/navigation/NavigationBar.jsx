@@ -14,42 +14,6 @@ function Navigation(props) {
   }
 
   async function onProfile(){
-    /*async function getUserData(){
-      try{
-        const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
-        const response = await fetch(getUserDataURL,{
-          method: "GET"
-        })
-        const signInReturn = await response.json();
-        userData.profile =signInReturn;
-        setUserData(userData)
-      }catch(error) {
-        console.log(
-          "Error getting profile data: ", error
-          );
-        }
-      }
-    await getUserData();*/
-    
-    async function getUserData(){
-      try{
-        const placeholderDataObject = Object.create(userData)
-        const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
-        const response = await fetch(getUserDataURL,{
-          method: "GET"
-        })
-        const signInReturn = await response.json();
-        placeholderDataObject.profile = signInReturn;
-        console.log("This is placeholderDataObject Profile: ", placeholderDataObject)
-        console.log("This is signin return on Profile: ", signInReturn)
-        setUserData(placeholderDataObject)
-      }catch(error) {
-        console.log(
-          "Error getting profile data: ", error
-          );
-        }
-      }
-    getUserData();
     setRoute("profile")
 } 
 
