@@ -23,11 +23,16 @@ function Cards(props) {
     },
   };
 
-  function onButtonClick(event) {
+  function onGoButtonClick(event) {
     const id = event.target.id;
     console.log(id);
     setUserDisplayData(userData.profile[id]);
     setRoute("displaydata");
+  }
+
+  function onDeleteButtonClick(event) {
+    const id = event.target.id;
+    console.log(id);
   }
   
   const cardComponent = userData.profile.map((empty, i) => {
@@ -45,10 +50,13 @@ function Cards(props) {
             {userData.profile[i].imageInformation[0].description}
           </Card.Text>
           <Card.Text>{userData.profile[i].translatedText}</Card.Text>
-          <Button id={i} variant="primary" onClick={onButtonClick}>
+        </Card.Body>
+        <Button id={i} variant="primary" onClick={onGoButtonClick}>
             Go somewhere
           </Button>
-        </Card.Body>
+        <Button id={i} variant="primary" onClick={onDeleteButtonClick}>
+            Delete
+          </Button>
       </Card>
     );
   });
