@@ -13,6 +13,7 @@ import Register from "./components/login/Register";
 import NavigationBar from "./components/navigation/NavigationBar";
 import Profile from "./components/profile/Profile";
 import DisplayData from "./components/userdata/DisplayData";
+import LandingPage from "./components/landingpage/LandingPage";
 
 import "tachyons";
 import "./App.css";
@@ -148,7 +149,7 @@ function App() {
            />
          </div>)
         :(<div>
-          Landing Page
+          <LandingPage/>
         </div>)
       }
     </>

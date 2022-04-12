@@ -1,8 +1,5 @@
 import React, {useEffect} from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import {Button, Card, Row, Container} from "react-bootstrap";
 
 function Cards(props) {
   const userData = props.userData;

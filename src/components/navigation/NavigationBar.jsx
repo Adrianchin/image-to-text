@@ -23,6 +23,12 @@ function Navigation(props) {
     return (
       /*on click, runs setRoute as 'signout'*/
       <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+          <p
+          onClick={() => setRoute("landing")}
+          className="f4 link dim black underline pa2 pointer"
+        >
+          Landing Page
+        </p>
         <p
           onClick={() => setRoute("main")}
           className="f4 link dim black underline pa2 pointer"
@@ -48,6 +54,12 @@ function Navigation(props) {
     return (
       /*on click, runs setRoute as 'signout' or 'register'*/
       <nav style={{ display: "flex", justifyContent: "flex-end" }}>
+        <p
+          onClick={() => setRoute("landing")}
+          className="f4 link dim black underline pa2 pointer"
+        >
+          Landing Page
+        </p>
         <p
           onClick={() => setRoute("signin")}
           className="f4 link dim black underline pa2 pointer"
