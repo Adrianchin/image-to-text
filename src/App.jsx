@@ -89,19 +89,6 @@ function App() {
             />
           </div>
           <div>
-            <TextToDeepL
-              setTranslatedText={setTranslatedText}
-              translatedText={translatedText}
-              imageText={imageText}
-            />
-          </div>
-          <div>
-            <Tokenizer 
-            tokenizedText={tokenizedText}
-            setTokenizedText={setTokenizedText}
-            />
-          </div>
-          <div>
             <TranslatedText
               translatedText={translatedText}
             />
