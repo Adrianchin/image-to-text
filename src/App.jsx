@@ -102,14 +102,14 @@ function App() {
             />
           </div>
           <div>
+            <TranslatedText
+              translatedText={translatedText}
+            />
+          <div>
             <ImageText
               imageText={imageText}
             />
           </div>
-          <div>
-            <TranslatedText
-              translatedText={translatedText}
-            />
           </div>
           <div>
           <TokenTextTable 
@@ -150,7 +150,6 @@ function App() {
           userData={userData}
           setUserDisplayData={setUserDisplayData}
           setRoute={setRoute}
-
           setUserData={setUserData}
           />
         </div>)
@@ -158,6 +157,7 @@ function App() {
          ?(<div>
            <DisplayData
            userDisplayData={userDisplayData}
+           setUserData={setUserData}
            />
          </div>)
         :(<div>
