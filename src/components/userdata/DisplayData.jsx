@@ -54,6 +54,11 @@ async function onUpdateData(){
 
   return (
     <>
+    <div className="center">
+        <h1>
+        {userDisplayData.date}
+        </h1>
+    </div>
       <div>
         <TextToDeepL
           setTranslatedText={setUserDisplayTranslatedText}

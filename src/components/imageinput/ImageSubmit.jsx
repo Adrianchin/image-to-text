@@ -83,7 +83,7 @@ function ImageSubmit(props) {
         requestData.imageURL = uploadedURL;//For MongoDB
         setImageURL(uploadedURL);
 
-        const response = await fetch(uploadedURL, {
+        await fetch(uploadedURL, {
           method: "GET",
         });
         //const imageFetchResponse = await response.json(); May remove, no response!!!

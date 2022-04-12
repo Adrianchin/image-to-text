@@ -93,7 +93,7 @@ function Cards(props) {
           <Card.Text>{userData.profile[i].translatedText}</Card.Text>
         </Card.Body>
         <Button id={i} variant="primary" onClick={onGoButtonClick}>
-            Go somewhere
+            View Image and Information
           </Button>
         <Button id={i} variant="primary" onClick={onDeleteButtonClick}>
             Delete

@@ -13,7 +13,7 @@ function TokenTextTable(props) {
       "conjugationForm",
       "pronunciation",
       "pronunciationBase",
-      "extraInfo"
+      "extraInfo",
     ];
     //renders the headers
     return headerElement.map((key, index) => {
@@ -58,17 +58,24 @@ function TokenTextTable(props) {
 
   return (
     <>
-    <div className="center">
-      <h1 id="title">Tokenized Table</h1>
-      </div>
-    <div className="center">
-      <table id="tokenizedTable">
-        <thead>
-          <tr>{renderHeader()}</tr>
-        </thead>
-        <tbody>{renderBody()}</tbody>
-      </table>
-    </div>
+      {tokenizedText != null 
+      ? (
+        <div>
+          <div className="center">
+            <h1 id="title">Tokenized Table</h1>
+          </div>
+          <div className="center">
+            <table id="tokenizedTable">
+              <thead>
+                <tr>{renderHeader()}</tr>
+              </thead>
+              <tbody>{renderBody()}</tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
