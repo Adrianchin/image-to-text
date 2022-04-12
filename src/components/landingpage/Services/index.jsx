@@ -1,7 +1,7 @@
 import React from 'react'
-import Icon4 from '../../images/svg-4.svg';
-import Icon5 from '../../images/svg-5.svg';
-import Icon6 from '../../images/svg-6.svg';
+import Icon4 from '../../../main_page_images/umbrella_tokyo.jpg';
+import Icon5 from '../../../main_page_images/market.jpg';
+import Icon6 from '../../../main_page_images/castle.jpg';
 import {
     ServicesContainer,
     ServicesH1,
@@ -15,22 +15,22 @@ import {
 const Services = () => {
   return (
     <ServicesContainer id="services">
-        <ServicesH1>Our Services</ServicesH1>
+        <ServicesH1>Future Services</ServicesH1>
         <ServicesWrapper>
             <ServicesCard>
                 <ServicesIcon src={Icon4}/>
-                <ServicesH2>Reduce expenses</ServicesH2>
-                <ServicesP>We help to reduce your fees and increse your revenue</ServicesP>
+                <ServicesH2>More Languages</ServicesH2>
+                <ServicesP>Tokenization to be available for Korean and Chinese</ServicesP>
             </ServicesCard>
             <ServicesCard>
                 <ServicesIcon src={Icon5}/>
-                <ServicesH2>Virtual Offices</ServicesH2>
-                <ServicesP>Access online anywhere any time!</ServicesP>
+                <ServicesH2>Improved Recognition</ServicesH2>
+                <ServicesP>More machine learning algorythms to be implimented - Improved OCR, Tokenization and Translation</ServicesP>
             </ServicesCard>
             <ServicesCard>
                 <ServicesIcon src={Icon6}/>
-                <ServicesH2>Premium Services</ServicesH2>
-                <ServicesP>Unlock the special membership card that returns 5% cash back</ServicesP>
+                <ServicesH2>English Dictionary</ServicesH2>
+                <ServicesP>Addition of an Japanese to English dictionary to assist with tokenized text</ServicesP>
             </ServicesCard>
         </ServicesWrapper>
 
