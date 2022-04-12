@@ -24,12 +24,6 @@ function Navigation(props) {
       /*on click, runs setRoute as 'signout'*/
       <nav style={{ display: "flex", justifyContent: "flex-end" }}>
         <p
-          onClick={onSignOut}
-          className="f4 link dim black underline pa2 pointer"
-        >
-          Sign Out
-        </p>
-        <p
           onClick={() => setRoute("main")}
           className="f4 link dim black underline pa2 pointer"
         >
@@ -40,6 +34,12 @@ function Navigation(props) {
           className="f4 link dim black underline pa2 pointer"
         >
           Profile
+        </p>
+        <p
+          onClick={onSignOut}
+          className="f4 link dim black underline pa2 pointer"
+        >
+          Sign Out
         </p>
       </nav>
     );

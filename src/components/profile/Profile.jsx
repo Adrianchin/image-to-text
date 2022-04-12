@@ -12,7 +12,7 @@ const setUserData=props.setUserData
 useEffect(() => {
   async function getUserData(){
     try{
-      const placeholderDataObject = Object.create(userData)
+      const placeholderDataObject = {...userData};
       const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
       const response = await fetch(getUserDataURL,{
         method: "GET"
