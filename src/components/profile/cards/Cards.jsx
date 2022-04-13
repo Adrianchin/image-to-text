@@ -1,7 +1,9 @@
 import React, {useEffect} from "react";
 import {Button, Card, Row, Container} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Cards(props) {
+  let navigate = useNavigate();
   const userData = props.userData;
   const setUserDisplayData = props.setUserDisplayData;
   const setRoute = props.setRoute;
@@ -26,7 +28,7 @@ function Cards(props) {
     const id = event.target.id;
     console.log(id);
     setUserDisplayData(userData.profile[id]);
-    setRoute("displaydata");
+    navigate("/displaydata");
   }
 
   async function onDeleteButtonClick(event) {
