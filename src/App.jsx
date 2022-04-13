@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ImageSubmit from "./components/imageinput/ImageSubmit";
-import LinkSubmittal from "./components/imageinput/LinkSubmittal";
-import ImageDisplay from "./components/imagedisplay/ImageDisplay";
-import TokenTextTable from "./components/tokenizer/TokenTextTable";
-import TranslatedText from "./components/textdisplay/TranslatedText";
-import ImageText from "./components/textdisplay/ImageText";
-import SignIn from "./components/login/SignIn";
-import Register from "./components/login/Register";
-import NavigationBar from "./components/navigation/NavigationBar";
-import NavBar from "./components/navigation/NavBar";
-import SideBar from "./components/navigation/SideBar/SideBar";
-import Profile from "./components/profile/Profile";
-import DisplayData from "./components/userdata/DisplayData";
-import LandingPage from "./components/landingpage/LandingPage";
+//See UploadFile import ImageSubmit from "./components/imageinput/ImageSubmit";
+//See UploadFile import LinkSubmittal from "./components/imageinput/LinkSubmittal";
+//See UploadFile import ImageDisplay from "./components/imagedisplay/ImageDisplay";
+//See UploadFile import TokenTextTable from "./components/tokenizer/TokenTextTable";
+//See UploadFile import TranslatedText from "./components/textdisplay/TranslatedText";
+//See UploadFile import ImageText from "./components/textdisplay/ImageText";
+//See Signin import SignIn from "./components/login/SignIn";
+//See Register import Register from "./components/login/Register";
+//DELETE import NavigationBar from "./components/navigation/NavigationBar";
+//SEE HOME import NavBar from "./components/navigation/NavBar";
+//SEE HOME import SideBar from "./components/navigation/SideBar/SideBar";
+//See Profile import Profile from "./components/profile/Profile";
+//import DisplayData from "./components/userdata/DisplayData";
+//DELETE - SEE HOME import LandingPage from "./components/landingpage/LandingPage";
+
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Home from './pages/Home';
+import Signin from './pages/Signin';
+import Register from './pages/Register';
+import Profile from "./pages/Profile"
+import DisplayData from "./pages/DisplayData"
+import UploadFile from "./pages/UploadFile"
 
 import "tachyons";
 import "./App.css";
@@ -48,21 +56,83 @@ function App() {
   const [userData, setUserData] = useState("");
   const [userDisplayData, setUserDisplayData] = useState(null);
 
+  /* SEE HOME
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => {
       setIsOpen(!isOpen)
   };
+  */
 
   //console.log("This is userData.Profile: ", userData);
 
   return (
     <>
-      <SideBar isOpen={isOpen} toggle={toggle}/>
-      <NavBar toggle={toggle}/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/signin" element={
+          <Signin         
+            setIfLogin={setIfLogin}
+            setRoute={setRoute}
+            setUserData={setUserData}
+          />}
+        />
+        <Route path="/register" element={
+          <Register
+            setIfLogin={setIfLogin}
+            setRoute={setRoute}
+            setUserData={setUserData}
+          />}
+        />
+        <Route path="/profile" element={
+          <Profile
+            userData={userData}
+            setUserDisplayData={setUserDisplayData}
+            setRoute={setRoute}
+            setUserData={setUserData}
+          />}
+        />
+        <Route path="/displaydata" element={
+          <DisplayData
+            userDisplayData={userDisplayData}
+            setUserData={setUserData}
+          />}
+        />
+        <Route path="/uploadfile" element={
+          <UploadFile
+            setImageText={setImageText}
+            imageText={imageText}
+            setUploadBox={setUploadBox}
+            uploadBox={uploadBox}
+            setLinkBox={setLinkBox}
+            linkBox={linkBox}
+            setImageURL={setImageURL}
+            imageURL={imageURL}
+            setUploadOriginalImageSize={setUploadOriginalImageSize}
+            uploadOriginalImageSize={uploadOriginalImageSize}
+            setLinkOriginalImageSize={setLinkOriginalImageSize}
+            linkOriginalImageSize={linkOriginalImageSize}
+            setUploadImagePath={setUploadImagePath}
+            uploadImagePath={uploadImagePath}
+            setLinkImagePath={setLinkImagePath}
+            linkImagePath={linkImagePath}
+            setTranslatedText={setTranslatedText}
+            translatedText={translatedText}
+            setTokenizedText={setTokenizedText}
+            tokenizedText={tokenizedText}
+            userData={userData}
+          />}
+        />
+      </Routes>
+    </BrowserRouter>
+    </>
+  );
+}
 
-
-      {route === "main" && ifLogin === true
+export default App;
+/*
+    {route === "main" && ifLogin === true
         ?(<div>
           <div>
             <ImageSubmit
@@ -117,14 +187,17 @@ function App() {
             />
           </div>
         </div>)
+
+REMOVE THIS
+
         :route === "signin" || route === "signout" 
-          ?(<div>
+        ?(<div>
             <SignIn
               setIfLogin={setIfLogin}
               setRoute={setRoute}
               setUserData={setUserData}
             />
-          </div>)       
+          </div>) 
         :route === "register"
           ?(<div>
             <Register
@@ -133,15 +206,15 @@ function App() {
               setUserData={setUserData}
             />
           </div>)
-        :route === "profile"
-        ?(<div>
-          <Profile
-          userData={userData}
-          setUserDisplayData={setUserDisplayData}
-          setRoute={setRoute}
-          setUserData={setUserData}
-          />
-        </div>)
+          :route === "profile"
+          ?(<div>
+            <Profile
+            userData={userData}
+            setUserDisplayData={setUserDisplayData}
+            setRoute={setRoute}
+            setUserData={setUserData}
+            />
+          </div>)
          :route === "displaydata"
          ?(<div>
            <DisplayData
@@ -150,16 +223,15 @@ function App() {
            />
          </div>)
         :(<div>
-          <LandingPage/>
         </div>)
       }
-    </>
-  );
-}
 
-export default App;
-/*
-    <div>
+
+      
+      <SideBar isOpen={isOpen} toggle={toggle}/>
+      <NavBar toggle={toggle}/>
+
+      <div>
       <NavigationBar
         ifLogin={ifLogin}
         setIfLogin={setIfLogin}
@@ -168,4 +240,8 @@ export default App;
         userData={userData}
       />
     </div>
+
+
+      DELETE THIS
+      <LandingPage/>
 */
