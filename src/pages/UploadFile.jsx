@@ -5,8 +5,8 @@ import TranslatedText from "../components/textdisplay/TranslatedText";
 import ImageText from "../components/textdisplay/ImageText";
 import TokenTextTable from "../components/tokenizer/TokenTextTable";
 import ImageDisplay from "../components/imagedisplay/ImageDisplay";
-import NavBar from "../components/NavigationLoggedIn/NavBar";
-import SideBar from "../components/NavigationLoggedIn/SideBar/SideBar";
+import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
+import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 function UploadFile(props) {
     const setImageText=props.setImageText;
@@ -51,8 +51,8 @@ function UploadFile(props) {
 
   return (
     <>
-        <SideBar isOpen={isOpen} toggle={toggle}/>
-        <NavBar toggle={toggle}/>
+        <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
+        <LoggedInNavbar toggle={toggle}/>
         <div>
         <ImageSubmit
             setImageText={setImageText}

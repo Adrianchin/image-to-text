@@ -7,9 +7,9 @@ import {
   SidebarLink, 
   SidebarMenu, 
   SideBtnWrap, 
-  SidebarRoute} from './SideBarElements';
+  SidebarRoute} from './LoggedOutSideBarElements';
 
-const SideBar = ({isOpen, toggle}) => {
+const LoggedOutSideBar = ({isOpen, toggle}) => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
         <Icon onClick={toggle}>
@@ -43,4 +43,4 @@ const SideBar = ({isOpen, toggle}) => {
   )
 }
 
-export default SideBar
+export default LoggedOutSideBar

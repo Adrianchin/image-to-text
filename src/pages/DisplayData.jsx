@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import DisplayDataComponent from "../components/userdata/DisplayData"; 
-import NavBar from "../components/NavigationLoggedIn/NavBar";
-import SideBar from "../components/NavigationLoggedIn/SideBar/SideBar";
+import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
+import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 function DisplayData(props) {
     const userDisplayData= props.userDisplayData;
@@ -15,8 +15,8 @@ function DisplayData(props) {
 
   return (
     <>
-        <SideBar isOpen={isOpen} toggle={toggle}/>
-        <NavBar toggle={toggle}/>
+        <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
+        <LoggedInNavbar toggle={toggle}/>
         <DisplayDataComponent
            userDisplayData={userDisplayData}
            setUserData={setUserData}

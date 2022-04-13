@@ -12,9 +12,9 @@ import {
     NavLinks,
     NavBtn,
     NavBtnLink
-} from './NavBarElements';
+} from './LoggedOutNavBarElements';
 
-const Navbar = ({toggle}) => {
+const LoggedOutNavbar = ({toggle}) => {
     const [scrollNav, setScrollNav] = useState(false)
 //This is the scroll effect. We define the state as fale for scrollNav and make it run true when the window scroll passes 80 pixles in the Y
     const changeNav=() => {
@@ -122,4 +122,4 @@ const Navbar = ({toggle}) => {
   )
 }
 
-export default Navbar
+export default LoggedOutNavbar

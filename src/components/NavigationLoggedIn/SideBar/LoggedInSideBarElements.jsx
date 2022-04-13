@@ -51,13 +51,13 @@ export const SidebarMenu = styled.ul`
   }
 `;
 
-export const SidebarLink = styled(LinkScroll)`
+export const SidebarLink = styled(LinkRoute)`
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   text-decoration: none;
-  line-style: none;
+  list-style: none;
   transition: 0.2s ease-in-out;
   text-decoration: none;
   color: #fff;
@@ -82,7 +82,7 @@ export const SidebarRoute = styled(LinkRoute)`
   color: #010606;
   font-size: 16px;
   outline: none;
-  boarder: none;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;

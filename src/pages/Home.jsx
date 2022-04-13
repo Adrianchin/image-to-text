@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import SideBar from "../components/navigation/SideBar/SideBar";
-import NavBar from "../components/navigation/NavBar";
+import LoggedOutSideBar from "../components/navigation/SideBar/LoggedOutSideBar";
+import LoggedOutNavbar from "../components/navigation/LoggedOutNavBar";
 import VideoLanding from "../components/landingpage/VideoSection/VideoLanding"
 import InfoSection from "../components/landingpage/InfoSection/index"
 import Services from "../components/landingpage/Services/index"
@@ -18,8 +18,8 @@ function Home() {
 
   return (
     <>
-        <SideBar isOpen={isOpen} toggle={toggle}/>
-        <NavBar toggle={toggle}/>
+        <LoggedOutSideBar isOpen={isOpen} toggle={toggle}/>
+        <LoggedOutNavbar toggle={toggle}/>
         <VideoLanding/>
         <InfoSection {...homeObjOne}/>
         <InfoSection {...homeObjTwo}/>

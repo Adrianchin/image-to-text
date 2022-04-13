@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import ProfileCards from "../components/profile/Profile";
-import NavBar from "../components/NavigationLoggedIn/NavBar";
-import SideBar from "../components/NavigationLoggedIn/SideBar/SideBar";
+import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
+import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 function Profile(props) {
     const userData = props.userData;
@@ -17,8 +17,8 @@ function Profile(props) {
 
   return (
     <>
-        <SideBar isOpen={isOpen} toggle={toggle}/>
-        <NavBar toggle={toggle}/>
+        <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
+        <LoggedInNavbar toggle={toggle}/>
         <ProfileCards
             userData={userData}
             setUserDisplayData={setUserDisplayData}
