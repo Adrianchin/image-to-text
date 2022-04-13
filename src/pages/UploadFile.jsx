@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ImageSubmit from "../components/imageinput/ImageSubmit";
 import LinkSubmittal from "../components/imageinput/LinkSubmittal";
 import TranslatedText from "../components/textdisplay/TranslatedText";
 import ImageText from "../components/textdisplay/ImageText";
 import TokenTextTable from "../components/tokenizer/TokenTextTable";
 import ImageDisplay from "../components/imagedisplay/ImageDisplay";
+import NavBar from "../components/NavigationLoggedIn/NavBar";
+import SideBar from "../components/NavigationLoggedIn/SideBar/SideBar";
 
 function UploadFile(props) {
     const setImageText=props.setImageText;
@@ -41,8 +43,16 @@ function UploadFile(props) {
     
     const userData=props.userData;
 
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggle = () => {
+        setIsOpen(!isOpen)
+    };
+
   return (
     <>
+        <SideBar isOpen={isOpen} toggle={toggle}/>
+        <NavBar toggle={toggle}/>
         <div>
         <ImageSubmit
             setImageText={setImageText}

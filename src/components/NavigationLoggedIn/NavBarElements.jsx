@@ -74,7 +74,7 @@ export const NavItem = styled.li `
 `;
 
 // provides boarder action (highlightes upon action)
-export const NavLinks = styled(LinkScroll)`
+export const NavLinks = styled(LinkRouter)`
     color: #fff;
     display: flex;
     align-items: center;
