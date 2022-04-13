@@ -39,6 +39,9 @@ const LoggedInNavbar = ({toggle}) => {
     <IconContext.Provider value={{color: '#fff'}}>
         <Nav scrollNav={scrollNav}>
             <NavbarContainer>
+                <NavLogo to='/home' onClick={toggleHome}>
+                    日本語に勉強ましょう!
+                </NavLogo>
                 <MobileIcon onClick={toggle}>
                     <FaBars/>
                 </MobileIcon>

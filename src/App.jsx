@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Home from './pages/Home';
+import HomeLoggedIn from './pages/HomeLoggedIn';
 import Signin from './pages/Signin';
 import Register from './pages/Register';
 import Profile from "./pages/Profile"
@@ -47,8 +48,12 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="/home" element={
+        <Route path="/" element={
           <Home
+          />}
+        />
+        <Route path="/home" element={
+          <HomeLoggedIn
           />}
         />
         <Route path="/signin" element={
