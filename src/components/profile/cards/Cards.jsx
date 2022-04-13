@@ -76,7 +76,7 @@ function Cards(props) {
   const cardComponent = userData.profile.map((empty, i) => {
     //console.log(`This is userData${i} from Cards run: `, userData)
     return (
-      <Card style={styles.card}>
+      <Card style={styles.card} key={i}>
         <Card.Img
           style={styles.cardImage}
           variant="top"

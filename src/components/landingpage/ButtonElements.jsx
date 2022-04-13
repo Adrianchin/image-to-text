@@ -23,6 +23,6 @@ export const Button = styled(Link)`
     //changes button to green on hover
     &:hover{
         transition: all 0.2s ease-in-out;
-        background: ${({primary})=>(primary ? '#ffffff' : '#DBBBBF')};
+        background: ${({primary})=>(primary ? '#ffffff' : '#16B8BB')};
     }
 `; 

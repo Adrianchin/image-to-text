@@ -2,6 +2,7 @@ import React from 'react'
 import VideoLanding from "./VideoSection/VideoLanding"
 import InfoSection from "./InfoSection/index"
 import Services from "./Services/index"
+import Connect from "./Connect/Connect"
 import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './InfoSection/Data';
 
 function LandingPage() {
@@ -16,7 +17,7 @@ function LandingPage() {
             <InfoSection {...homeObjFour}/>
         </div>
         <div>
-            Footer
+            <Connect/>
         </div>
     </div>
   )

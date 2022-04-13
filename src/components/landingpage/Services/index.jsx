@@ -20,7 +20,7 @@ const Services = () => {
             <ServicesCard>
                 <ServicesIcon src={Icon4}/>
                 <ServicesH2>More Languages</ServicesH2>
-                <ServicesP>Tokenization to be available for Korean and Chinese</ServicesP>
+                <ServicesP>Tokenization to be expanded for Korean</ServicesP>
             </ServicesCard>
             <ServicesCard>
                 <ServicesIcon src={Icon5}/>
@@ -30,7 +30,7 @@ const Services = () => {
             <ServicesCard>
                 <ServicesIcon src={Icon6}/>
                 <ServicesH2>English Dictionary</ServicesH2>
-                <ServicesP>Addition of an Japanese to English dictionary to assist with tokenized text</ServicesP>
+                <ServicesP>Addition of a Japanese to English dictionary to assist with tokenized text</ServicesP>
             </ServicesCard>
         </ServicesWrapper>
 

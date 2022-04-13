@@ -4,11 +4,11 @@ import {Button} from '../ButtonElements';
 import { 
     VideoLandingContainer,
     VideoLandingBg,
-VideoBg,
-VideoLandingContent,
-VideoLandingH1,
-VideoLandingP,
-VideoLandingBtnWrapper,
+    VideoBg,
+    VideoLandingContent,
+    VideoLandingH1,
+    VideoLandingP,
+    VideoLandingBtnWrapper,
 } from './VideoLandingElements';
 
 const VideoLanding = () => {
@@ -34,11 +34,10 @@ const VideoLanding = () => {
             <VideoLandingP> Get assistance reading Japanese from anywhere. Difficult literiary texts and phrasing made easy!</VideoLandingP>
             <VideoLandingBtnWrapper>
                 <Button 
-                to='signup' 
+                to='about' 
                 onMouseEnter={onHover} 
                 onMouseLeave={onHover}
-                primary='true'
-                dark='true'
+
 
                 smooth={true}
                 duration={500}

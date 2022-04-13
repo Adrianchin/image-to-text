@@ -25,7 +25,7 @@ export const InfoWrapper = styled.div`
 export const InfoRow = styled.div`
     display:grid;
     grid-auto-columns: minmax()(auto, 1fr);
-    align-items: center;
+    align-items:center;
     //this is a css grid position where we have grids side by side. Allows you to throw picture on one side or another
     grid-template-areas: ${({imgStart})=>(imgStart ? `'col2 col1'` : `'col1 col2'`)};
 
@@ -96,4 +96,9 @@ export const Img = styled.img`
     width: 100%;
     margin: 0 0 10px 0;
     padding-right: 0;
+
+    @media screen and (max-width: 768px){
+        width: auto;
+        max-height: 400px;
+    }
 `;
