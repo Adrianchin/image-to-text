@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageSubmit from "./components/imageinput/ImageSubmit";
 import LinkSubmittal from "./components/imageinput/LinkSubmittal";
-import TextToDeepL from "./components/texttodeepl/TextToDeepL";
 import ImageDisplay from "./components/imagedisplay/ImageDisplay";
-import Tokenizer from "./components/tokenizer/Tokenizer";
 import TokenTextTable from "./components/tokenizer/TokenTextTable";
 import TranslatedText from "./components/textdisplay/TranslatedText";
 import ImageText from "./components/textdisplay/ImageText";
 import SignIn from "./components/login/SignIn";
 import Register from "./components/login/Register";
 import NavigationBar from "./components/navigation/NavigationBar";
+import NavBar from "./components/navigation/NavBar";
+import SideBar from "./components/navigation/SideBar/SideBar";
 import Profile from "./components/profile/Profile";
 import DisplayData from "./components/userdata/DisplayData";
 import LandingPage from "./components/landingpage/LandingPage";
@@ -48,19 +48,20 @@ function App() {
   const [userData, setUserData] = useState("");
   const [userDisplayData, setUserDisplayData] = useState(null);
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => {
+      setIsOpen(!isOpen)
+  };
+
   //console.log("This is userData.Profile: ", userData);
 
   return (
     <>
-    <div>
-      <NavigationBar
-        ifLogin={ifLogin}
-        setIfLogin={setIfLogin}
-        setRoute={setRoute}
-        setUserData={setUserData}
-        userData={userData}
-      />
-    </div>
+      <SideBar isOpen={isOpen} toggle={toggle}/>
+      <NavBar toggle={toggle}/>
+
+
       {route === "main" && ifLogin === true
         ?(<div>
           <div>
@@ -157,3 +158,14 @@ function App() {
 }
 
 export default App;
+/*
+    <div>
+      <NavigationBar
+        ifLogin={ifLogin}
+        setIfLogin={setIfLogin}
+        setRoute={setRoute}
+        setUserData={setUserData}
+        userData={userData}
+      />
+    </div>
+*/

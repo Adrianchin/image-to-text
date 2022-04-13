@@ -23,7 +23,7 @@ const Connect = () => {
     }
 
   return (
-    <ConnectContainer id='home'>
+    <ConnectContainer id='connect'>
         <ConnectVideoBg>
             <VideoBg 
             autoPlay 
