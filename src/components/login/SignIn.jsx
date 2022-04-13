@@ -1,7 +1,10 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignIn(props) {
-  
+
+  let navigate = useNavigate();
+
   const setRoute = props.setRoute;
   const setIfLogin = props.setIfLogin;
   const setUserData = props.setUserData;
@@ -37,7 +40,7 @@ function SignIn(props) {
         if(signInReturn.username){
           setUserData(signInReturn);
           setIfLogin(true);
-          setRoute("main");
+          navigate("/profile");
         }
       }catch(error) {
         console.log(
