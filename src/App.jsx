@@ -1,21 +1,8 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-//See UploadFile import ImageSubmit from "./components/imageinput/ImageSubmit";
-//See UploadFile import LinkSubmittal from "./components/imageinput/LinkSubmittal";
-//See UploadFile import ImageDisplay from "./components/imagedisplay/ImageDisplay";
-//See UploadFile import TokenTextTable from "./components/tokenizer/TokenTextTable";
-//See UploadFile import TranslatedText from "./components/textdisplay/TranslatedText";
-//See UploadFile import ImageText from "./components/textdisplay/ImageText";
-//See Signin import SignIn from "./components/login/SignIn";
-//See Register import Register from "./components/login/Register";
-//DELETE import NavigationBar from "./components/navigation/NavigationBar";
-//SEE HOME import NavBar from "./components/navigation/NavBar";
-//SEE HOME import SideBar from "./components/navigation/SideBar/SideBar";
-//See Profile import Profile from "./components/profile/Profile";
-//import DisplayData from "./components/userdata/DisplayData";
-//DELETE - SEE HOME import LandingPage from "./components/landingpage/LandingPage";
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import Home from './pages/Home';
 import Signin from './pages/Signin';
 import Register from './pages/Register';
@@ -55,16 +42,6 @@ function App() {
   const [route, setRoute] = useState("other");
   const [userData, setUserData] = useState("");
   const [userDisplayData, setUserDisplayData] = useState(null);
-
-  /* SEE HOME
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggle = () => {
-      setIsOpen(!isOpen)
-  };
-  */
-
-  //console.log("This is userData.Profile: ", userData);
 
   return (
     <>
@@ -131,117 +108,3 @@ function App() {
 }
 
 export default App;
-/*
-    {route === "main" && ifLogin === true
-        ?(<div>
-          <div>
-            <ImageSubmit
-              setImageText={setImageText}
-              setUploadBox={setUploadBox}
-              setImageURL={setImageURL}
-              setUploadOriginalImageSize={setUploadOriginalImageSize}
-              setUploadImagePath={setUploadImagePath}
-              setLinkImagePath={setLinkImagePath}
-              setTranslatedText={setTranslatedText}
-              setTokenizedText={setTokenizedText}
-              userData={userData}
-            />
-          </div>
-          <div>
-            <LinkSubmittal
-              setLinkOriginalImageSize={setLinkOriginalImageSize}
-              setLinkBox={setLinkBox}
-              setImageText={setImageText}
-              setTranslatedText={setTranslatedText}
-              setImageURL={setImageURL}
-              setUploadImagePath={setUploadImagePath}
-              setLinkImagePath={setLinkImagePath}
-              setTokenizedText={setTokenizedText}
-              userData={userData}
-            />
-          </div>
-          <div>
-            <TranslatedText
-              translatedText={translatedText}
-            />
-          <div>
-            <ImageText
-              imageText={imageText}
-            />
-          </div>
-          </div>
-          <div>
-          <TokenTextTable 
-            tokenizedText={tokenizedText}
-          />
-          </div>
-          <div>
-            <ImageDisplay
-              linkImagePath={linkImagePath}
-              linkOriginalImageSize={linkOriginalImageSize}
-              linkBox={linkBox}
-              uploadImagePath={uploadImagePath}
-              uploadOriginalImageSize={uploadOriginalImageSize}
-              uploadBox={uploadBox}
-              imageURL={imageURL}
-            />
-          </div>
-        </div>)
-
-REMOVE THIS
-
-        :route === "signin" || route === "signout" 
-        ?(<div>
-            <SignIn
-              setIfLogin={setIfLogin}
-              setRoute={setRoute}
-              setUserData={setUserData}
-            />
-          </div>) 
-        :route === "register"
-          ?(<div>
-            <Register
-              setIfLogin={setIfLogin}
-              setRoute={setRoute}
-              setUserData={setUserData}
-            />
-          </div>)
-          :route === "profile"
-          ?(<div>
-            <Profile
-            userData={userData}
-            setUserDisplayData={setUserDisplayData}
-            setRoute={setRoute}
-            setUserData={setUserData}
-            />
-          </div>)
-         :route === "displaydata"
-         ?(<div>
-           <DisplayData
-           userDisplayData={userDisplayData}
-           setUserData={setUserData}
-           />
-         </div>)
-        :(<div>
-        </div>)
-      }
-
-
-      
-      <SideBar isOpen={isOpen} toggle={toggle}/>
-      <NavBar toggle={toggle}/>
-
-      <div>
-      <NavigationBar
-        ifLogin={ifLogin}
-        setIfLogin={setIfLogin}
-        setRoute={setRoute}
-        setUserData={setUserData}
-        userData={userData}
-      />
-    </div>
-
-
-      DELETE THIS
-      <LandingPage/>
-*/
