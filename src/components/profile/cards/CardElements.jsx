@@ -29,7 +29,7 @@ export const CardWrapper = styled.div`
     }
 `;
 
-export const CardN = styled.div`
+export const Card = styled.div`
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -47,9 +47,8 @@ export const CardN = styled.div`
 export const CardImage = styled.img`
     object-fit: cover;
     border-radius: 10px;
-    height: 300;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-`
+    height: 300px;
+`;
 
 export const CardBody = styled.div`
     background: #fff;
