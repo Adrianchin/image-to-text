@@ -1,6 +1,10 @@
 import React, {useEffect} from "react";
 import {Button, Card, Row, Container} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import {
+  CardWrapper,
+  CardContainer,
+} from './CardElements';
 
 function Cards(props) {
   let navigate = useNavigate();
@@ -12,16 +16,22 @@ function Cards(props) {
 
   const styles = {
     card: {
-      backgroundColor: "#b7e9f2",
+      backgroundColor: "#ffffff",
       borderRadius: 0,
-      padding: "1.5rem",
-      width: "20rem",
+      padding: "1rem",
+      width: "25rem",
     },
     cardImage: {
       objectFit: "cover",
       borderRadius: 5,
-      height: 200,
+      height: 300,
     },
+    cardButtonDetails:{
+      backgroundColor: "#16B8BB",
+    },
+    deleteButtonDetails:{
+      backgroundColor: "#16B8BB",
+    }
   };
 
   function onGoButtonClick(event) {
@@ -91,10 +101,19 @@ function Cards(props) {
           </Card.Text>
           <Card.Text>{userData.profile[i].translatedText}</Card.Text>
         </Card.Body>
-        <Button id={i} variant="primary" onClick={onGoButtonClick}>
+        <Button 
+        id={i} 
+        variant="primary" 
+        onClick={onGoButtonClick} 
+        style={styles.cardButtonDetails}>
             View Image and Information
           </Button>
-        <Button id={i} variant="primary" onClick={onDeleteButtonClick}>
+        <Button 
+        id={i} 
+        variant="primary" 
+        onClick={onDeleteButtonClick} 
+        className='mt-3' 
+        style={styles.deleteButtonDetails}>
             Delete
           </Button>
       </Card>
@@ -102,9 +121,11 @@ function Cards(props) {
   });
 
   return (
-    <Container>
-      <Row>{cardComponent}</Row>
-    </Container>
+    <CardContainer>
+      <CardWrapper>
+        {cardComponent}
+      </CardWrapper>
+    </CardContainer>
   );
 }
 

@@ -40,7 +40,7 @@ const LoggedOutNavbar = ({toggle}) => {
         <Nav scrollNav={scrollNav}>
             <NavbarContainer>
                 <NavLogo to='/' onClick={toggleHome}>
-                    日本語に勉強ましょう!
+                日本語に勉強しましょう!
                 </NavLogo>
                 <MobileIcon onClick={toggle}>
                     <FaBars/>

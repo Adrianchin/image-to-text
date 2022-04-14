@@ -40,7 +40,7 @@ const LoggedInNavbar = ({toggle}) => {
         <Nav scrollNav={scrollNav}>
             <NavbarContainer>
                 <NavLogo to='/home' onClick={toggleHome}>
-                    日本語に勉強ましょう!
+                日本語に勉強しましょう!
                 </NavLogo>
                 <MobileIcon onClick={toggle}>
                     <FaBars/>
@@ -58,7 +58,7 @@ const LoggedInNavbar = ({toggle}) => {
                     </NavItem>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to="/Home">
+                    <NavBtnLink to="/">
                         Sign Out
                     </NavBtnLink>
                 </NavBtn>
