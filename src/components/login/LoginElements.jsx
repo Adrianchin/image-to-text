@@ -26,6 +26,31 @@ export const SignInContainer = styled.div`
     bottom: 0%;
 `;
 
+export const RegisterContainer = styled.div`
+    min-height:692px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    overflow: hidden;
+    background-image: url(${require("../../main_page_images/thousand_gate_shrine.jpg")});
+    background-size: cover;
+    opacity: 1;
+    justify-content: center;
+    background-attachment: fixed;
+    background-position:center;
+    background-repeat: no-repeat;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0%;
+`;
+
 export const FormWrap = styled.div`
     height: 100%;
     display: flex;
@@ -116,7 +141,7 @@ export const FormButton = styled.button`
     color: #fff;
     font-size: 20px;
     cursor: pointer;
-    
+
     &:hover{
         transition: all 0.2s ease-in;
         background: #fff;
@@ -128,5 +153,6 @@ export const Text = styled.span`
     text-align: center;
     margin-top: 24px;
     color: #fff;
-    font-size: 14ps;
+    font-size: 14px;
+    cursor: pointer;
 `;

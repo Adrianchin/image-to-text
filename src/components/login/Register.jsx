@@ -1,5 +1,18 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  RegisterContainer,
+  FormWrap,
+  Icon,
+  FormContent,
+  Form,
+  FormH1,
+  FormLabel,
+  FormInput,
+  FormButton,
+  IconDiv,
+  Text
+} from "./LoginElements";
 
 function Register(props) {
 
@@ -59,6 +72,31 @@ function Register(props) {
     }
   }
 
+  return(
+    <>
+      <RegisterContainer>
+        <FormWrap>
+          <IconDiv>
+          <Icon to="/">返る</Icon>
+          </IconDiv>
+          <FormContent>
+            <Form action="#">
+              <FormH1>Register</FormH1>
+              <FormLabel htmlFor='for'>Username</FormLabel>
+              <FormInput type='name' required onChange={onUsernameInput}/>
+              <FormLabel htmlFor='for'>Email</FormLabel>
+              <FormInput type='email' required onChange={onEmailInput}/>
+              <FormLabel htmlFor='for'>Password</FormLabel>
+              <FormInput type='password' required onChange={onPasswordInput}/>
+              <FormButton type="submit" onClick={onSubmitRegister}>Continue</FormButton>
+              <Text onClick={() => navigate("/signin")}>Sign In</Text>
+            </Form>
+          </FormContent>
+        </FormWrap>
+    </RegisterContainer>
+    </>
+  );
+/*
   return (
     <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -122,6 +160,7 @@ function Register(props) {
       </main>
     </article>
   );
+  */
 }
 
 export default Register;

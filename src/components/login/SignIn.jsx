@@ -79,6 +79,7 @@ function SignIn(props) {
             <FormLabel htmlFor='for'>Password</FormLabel>
             <FormInput type='password' required onChange={onPasswordInput}/>
             <FormButton type="submit" onClick={onSubmitSignin}>Continue</FormButton>
+            <Text onClick={() => navigate("/register")}>Register</Text>
           </Form>
         </FormContent>
       </FormWrap>
