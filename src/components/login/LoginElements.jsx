@@ -149,8 +149,12 @@ export const FormButton = styled.button`
     }
 `;
 
-export const Text = styled.span`
+export const TextDiv = styled.div`
     text-align: center;
+    padding: 16px 16px;
+`
+
+export const Text = styled.span`
     margin-top: 24px;
     color: #fff;
     font-size: 14px;

@@ -11,6 +11,7 @@ import {
   FormInput,
   FormButton,
   IconDiv,
+  TextDiv,
   Text
 } from "./LoginElements";
 
@@ -89,7 +90,9 @@ function Register(props) {
               <FormLabel htmlFor='for'>Password</FormLabel>
               <FormInput type='password' required onChange={onPasswordInput}/>
               <FormButton type="submit" onClick={onSubmitRegister}>Continue</FormButton>
+              <TextDiv>
               <Text onClick={() => navigate("/signin")}>Sign In</Text>
+              </TextDiv>
             </Form>
           </FormContent>
         </FormWrap>
