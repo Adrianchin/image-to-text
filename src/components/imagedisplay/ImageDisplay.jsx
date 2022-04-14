@@ -78,12 +78,15 @@ function ImageDisplay(props) {
     uploadBox,
   ]);
 
+
   return (
-    <div className="center">
+    <div className="center" style={{
+      height:currentHeight,
+    }}>
       <div className="absolute">
         <img
           id="inputimage"
-          alt=""
+          alt="submittedimage"
           src={imageURL}
           width={imgTagWidth}
           height="auto"

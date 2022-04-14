@@ -8,6 +8,15 @@ import ImageDisplay from "../components/imagedisplay/ImageDisplay";
 import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
+import {
+    UploadContainer,
+    UploadColumn,
+    PictureColumn,
+    InputColumn,
+    InputRow,
+    CardWrapper
+} from "./PageElements";
+
 function UploadFile(props) {
     const setImageText=props.setImageText;
     const imageText=props.imageText;
@@ -53,58 +62,63 @@ function UploadFile(props) {
     <>
         <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
         <LoggedInNavbar toggle={toggle}/>
-        <div>
-        <ImageSubmit
-            setImageText={setImageText}
-            setUploadBox={setUploadBox}
-            setImageURL={setImageURL}
-            setUploadOriginalImageSize={setUploadOriginalImageSize}
-            setUploadImagePath={setUploadImagePath}
-            setLinkImagePath={setLinkImagePath}
-            setTranslatedText={setTranslatedText}
-            setTokenizedText={setTokenizedText}
-            userData={userData}
-        />
-        </div>
-        <div>
-        <LinkSubmittal
-            setLinkOriginalImageSize={setLinkOriginalImageSize}
-            setLinkBox={setLinkBox}
-            setImageText={setImageText}
-            setTranslatedText={setTranslatedText}
-            setImageURL={setImageURL}
-            setUploadImagePath={setUploadImagePath}
-            setLinkImagePath={setLinkImagePath}
-            setTokenizedText={setTokenizedText}
-            userData={userData}
-        />
-        </div>
-        <div>
-        <TranslatedText
-            translatedText={translatedText}
-        />
-        <div>
-        <ImageText
-            imageText={imageText}
-        />
-        </div>
-        </div>
-        <div>
-        <TokenTextTable 
-        tokenizedText={tokenizedText}
-        />
-        </div>
-        <div>
-        <ImageDisplay
-            linkImagePath={linkImagePath}
-            linkOriginalImageSize={linkOriginalImageSize}
-            linkBox={linkBox}
-            uploadImagePath={uploadImagePath}
-            uploadOriginalImageSize={uploadOriginalImageSize}
-            uploadBox={uploadBox}
-            imageURL={imageURL}
-        />
-        </div>
+        <UploadContainer>
+            <UploadColumn>
+            <CardWrapper>
+
+                <ImageSubmit
+                    setImageText={setImageText}
+                    setUploadBox={setUploadBox}
+                    setImageURL={setImageURL}
+                    setUploadOriginalImageSize={setUploadOriginalImageSize}
+                    setUploadImagePath={setUploadImagePath}
+                    setLinkImagePath={setLinkImagePath}
+                    setTranslatedText={setTranslatedText}
+                    setTokenizedText={setTokenizedText}
+                    userData={userData}
+                />
+
+                    <LinkSubmittal
+                        setLinkOriginalImageSize={setLinkOriginalImageSize}
+                        setLinkBox={setLinkBox}
+                        setImageText={setImageText}
+                        setTranslatedText={setTranslatedText}
+                        setImageURL={setImageURL}
+                        setUploadImagePath={setUploadImagePath}
+                        setLinkImagePath={setLinkImagePath}
+                        setTokenizedText={setTokenizedText}
+                        userData={userData}
+                    />
+
+            </CardWrapper>
+            <div>
+            <TranslatedText
+                translatedText={translatedText}
+            />
+            <div>
+            <ImageText
+                imageText={imageText}
+            />
+            </div>
+            </div>
+            <div>
+            <TokenTextTable 
+            tokenizedText={tokenizedText}
+            />
+            </div>
+            <PictureColumn>
+                <ImageDisplay
+                    linkImagePath={linkImagePath}
+                    linkOriginalImageSize={linkOriginalImageSize}
+                    linkBox={linkBox}
+                    uploadImagePath={uploadImagePath}
+                    uploadOriginalImageSize={uploadOriginalImageSize}
+                    uploadBox={uploadBox}
+                    imageURL={imageURL}
+                />
+                </PictureColumn>
+            </UploadColumn>
+        </UploadContainer>
     </>
   )
 }

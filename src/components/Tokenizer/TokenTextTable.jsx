@@ -7,13 +7,12 @@ function TokenTextTable(props) {
     let headerElement = [
       "id",
       "token",
-      "wordType",
-      "tokenRoot",
-      "conjugationType",
-      "conjugationForm",
-      "pronunciation",
-      "pronunciationBase",
-      "extraInfo",
+      "token Kana",
+      "Root",
+      "Root kana",
+      "Type",
+      "conj-Type",
+      "conj-Form",
     ];
     //renders the headers
     return headerElement.map((key, index) => {
@@ -29,26 +28,24 @@ function TokenTextTable(props) {
         ({
           id,
           token,
-          wordType,
+          pronunciation,
           tokenRoot,
+          pronunciationBase,
+          wordType,
           conjugationType,
           conjugationForm,
-          pronunciation,
-          pronunciationBase,
-          extraInfo,
         }) => {
           //arrow function means "do this when react detets updates"
           return (
             <tr key={id}>
               <td>{id}</td>
               <td>{token}</td>
-              <td>{wordType}</td>
+              <td>{pronunciation}</td>
               <td>{tokenRoot}</td>
+              <td>{pronunciationBase}</td>
+              <td>{wordType}</td>
               <td>{conjugationType}</td>
               <td>{conjugationForm}</td>
-              <td>{pronunciation}</td>
-              <td>{pronunciationBase}</td>
-              <td>{extraInfo}</td>
             </tr>
           );
         }

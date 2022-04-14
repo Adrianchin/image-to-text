@@ -46,7 +46,7 @@ function TextToDeepL(props) {
           onChange={onTextInput}
         />
         <button
-          className="w-30 grow f5 link ph3 pv1 dib white bg-light-purple"
+          className="w-30 grow f6 link ph3 pv1 dib white bg-light-purple"
           onClick={onTextButtonSubmit}
         >
           Text to Translation

@@ -19,7 +19,7 @@ function Cards(props) {
       backgroundColor: "#ffffff",
       borderRadius: 0,
       padding: "1rem",
-      width: "25rem",
+      width: "23rem",
     },
     cardImage: {
       objectFit: "cover",

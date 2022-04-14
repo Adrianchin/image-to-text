@@ -9,7 +9,7 @@ export const CardContainer = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-    max-width: 1000px;
+    max-width: 1500px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -18,7 +18,7 @@ export const CardWrapper = styled.div`
     padding: 0 0px;
 
     //Becomes 2 columns on small screens
-    @media screen and (max-width: 1000px){
+    @media screen and (max-width: 1300px){
         grid-template-columns: 1fr 1fr;
     }
 
