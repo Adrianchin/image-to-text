@@ -81,7 +81,7 @@ function SignIn(props) {
             <FormInput type='password' required onChange={onPasswordInput}/>
             <FormButton type="submit" onClick={onSubmitSignin}>Continue</FormButton>
             <TextDiv>
-            <Text onClick={() => navigate("/register")}>Register</Text>
+            <Text onClick={() => navigate("/home")}>Register</Text>
             </TextDiv>
           </Form>
         </FormContent>
