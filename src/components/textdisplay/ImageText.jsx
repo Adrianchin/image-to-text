@@ -10,7 +10,7 @@ function ImageText(props) {
         <div>
           <div>
             <h3 className="center">{`This is the image text`}</h3>
-            <h2 className="center">{`${imageText}`}</h2>
+            <h5 className="center">{`${imageText}`}</h5>
           </div>
         </div>
       ) : (

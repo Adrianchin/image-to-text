@@ -10,7 +10,7 @@ function TranslatedText(props) {
         <div>
           <div>
             <h3 className="center">{`This is the translated text`}</h3>
-            <h3 className="center">{`${translatedText}`}</h3>
+            <h5 className="center">{`${translatedText}`}</h5>
           </div>
         </div>
       ) : (
