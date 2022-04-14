@@ -4,6 +4,13 @@ import { useNavigate } from "react-router-dom";
 import {
   CardWrapper,
   CardContainer,
+  CardN,
+  CardBody,
+  CardTitle,
+  CardText,
+  CardButton,
+  CardImage,
+  ButtonContainer,
 } from './CardElements';
 
 function Cards(props) {
@@ -88,35 +95,43 @@ function Cards(props) {
   const cardComponent = userData.profile.map((empty, i) => {
     //console.log(`This is userData${i} from Cards run: `, userData)
     return (
-      <Card style={styles.card} key={i}>
-        <Card.Img
+      <CardN key={i}>
+        <CardImage
+          key={i}
           style={styles.cardImage}
           variant="top"
           src={userData.profile[i].imageURL}
         />
-        <Card.Body>
-          <Card.Subtitle>{userData.profile[i].date}</Card.Subtitle>
-          <Card.Text>
+        <CardBody>
+          <CardTitle>{userData.profile[i].date}</CardTitle>
+          <CardText>
             {userData.profile[i].imageInformation[0].description}
-          </Card.Text>
-          <Card.Text>{userData.profile[i].translatedText}</Card.Text>
-        </Card.Body>
-        <Button 
+          </CardText>
+          <CardText>{userData.profile[i].translatedText}</CardText>
+        </CardBody>
+
+<ButtonContainer>
+        <CardButton 
         id={i} 
-        variant="primary" 
+        primary={true}
+        big={true}
+        fontBig={true}
         onClick={onGoButtonClick} 
-        style={styles.cardButtonDetails}>
+        >
             View Image and Information
-          </Button>
-        <Button 
+          </CardButton>
+        <CardButton 
         id={i} 
-        variant="primary" 
+        primary={false}
+        big={false}
+        fontBig={false}
         onClick={onDeleteButtonClick} 
-        className='mt-3' 
-        style={styles.deleteButtonDetails}>
+        >
             Delete
-          </Button>
-      </Card>
+          </CardButton>
+          </ButtonContainer>
+
+      </CardN>
     );
   });
 
