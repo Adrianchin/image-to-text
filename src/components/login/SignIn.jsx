@@ -1,5 +1,18 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  SignInContainer,
+  FormWrap,
+  Icon,
+  FormContent,
+  Form,
+  FormH1,
+  FormLabel,
+  FormInput,
+  FormButton,
+  IconDiv,
+  Text
+} from "./LoginElements";
 
 function SignIn(props) {
 
@@ -51,6 +64,30 @@ function SignIn(props) {
   signInUser();
   };
 
+  return(
+    <>
+    <SignInContainer>
+      <FormWrap>
+        <IconDiv>
+        <Icon to="/">返る</Icon>
+        </IconDiv>
+        <FormContent>
+          <Form action="#">
+            <FormH1>Sign In</FormH1>
+            <FormLabel htmlFor='for'>Username</FormLabel>
+            <FormInput type='name' required onChange={onUsernameInput}/>
+            <FormLabel htmlFor='for'>Password</FormLabel>
+            <FormInput type='password' required onChange={onPasswordInput}/>
+            <FormButton type="submit" onClick={onSubmitSignin}>Continue</FormButton>
+          </Form>
+        </FormContent>
+      </FormWrap>
+    </SignInContainer>
+    </>
+
+  );
+
+/*
   return (
     <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">
@@ -92,7 +129,7 @@ function SignIn(props) {
           </div>
           <div className="lh-copy mt3">
             <p 
-              onClick={() => setRoute('register')}
+              onClick={() => navigate("/register")}
               className="f6 link dim black db pointer"
             >
               Register
@@ -102,6 +139,9 @@ function SignIn(props) {
       </main>
     </article>
   );
+*/
+
 }
+
 
 export default SignIn;

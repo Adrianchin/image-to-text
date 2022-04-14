@@ -186,11 +186,11 @@ function ImageSubmit(props) {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form onSubmit={onFormSubmit} className="form">
       <h1 className="center"> File Upload </h1>
       <div className="center">
         <input type="file" name="myImage" onChange={onChange} />
-        <button type="submit">Upload</button>
+        <button type="submit" className="grow f6 link ph3 pv2 dib white bg-black">Upload</button>
       </div>
     </form>
   );

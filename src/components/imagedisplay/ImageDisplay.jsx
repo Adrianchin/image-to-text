@@ -80,30 +80,34 @@ function ImageDisplay(props) {
 
 
   return (
-    <div className="center" style={{
-      height:currentHeight,
-    }}>
-      <div className="absolute">
-        <img
-          id="inputimage"
-          alt="submittedimage"
-          src={imageURL}
-          width={imgTagWidth}
-          height="auto"
-          onLoad={onImgLoad}
-          ref={imageRef}
-        />
-        <div
-          className="boundingbox"
-          style={{
-            top: box.top,
-            right: box.right,
-            left: box.left,
-            bottom: box.bottom,
-          }}
-        ></div>
+    <>{imageURL
+      ?<div className="center" style={{
+        height:currentHeight,
+      }}>
+        <div className="absolute">
+          <img
+            id="inputimage"
+            alt="submittedimage"
+            src={imageURL}
+            width={imgTagWidth}
+            height="auto"
+            onLoad={onImgLoad}
+            ref={imageRef}
+          />
+          <div
+            className="boundingbox"
+            style={{
+              top: box.top,
+              right: box.right,
+              left: box.left,
+              bottom: box.bottom,
+            }}
+          ></div>
+        </div>
       </div>
-    </div>
+    :<></>
+    }
+    </>
   );
 }
 

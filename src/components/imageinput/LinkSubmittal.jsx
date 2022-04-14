@@ -194,12 +194,12 @@ function LinkSubmittal(props) {
     <div className="center">
       <div className="form center pa4 br3 shadow-5">
         <input
-          className="f4 pa2 w-70 center"
+          className="f5 pa2 w-70 center"
           type="text"
           onChange={onImageInput}
         />
         <button
-          className="w-30 grow f5 link ph3 pv2 dib white bg-light-purple"
+          className="w-30 grow f6 link ph3 pv2 dib white bg-black"
           onClick={onImageButtonSubmit}
         >
           Image URL

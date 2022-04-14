@@ -7,12 +7,10 @@ import Tokenizer from "../tokenizer/Tokenizer";
 import TokenTextTable from "../tokenizer/TokenTextTable";
 
 import {
-  UploadContainer,
-  UploadColumn,
+  GeneralContainer,
+  GeneralColumn,
   PictureColumn,
-  InputColumn,
-  InputRow,
-  CardWrapper
+  InputWrapper
 } from "../../pages/PageElements";
 
 function DisplayData(props) {
@@ -63,22 +61,16 @@ async function onUpdateData(){
 
   return (
     <>
-     <UploadContainer>
-     <UploadColumn>
-            
-    <div className="center">
-        <h1>
-        {userDisplayData.date}
-        </h1>
-    </div>
-      <CardWrapper>
+     <GeneralContainer>
+     <GeneralColumn>
+      <InputWrapper>
         <TextToDeepL
           setTranslatedText={setUserDisplayTranslatedText}
         />
         <Tokenizer
           setTokenizedText={setUserDisplayTokenizedText}
         />
-      </CardWrapper>
+      </InputWrapper>
       <div className="">
             <input
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
@@ -88,7 +80,7 @@ async function onUpdateData(){
             />
           </div>
       <div>
-        <TranslatedText translatedText={userDisplayTranslatedText} />
+        <TranslatedText translatedText={userDisplayTranslatedText}/>
       </div>
       <div>
         <ImageText
@@ -96,7 +88,7 @@ async function onUpdateData(){
         />
       </div>
       <div>
-        <TokenTextTable tokenizedText={userDisplayTokenizedText} />
+        <TokenTextTable tokenizedText={userDisplayTokenizedText}/>
       </div>
       <PictureColumn>
         <ImageDisplay
@@ -109,8 +101,8 @@ async function onUpdateData(){
           imageURL={userDisplayData.imageURL}
         />
       </PictureColumn>
-      </UploadColumn>
-      </UploadContainer>
+      </GeneralColumn>
+      </GeneralContainer>
     </>
   );
 }

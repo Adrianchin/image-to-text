@@ -9,12 +9,10 @@ import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 import {
-    UploadContainer,
-    UploadColumn,
+    GeneralContainer,
+    GeneralColumn,
     PictureColumn,
-    InputColumn,
-    InputRow,
-    CardWrapper
+    InputWrapper,
 } from "./PageElements";
 
 function UploadFile(props) {
@@ -62,9 +60,9 @@ function UploadFile(props) {
     <>
         <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
         <LoggedInNavbar toggle={toggle}/>
-        <UploadContainer>
-            <UploadColumn>
-            <CardWrapper>
+        <GeneralContainer>
+            <GeneralColumn>
+            <InputWrapper>
 
                 <ImageSubmit
                     setImageText={setImageText}
@@ -90,7 +88,7 @@ function UploadFile(props) {
                         userData={userData}
                     />
 
-            </CardWrapper>
+            </InputWrapper>
             <div>
             <TranslatedText
                 translatedText={translatedText}
@@ -106,7 +104,7 @@ function UploadFile(props) {
             tokenizedText={tokenizedText}
             />
             </div>
-            <PictureColumn>
+                <PictureColumn>
                 <ImageDisplay
                     linkImagePath={linkImagePath}
                     linkOriginalImageSize={linkOriginalImageSize}
@@ -117,8 +115,8 @@ function UploadFile(props) {
                     imageURL={imageURL}
                 />
                 </PictureColumn>
-            </UploadColumn>
-        </UploadContainer>
+            </GeneralColumn>
+        </GeneralContainer>
     </>
   )
 }
