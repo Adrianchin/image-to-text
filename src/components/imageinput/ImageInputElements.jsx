@@ -13,7 +13,7 @@ padding: 30px 30px;
 border-radius: 4px;
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 
-@media screen and (max-width: 600px){ 
+@media screen and (max-width: 500px){ 
     padding: 40px 0px;
     max-width: 250px;
     grid-template-rows: 1fr 1fr;

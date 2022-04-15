@@ -34,7 +34,8 @@ function SignIn(props) {
     setSignInPassword(event.target.value);
   };
 
-  function onSubmitSignin(){
+  function onSubmitSignin(event){
+    event.preventDefault(); //Added to prevent auto refresh. Why? React refreshed auto when submit form is completed.
     const signInContent ={
       username: signInUsername,
       password: signInPassword
@@ -52,9 +53,9 @@ function SignIn(props) {
         const signInReturn = await response.json();
         console.log(signInReturn)
         if(signInReturn.username){
+          navigate("/");
           setUserData(signInReturn);
           setIfLogin(true);
-          navigate("/profile");
         }
       }catch(error) {
         console.log(
@@ -73,15 +74,15 @@ function SignIn(props) {
         <Icon to="/">返る</Icon>
         </IconDiv>
         <FormContent>
-          <Form action="#">
+          <Form>
             <FormH1>Sign In</FormH1>
             <FormLabel htmlFor='for'>Username</FormLabel>
-            <FormInput type='name' required onChange={onUsernameInput}/>
+            <FormInput type='name' onChange={onUsernameInput}/>
             <FormLabel htmlFor='for'>Password</FormLabel>
-            <FormInput type='password' required onChange={onPasswordInput}/>
+            <FormInput type='password' onChange={onPasswordInput}/>
             <FormButton type="submit" onClick={onSubmitSignin}>Continue</FormButton>
             <TextDiv>
-            <Text onClick={() => navigate("/home")}>Register</Text>
+            <Text onClick={() => navigate("/register")}>Register</Text>
             </TextDiv>
           </Form>
         </FormContent>

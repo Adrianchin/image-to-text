@@ -7,7 +7,7 @@ export const TextContainer = styled.div`
     justify-content: flex-start;
     align-items: stretch;
     border-radius: 5px;
-    max-width: auto;
+    width: 100%;
     max-height: auto;
     padding: 10px;
     box-shadow: 0 2px 3px rgba(0,0,0,0.2);

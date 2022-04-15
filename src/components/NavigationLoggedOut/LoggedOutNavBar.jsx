@@ -114,7 +114,7 @@ const LoggedOutNavbar = ({toggle}) => {
                     </NavItem>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to="/signin">
+                    <NavBtnLink to="/signin?#">
                         Sign In
                     </NavBtnLink>
                 </NavBtn>

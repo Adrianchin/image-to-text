@@ -17,7 +17,7 @@ const LoggedInSideBar = ({isOpen, toggle}) => {
         </Icon>
         <SidebarWrapper>
           <SidebarMenu>
-            <SidebarLink to="/home" onClick={toggle}>
+            <SidebarLink to="/" onClick={toggle}>
             Home
             </SidebarLink>
             <SidebarLink to="/profile" onClick={toggle}>
@@ -28,7 +28,7 @@ const LoggedInSideBar = ({isOpen, toggle}) => {
             </SidebarLink>
           </SidebarMenu>
           <SideBtnWrap>
-            <SidebarRoute to="/home">
+            <SidebarRoute to="/">
               Sign Out
             </SidebarRoute>
           </SideBtnWrap>

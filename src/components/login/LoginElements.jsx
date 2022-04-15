@@ -35,7 +35,7 @@ export const RegisterContainer = styled.div`
     top: 0;
     z-index: -1;
     overflow: hidden;
-    background-image: url(${require("../../main_page_images/thousand_gate_shrine.jpg")});
+    background-image: url(${require("../../main_page_images/town.jpg")});
     background-size: cover;
     opacity: 1;
     justify-content: center;

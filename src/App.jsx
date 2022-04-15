@@ -50,6 +50,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <Home
+          ifLogin={ifLogin}
           />}
         />
         <Route path="/home" element={
