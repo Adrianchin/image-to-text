@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import ProfileCards from "../components/profile/Profile";
+import ProfileCards from "../components/profile/ProfileCards";
 import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 

@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import {
+  UploadFileButton,
+  UploadButton,
+  ImageUploadForm,
+  SubmitContainer,
+} from "./ImageInputElements";
 
 function ImageSubmit(props) {
   const setImageText = props.setImageText;
@@ -185,14 +191,21 @@ function ImageSubmit(props) {
     setFile(event.target.files[0]);
   };
 
+
+
   return (
-    <form onSubmit={onFormSubmit} className="form">
+    <ImageUploadForm onSubmit={onFormSubmit}>
       <h1 className="center"> File Upload </h1>
-      <div className="center">
-        <input type="file" name="myImage" onChange={onChange} />
-        <button type="submit" className="grow f6 link ph3 pv2 dib white bg-black">Upload</button>
-      </div>
-    </form>
+        <SubmitContainer>
+      <label htmlFor={"upload-button"}>
+        <UploadFileButton>
+          Choose JPG File
+        </UploadFileButton>
+      </label>
+        <input type="file" name="myImage" id="upload-button" style={{display:"none"}} onChange={onChange}/>
+        <UploadButton type="submit" >Upload</UploadButton>
+      </SubmitContainer>
+    </ImageUploadForm>
   );
 }
 

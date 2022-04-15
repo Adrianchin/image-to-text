@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import Cards from "./cards/Cards";
 
+
 function Profile(props) {
 
 const userData = props.userData;
@@ -30,14 +31,14 @@ useEffect(() => {
 }, [])
 
   return (
-    <div>
+    <>
         <Cards
             userData={userData}
             setUserDisplayData={setUserDisplayData}
             setRoute={setRoute}
             setUserData={setUserData}
         />
-    </div>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   CardWrapper,
@@ -70,7 +70,7 @@ function Cards(props) {
     //console.log(`This is userData${i} from Cards run: `, userData)
     return (
       <Card key={i}>
-        <CardImage key={i} variant="top" src={userData.profile[i].imageURL} />
+        <CardImage variant="top" src={userData.profile[i].imageURL} />
         <CardBody>
           <CardTitle>{userData.profile[i].date}</CardTitle>
           <CardText>

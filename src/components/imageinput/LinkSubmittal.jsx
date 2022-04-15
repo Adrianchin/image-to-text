@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import {
+  UploadButton,
+  InputURL,
+  InputContainer,
+  SubmitContainer
+} from "./ImageInputElements";
 
 function LinkSubmittal(props) {
   const setLinkOriginalImageSize = props.setLinkOriginalImageSize;
@@ -191,21 +197,20 @@ function LinkSubmittal(props) {
   }
 
   return (
-    <div className="center">
-      <div className="form center pa4 br3 shadow-5">
-        <input
-          className="f5 pa2 w-70 center"
+      <InputContainer>
+      <h1 className="center"> Image URL </h1>
+      <SubmitContainer>
+        <InputURL
           type="text"
           onChange={onImageInput}
         />
-        <button
-          className="w-30 grow f6 link ph3 pv2 dib white bg-black"
+        <UploadButton
           onClick={onImageButtonSubmit}
         >
           Image URL
-        </button>
-      </div>
-    </div>
+        </UploadButton>
+      </SubmitContainer>
+      </InputContainer>
   );
 }
 
