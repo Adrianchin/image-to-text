@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import{
+  InputContainer,
+  SubmitContainer,
+  InputText,
+  UploadButton,
+} from "./TextToDeepLElements"
 
 function TextToDeepL(props) {
   const setTranslatedText = props.setTranslatedText;
@@ -38,21 +44,19 @@ function TextToDeepL(props) {
   };
 
   return (
-    <div className="center">
-      <div className="form center pa4 br3 shadow-5">
-        <input
-          className="f4 pa2 w-70 center"
+    <InputContainer>
+      <SubmitContainer>
+        <InputText
           type="text"
           onChange={onTextInput}
         />
-        <button
-          className="w-30 grow f6 link ph3 pv1 dib white bg-black"
+        <UploadButton
           onClick={onTextButtonSubmit}
         >
-          Text to Translation
-        </button>
-      </div>
-    </div>
+          Text to Translate
+        </UploadButton>
+      </SubmitContainer>
+    </InputContainer>
   );
 }
 

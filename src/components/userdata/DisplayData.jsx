@@ -10,8 +10,9 @@ import {
   GeneralContainer,
   GeneralColumn,
   PictureColumn,
-  InputWrapper
-} from "../../pages/PageElements";
+  UpdateButton,
+  InputContainer,
+} from "./DisplayDataElements";
 
 function DisplayData(props) {
   const userDisplayData = props.userDisplayData;
@@ -63,33 +64,21 @@ async function onUpdateData(){
     <>
      <GeneralContainer>
      <GeneralColumn>
-      <InputWrapper>
+        <InputContainer>
+          <UpdateButton onClick={onUpdateData}>Update Data</UpdateButton>
+          <h5>{`${userDisplayData.date}`}</h5>
+        </InputContainer>
         <TextToDeepL
           setTranslatedText={setUserDisplayTranslatedText}
         />
         <Tokenizer
           setTokenizedText={setUserDisplayTokenizedText}
         />
-      </InputWrapper>
-      <div className="">
-            <input
-              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-              type="submit"
-              value="Update Data"
-              onClick={onUpdateData}
-            />
-          </div>
-      <div>
         <TranslatedText translatedText={userDisplayTranslatedText}/>
-      </div>
-      <div>
         <ImageText
           imageText={userDisplayData.imageInformation[0].description}
         />
-      </div>
-      <div>
         <TokenTextTable tokenizedText={userDisplayTokenizedText}/>
-      </div>
       <PictureColumn>
         <ImageDisplay
           linkImagePath={userDisplayData.linkImagePath}

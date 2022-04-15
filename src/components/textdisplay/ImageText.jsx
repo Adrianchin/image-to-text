@@ -1,4 +1,7 @@
 import React from "react";
+import {
+  TextContainer,
+} from "./TextElements";
 
 function ImageText(props) {
   const imageText = props.imageText;
@@ -7,12 +10,9 @@ function ImageText(props) {
     <>
       {imageText != null 
       ? (
-        <div>
-          <div>
-            <h3 className="center">{`This is the image text`}</h3>
+          <TextContainer>
             <h5 className="center">{`${imageText}`}</h5>
-          </div>
-        </div>
+          </TextContainer>
       ) : (
         <></>
       )}

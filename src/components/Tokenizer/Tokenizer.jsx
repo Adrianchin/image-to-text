@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import{
+  InputContainer,
+  SubmitContainer,
+  InputText,
+  UploadButton,
+} from "./TokenizerElements"
 
 function Tokenizer(props) {
   const setTokenizedText = props.setTokenizedText;
@@ -39,21 +45,19 @@ function Tokenizer(props) {
   };
 
   return (
-    <div className="center">
-      <div className="form center pa4 br3 shadow-5">
-        <input
-          className="f5 pa2 w-70 center"
+    <InputContainer>
+      <SubmitContainer>
+        <InputText
           type="text"
           onChange={onTextInput}
         />
-        <button
-          className="w-30 grow f6 link ph3 pv1 dib white bg-black"
+        <UploadButton
           onClick={onTextButtonSubmit}
         >
-          Text to Tokenized 
-        </button>
-      </div>
-    </div>
+          Text to Tokenize
+        </UploadButton>
+      </SubmitContainer>
+    </InputContainer>
   );
 }
 

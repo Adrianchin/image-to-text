@@ -1,4 +1,7 @@
 import React from "react";
+import {
+  TokenizedTableContainer,
+} from "./TokenizerElements";
 
 function TokenTextTable(props) {
   const tokenizedText = props.tokenizedText;
@@ -57,19 +60,14 @@ function TokenTextTable(props) {
     <>
       {tokenizedText != null 
       ? (
-        <div>
-          <div className="center">
-            <h1 id="title">Tokenized Table</h1>
-          </div>
-          <div className="center">
+        <TokenizedTableContainer>
             <table id="tokenizedTable">
               <thead>
                 <tr>{renderHeader()}</tr>
               </thead>
               <tbody>{renderBody()}</tbody>
             </table>
-          </div>
-        </div>
+        </TokenizedTableContainer>
       ) : (
         <></>
       )}
