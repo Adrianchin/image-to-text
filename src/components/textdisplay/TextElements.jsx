@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const TextContainer = styled.div`
-    background: #fff;
+    //background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -14,4 +14,16 @@ export const TextContainer = styled.div`
     position: relative;
     transition: all 0.2s ease-in-out;
     margin-top:10px;
+    z-index:1;
 `;
+export const TextBackground = styled.div`
+    background: #fff;
+    position:absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    opacity: .9;
+    z-index:-1;
+`

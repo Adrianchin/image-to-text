@@ -10,6 +10,7 @@ import {
   CardButton,
   CardImage,
   ButtonContainer,
+  CardBackground
 } from "./CardElements";
 
 function Cards(props) {
@@ -70,6 +71,7 @@ function Cards(props) {
     //console.log(`This is userData${i} from Cards run: `, userData)
     return (
       <Card key={i}>
+        <CardBackground/>
         <CardImage variant="top" src={userData.profile[i].imageURL} />
         <CardBody>
           <CardTitle>{userData.profile[i].date}</CardTitle>

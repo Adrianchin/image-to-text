@@ -1,6 +1,7 @@
 import React from "react";
 import {
   TokenizedTableContainer,
+  TokenizerTableBackground,
 } from "./TokenizerElements";
 
 function TokenTextTable(props) {
@@ -61,6 +62,7 @@ function TokenTextTable(props) {
       {tokenizedText != null 
       ? (
         <TokenizedTableContainer>
+          <TokenizerTableBackground/>
             <table id="tokenizedTable">
               <thead>
                 <tr>{renderHeader()}</tr>

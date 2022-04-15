@@ -34,7 +34,6 @@ export const SubmitContainer = styled.div`
 `
 
 export const InputContainer = styled.div`
-    background: #ffffff;
     height: auto;
     width: 100%;
     display: grid;
@@ -56,16 +55,21 @@ export const InputContainer = styled.div`
 //For Token Table
 
 export const TokenizedTableContainer = styled.div`
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    border-radius: 5px;
-    max-width: auto;
-    max-height: auto;
     padding: 25px;
     position: relative;
     transition: all 0.2s ease-in-out;
     margin-top:10px;
+    z-index:1;
+    border-radius: 10px;
 `;
+export const TokenizerTableBackground = styled.div`
+    background: #fff;
+    position:absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .9;
+    z-index: -1;
+    border-radius: 10px;
+`

@@ -35,7 +35,6 @@ export const SubmitContainer = styled.div`
 `
 
 export const InputContainer = styled.div`
-    background: #ffffff;
     height: auto;
     width: 100%;
     display: grid;

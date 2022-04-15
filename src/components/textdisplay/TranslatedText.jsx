@@ -1,6 +1,7 @@
 import React from "react";
 import {
   TextContainer,
+  TextBackground,
 } from "./TextElements";
 
 function TranslatedText(props) {
@@ -11,6 +12,7 @@ function TranslatedText(props) {
       {translatedText != null 
       ?(
           <TextContainer>
+            <TextBackground/>
             <h5 className="center">{`${translatedText}`}</h5>
           </TextContainer>
       ) : (

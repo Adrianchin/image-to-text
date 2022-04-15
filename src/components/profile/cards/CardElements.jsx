@@ -5,7 +5,6 @@ export const CardContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #010606;
 `;
 
 export const CardWrapper = styled.div`
@@ -14,7 +13,7 @@ export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: stretch;
-    grid-gap: 20px;
+    grid-gap: 10px;
     padding: 0 0px;
 
     //Becomes 2 columns on small screens
@@ -30,19 +29,30 @@ export const CardWrapper = styled.div`
 `;
 
 export const Card = styled.div`
-    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    border-radius: 5px;
+    border-radius: 20px;
     max-width: 500px;
     max-height: auto;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     position: relative;
     transition: all 0.2s ease-in-out;
 `;
+export const CardBackground = styled.div`
+    background: #fff;
+    position:absolute;
+    border-radius: 20px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .8;
+    z-index:-1;
+`
+
 
 export const CardImage = styled.img`
     object-fit: cover;
@@ -51,7 +61,6 @@ export const CardImage = styled.img`
 `;
 
 export const CardBody = styled.div`
-    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

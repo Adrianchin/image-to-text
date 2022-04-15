@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const GeneralContainer = styled.div`
+export const DisplayDataContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -10,9 +10,10 @@ export const GeneralContainer = styled.div`
     align-items: center;
     background: #010606;
     background-size: cover;
+    z-index: -2;
 `;
 
-export const GeneralColumn = styled.div`
+export const DisplayDataColumn = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -22,7 +23,23 @@ export const GeneralColumn = styled.div`
     width:85%;
     height:100%;
     min-height:100vh;
+    z-index: 0;
 `;
+
+export const DisplayDataBackgrounImage = styled.div`
+background-image: url(${require("../../main_page_images/falltemple.jpg")});
+background-size: cover;
+opacity: 1;
+justify-content: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
+position: fixed;
+z-index: 0;
+top: 0%;
+width: 85%;
+bottom: 0%;
+box-shadow: inset 0 0px 30px 3px #7a7a7a;
+`
 
 export const PictureColumn = styled.div`
     display: flex;
@@ -51,11 +68,10 @@ export const UpdateButton = styled.button`
     }
 ` 
 export const InputContainer = styled.div`
-    background: #ffffff;
     height: auto;
     width: 100%;
     grid-template-columns: 1fr 8fr;
-    z-index: 1;
-    margin-top:10px;
+    z-index: 0;
+    margin-top:80px;
 `
 

@@ -3,12 +3,6 @@ import {Link} from "react-router-dom";
 
 export const SignInContainer = styled.div`
     min-height:692px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: -1;
     overflow: hidden;
     background-image: url(${require("../../main_page_images/geisha.jpg")});
     background-size: cover;
@@ -28,12 +22,6 @@ export const SignInContainer = styled.div`
 
 export const RegisterContainer = styled.div`
     min-height:692px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: -1;
     overflow: hidden;
     background-image: url(${require("../../main_page_images/town.jpg")});
     background-size: cover;

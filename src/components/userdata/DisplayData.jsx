@@ -7,11 +7,12 @@ import Tokenizer from "../tokenizer/Tokenizer";
 import TokenTextTable from "../tokenizer/TokenTextTable";
 
 import {
-  GeneralContainer,
-  GeneralColumn,
+  DisplayDataContainer,
+  DisplayDataColumn,
   PictureColumn,
   UpdateButton,
   InputContainer,
+  DisplayDataBackgrounImage,
 } from "./DisplayDataElements";
 
 function DisplayData(props) {
@@ -62,12 +63,13 @@ async function onUpdateData(){
 
   return (
     <>
-     <GeneralContainer>
-     <GeneralColumn>
+     <DisplayDataContainer>
+     <DisplayDataColumn>
         <InputContainer>
           <UpdateButton onClick={onUpdateData}>Update Data</UpdateButton>
           <h5>{`${userDisplayData.date}`}</h5>
         </InputContainer>
+        <DisplayDataBackgrounImage/>
         <TextToDeepL
           setTranslatedText={setUserDisplayTranslatedText}
         />
@@ -90,8 +92,8 @@ async function onUpdateData(){
           imageURL={userDisplayData.imageURL}
         />
       </PictureColumn>
-      </GeneralColumn>
-      </GeneralContainer>
+      </DisplayDataColumn>
+      </DisplayDataContainer>
     </>
   );
 }

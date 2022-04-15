@@ -1,6 +1,7 @@
 import React from "react";
 import {
   TextContainer,
+  TextBackground,
 } from "./TextElements";
 
 function ImageText(props) {
@@ -12,6 +13,7 @@ function ImageText(props) {
       ? (
           <TextContainer>
             <h5 className="center">{`${imageText}`}</h5>
+            <TextBackground/>
           </TextContainer>
       ) : (
         <></>
