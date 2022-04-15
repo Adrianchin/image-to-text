@@ -15,7 +15,7 @@ import {
 } from './LoggedInNavBarElements';
 
 const LoggedInNavbar = ({toggle}) => {
-    const [scrollNav, setScrollNav] = useState(false)
+    const [scrollNav, setScrollNav] = useState(false);
 //This is the scroll effect. We define the state as fale for scrollNav and make it run true when the window scroll passes 80 pixles in the Y
     const changeNav=() => {
         if(window.scrollY >= 80) {
@@ -27,6 +27,8 @@ const LoggedInNavbar = ({toggle}) => {
 //This is a live update to changeNav that runs changeNav and waits for scroll to >80
     useEffect( ()=> {
         window.addEventListener('scroll', changeNav)
+        return () => {
+            setScrollNav({})};
     }, [])
 
     const toggleHome = () => {
