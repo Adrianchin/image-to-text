@@ -11,7 +11,7 @@ import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSi
 import {
     UploadContainer,
     UploadColumn,
-    PictureColumn,
+    UploadPictureColumn,
     InputWrapper,
     NavBarPlaceholder,
     UploadBackgrounImage,
@@ -108,7 +108,7 @@ function UploadFile(props) {
             tokenizedText={tokenizedText}
             />
             </div>
-                <PictureColumn>
+                <UploadPictureColumn>
                 <ImageDisplay
                     linkImagePath={linkImagePath}
                     linkOriginalImageSize={linkOriginalImageSize}
@@ -118,7 +118,7 @@ function UploadFile(props) {
                     uploadBox={uploadBox}
                     imageURL={imageURL}
                 />
-                </PictureColumn>
+                </UploadPictureColumn>
             </UploadColumn>
         </UploadContainer>
     </>
