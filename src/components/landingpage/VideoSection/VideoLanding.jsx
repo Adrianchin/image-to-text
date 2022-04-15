@@ -32,7 +32,7 @@ const VideoLanding = () => {
         </VideoLandingP>
         <VideoLandingBtnWrapper>
           <Button
-            to="about"
+            to="/"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             smooth={true}

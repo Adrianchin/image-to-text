@@ -48,6 +48,7 @@ export const InputContainer = styled.div`
   @media screen and (max-width: 500px) {
     padding: 30px 0px;
     max-width: 250px;
-    grid-template-rows: 1fr 1fr;
+    margin-bottom: 50px;
+    padding: 0px 0px;
   }
 `;
