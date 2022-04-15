@@ -65,11 +65,11 @@ async function onUpdateData(){
     <>
      <DisplayDataContainer>
      <DisplayDataColumn>
+        <DisplayDataBackgrounImage/>
         <InputContainer>
           <UpdateButton onClick={onUpdateData}>Update Data</UpdateButton>
           <h5>{`${userDisplayData.date}`}</h5>
         </InputContainer>
-        <DisplayDataBackgrounImage/>
         <TextToDeepL
           setTranslatedText={setUserDisplayTranslatedText}
         />

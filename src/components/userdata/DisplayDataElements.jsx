@@ -4,10 +4,10 @@ export const DisplayDataContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: top;
+    align-items: center;
     height:100%;
     min-height:100vh;
     width:100%;
-    align-items: center;
     background: #010606;
     background-size: cover;
     z-index: -2;

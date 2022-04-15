@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function ImageDisplay(props) {
   const linkImagePath = props.linkImagePath;
@@ -16,7 +16,6 @@ function ImageDisplay(props) {
   const imageWidth=600; //initial image size, max size
   const imgTagWidth=String(imageWidth);// needs to be a string for the input
 
-  const imageRef = useRef();// Not using, remove?
   const onImgLoad = ({ target: img }) => {
     const { offsetHeight, offsetWidth } = img;
     setCurrentHeight(offsetHeight);
@@ -92,7 +91,6 @@ function ImageDisplay(props) {
             width={imgTagWidth}
             height="auto"
             onLoad={onImgLoad}
-            ref={imageRef}
           />
           <div
             className="boundingbox"
