@@ -65,7 +65,6 @@ export const TokenizedTableContainer = styled.div`
     max-width: auto;
     max-height: auto;
     padding: 25px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
     position: relative;
     transition: all 0.2s ease-in-out;
     margin-top:10px;

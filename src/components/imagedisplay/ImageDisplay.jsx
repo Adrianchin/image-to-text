@@ -82,8 +82,7 @@ function ImageDisplay(props) {
   return (
     <>{imageURL
       ?<div className="center" style={{
-        height:currentHeight+10,
-        paddingTop:10,
+        height:currentHeight
       }}>
         <div className="absolute">
           <img
