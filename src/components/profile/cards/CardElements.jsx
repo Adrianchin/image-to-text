@@ -59,16 +59,6 @@ export const CardBody = styled.div`
     max-height: auto;
     width: auto;
     transition: all 0.2s ease-in-out;
-
-    //Becomes 2 columns on small screens
-    @media screen and (max-width: 1300px){
-
-    }
-
-    //Becomes 1 column in small phones
-    @media screen and (max-width: 768px) {
-
-    }
 `;
 
 export const CardTitle = styled.h1`
