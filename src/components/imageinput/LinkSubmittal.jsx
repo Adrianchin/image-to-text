@@ -3,7 +3,7 @@ import {
   UploadButton,
   InputURL,
   InputContainer,
-  SubmitContainer
+  SubmitContainer,
 } from "./ImageInputElements";
 
 function LinkSubmittal(props) {

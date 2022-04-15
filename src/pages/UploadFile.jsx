@@ -9,10 +9,12 @@ import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 import {
-    GeneralContainer,
-    GeneralColumn,
+    UploadContainer,
+    UploadColumn,
     PictureColumn,
     InputWrapper,
+    NavBarPlaceholder,
+    UploadBackgrounImage,
 } from "./PageElements";
 
 function UploadFile(props) {
@@ -60,8 +62,10 @@ function UploadFile(props) {
     <>
         <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
         <LoggedInNavbar toggle={toggle}/>
-        <GeneralContainer>
-            <GeneralColumn>
+        <UploadContainer>
+            <UploadColumn>
+            <NavBarPlaceholder/>
+            <UploadBackgrounImage/>
             <InputWrapper>
 
                 <ImageSubmit
@@ -115,8 +119,8 @@ function UploadFile(props) {
                     imageURL={imageURL}
                 />
                 </PictureColumn>
-            </GeneralColumn>
-        </GeneralContainer>
+            </UploadColumn>
+        </UploadContainer>
     </>
   )
 }

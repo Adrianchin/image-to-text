@@ -41,6 +41,7 @@ export const Card = styled.div`
     position: relative;
     transition: all 0.2s ease-in-out;
 `;
+
 export const CardBackground = styled.div`
     background: #fff;
     position:absolute;
