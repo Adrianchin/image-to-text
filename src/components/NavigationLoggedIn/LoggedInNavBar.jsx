@@ -28,7 +28,7 @@ const LoggedInNavbar = ({toggle}) => {
     useEffect( ()=> {
         window.addEventListener('scroll', changeNav)
         return () => {
-            setScrollNav({})};
+            setScrollNav({})};//required to demount
     }, [])
 
     const toggleHome = () => {

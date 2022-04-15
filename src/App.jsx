@@ -7,9 +7,10 @@ import Home from './pages/Home';
 import HomeLoggedIn from './pages/HomeLoggedIn';
 import Signin from './pages/Signin';
 import Register from './pages/Register';
-import Profile from "./pages/Profile"
-import DisplayData from "./pages/DisplayData"
-import UploadFile from "./pages/UploadFile"
+import Profile from "./pages/Profile";
+import DisplayData from "./pages/DisplayData";
+import UploadFile from "./pages/UploadFile";
+import ScrollToTop from "./ScrollToTop";
 
 import "tachyons";
 import "./App.css";
@@ -47,6 +48,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={
           <Home

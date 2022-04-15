@@ -3,9 +3,6 @@ import DisplayDataComponent from "../components/userdata/DisplayData";
 import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
-import {
-  BackgrounImage,
-} from "./PageElements"
 
 function DisplayData(props) {
     const userDisplayData= props.userDisplayData;
