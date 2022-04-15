@@ -197,20 +197,13 @@ function LinkSubmittal(props) {
   }
 
   return (
-      <InputContainer>
+    <InputContainer>
       <h3 className="center"> Image URL </h3>
       <SubmitContainer>
-        <InputURL
-          type="text"
-          onChange={onImageInput}
-        />
-        <UploadButton
-          onClick={onImageButtonSubmit}
-        >
-          Image URL
-        </UploadButton>
+        <InputURL type="text" onChange={onImageInput} />
+        <UploadButton onClick={onImageButtonSubmit}>Image URL</UploadButton>
       </SubmitContainer>
-      </InputContainer>
+    </InputContainer>
   );
 }
 

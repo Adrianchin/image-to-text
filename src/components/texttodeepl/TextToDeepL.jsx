@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import{
+import {
   InputContainer,
   SubmitContainer,
   InputText,
   UploadButton,
-} from "./TextToDeepLElements"
+} from "./TextToDeepLElements";
 
 function TextToDeepL(props) {
   const setTranslatedText = props.setTranslatedText;
@@ -18,18 +18,19 @@ function TextToDeepL(props) {
     });
 
     async function fetchTextTranslation() {
-      try{
-        const response = await fetch(`http://localhost:3000/textfortranslation`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: textData,
-        });
+      try {
+        const response = await fetch(
+          `http://localhost:3000/textfortranslation`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: textData,
+          }
+        );
         const translatedTextInfo = await response.json();
         setTranslatedText(translatedTextInfo.translations[0].text);
-      }catch (error) {
-        console.log(
-          "Error fetching Token response for text, try again", error
-        );
+      } catch (error) {
+        console.log("Error fetching Token response for text, try again", error);
       }
     }
     fetchTextTranslation();
@@ -37,22 +38,17 @@ function TextToDeepL(props) {
 
   function onTextButtonSubmit() {
     onTextSubmit();
-  };
+  }
 
-  function onTextInput (event) {
+  function onTextInput(event) {
     setTextInput(event.target.value);
-  };
+  }
 
   return (
     <InputContainer>
       <SubmitContainer>
-        <InputText
-          type="text"
-          onChange={onTextInput}
-        />
-        <UploadButton
-          onClick={onTextButtonSubmit}
-        >
+        <InputText type="text" onChange={onTextInput} />
+        <UploadButton onClick={onTextButtonSubmit}>
           Text to Translate
         </UploadButton>
       </SubmitContainer>

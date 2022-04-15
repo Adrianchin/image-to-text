@@ -13,8 +13,8 @@ function ImageDisplay(props) {
   const [currentWidth, setCurrentWidth] = useState("");
   const [currentHeight, setCurrentHeight] = useState("");
 
-  const imageWidth=600; //initial image size, max size
-  const imgTagWidth=String(imageWidth);// needs to be a string for the input
+  const imageWidth = 600; //initial image size, max size
+  const imgTagWidth = String(imageWidth); // needs to be a string for the input
 
   const onImgLoad = ({ target: img }) => {
     const { offsetHeight, offsetWidth } = img;
@@ -77,34 +77,38 @@ function ImageDisplay(props) {
     uploadBox,
   ]);
 
-
   return (
-    <>{imageURL
-      ?<div className="center" style={{
-        height:currentHeight
-      }}>
-        <div className="absolute">
-          <img
-            id="inputimage"
-            alt="submittedimage"
-            src={imageURL}
-            width={imgTagWidth}
-            height="auto"
-            onLoad={onImgLoad}
-          />
-          <div
-            className="boundingbox"
-            style={{
-              top: box.top,
-              right: box.right,
-              left: box.left,
-              bottom: box.bottom,
-            }}
-          ></div>
+    <>
+      {imageURL ? (
+        <div
+          className="center"
+          style={{
+            height: currentHeight,
+          }}
+        >
+          <div className="absolute">
+            <img
+              id="inputimage"
+              alt="submittedimage"
+              src={imageURL}
+              width={imgTagWidth}
+              height="auto"
+              onLoad={onImgLoad}
+            />
+            <div
+              className="boundingbox"
+              style={{
+                top: box.top,
+                right: box.right,
+                left: box.left,
+                bottom: box.bottom,
+              }}
+            ></div>
+          </div>
         </div>
-      </div>
-    :<></>
-    }
+      ) : (
+        <></>
+      )}
     </>
   );
 }

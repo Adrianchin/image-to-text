@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   RegisterContainer,
@@ -12,11 +12,10 @@ import {
   FormButton,
   IconDiv,
   TextDiv,
-  Text
+  Text,
 } from "./LoginElements";
 
 function Register(props) {
-
   let navigate = useNavigate();
 
   const setRoute = props.setRoute;
@@ -44,7 +43,7 @@ function Register(props) {
       const signInContent = {
         username: newUsername,
         email: newEmail,
-        password: newPassword
+        password: newPassword,
       };
       async function registerUser() {
         try {
@@ -54,9 +53,9 @@ function Register(props) {
             body: JSON.stringify({
               username: signInContent.username,
               email: signInContent.email,
-              password: signInContent.password
-            })
-          })
+              password: signInContent.password,
+            }),
+          });
           const signInReturn = await response.json();
           if (signInReturn.username) {
             setUserData(signInReturn);
@@ -73,33 +72,35 @@ function Register(props) {
     }
   }
 
-  return(
+  return (
     <>
       <RegisterContainer>
         <FormWrap>
           <IconDiv>
-          <Icon to="/">返る</Icon>
+            <Icon to="/">返る</Icon>
           </IconDiv>
           <FormContent>
             <Form action="#">
               <FormH1>Register</FormH1>
-              <FormLabel htmlFor='for'>Username</FormLabel>
-              <FormInput type='name' required onChange={onUsernameInput}/>
-              <FormLabel htmlFor='for'>Email</FormLabel>
-              <FormInput type='email' required onChange={onEmailInput}/>
-              <FormLabel htmlFor='for'>Password</FormLabel>
-              <FormInput type='password' required onChange={onPasswordInput}/>
-              <FormButton type="submit" onClick={onSubmitRegister}>Continue</FormButton>
+              <FormLabel htmlFor="for">Username</FormLabel>
+              <FormInput type="name" required onChange={onUsernameInput} />
+              <FormLabel htmlFor="for">Email</FormLabel>
+              <FormInput type="email" required onChange={onEmailInput} />
+              <FormLabel htmlFor="for">Password</FormLabel>
+              <FormInput type="password" required onChange={onPasswordInput} />
+              <FormButton type="submit" onClick={onSubmitRegister}>
+                Continue
+              </FormButton>
               <TextDiv>
-              <Text onClick={() => navigate("/signin")}>Sign In</Text>
+                <Text onClick={() => navigate("/signin")}>Sign In</Text>
               </TextDiv>
             </Form>
           </FormContent>
         </FormWrap>
-    </RegisterContainer>
+      </RegisterContainer>
     </>
   );
-/*
+  /*
   return (
     <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
       <main className="pa4 black-80">

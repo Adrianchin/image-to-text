@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import{
+import {
   InputContainer,
   SubmitContainer,
   InputText,
   UploadButton,
-} from "./TokenizerElements"
+} from "./TokenizerElements";
 
 function Tokenizer(props) {
   const setTokenizedText = props.setTokenizedText;
@@ -18,7 +18,7 @@ function Tokenizer(props) {
     });
 
     async function fetchTokenization() {
-      try{
+      try {
         const response = await fetch(`http://localhost:3000/tokenizetext`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -27,10 +27,8 @@ function Tokenizer(props) {
         const tokenizedText = await response.json();
         setTokenizedText(tokenizedText);
         //console.log(tokenizedText);
-      }catch (error) {
-        console.log(
-          "Error fetching Token response for text, try again", error
-        );
+      } catch (error) {
+        console.log("Error fetching Token response for text, try again", error);
       }
     }
     fetchTokenization();
@@ -38,22 +36,17 @@ function Tokenizer(props) {
 
   function onTextButtonSubmit() {
     onTextSubmit();
-  };
+  }
 
   function onTextInput(event) {
     setTextInput(event.target.value);
-  };
+  }
 
   return (
     <InputContainer>
       <SubmitContainer>
-        <InputText
-          type="text"
-          onChange={onTextInput}
-        />
-        <UploadButton
-          onClick={onTextButtonSubmit}
-        >
+        <InputText type="text" onChange={onTextInput} />
+        <UploadButton onClick={onTextButtonSubmit}>
           Text to Tokenize
         </UploadButton>
       </SubmitContainer>

@@ -1,3 +1,5 @@
+//Delete this - Moved to Pages
+
 import React, {useState, useEffect} from "react";
 import ImageDisplay from "../imagedisplay/ImageDisplay";
 import ImageText from "../textdisplay/ImageText";

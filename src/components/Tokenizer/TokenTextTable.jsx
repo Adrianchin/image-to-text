@@ -59,16 +59,15 @@ function TokenTextTable(props) {
 
   return (
     <>
-      {tokenizedText != null 
-      ? (
+      {tokenizedText != null ? (
         <TokenizedTableContainer>
-          <TokenizerTableBackground/>
-            <table id="tokenizedTable">
-              <thead>
-                <tr>{renderHeader()}</tr>
-              </thead>
-              <tbody>{renderBody()}</tbody>
-            </table>
+          <TokenizerTableBackground />
+          <table id="tokenizedTable">
+            <thead>
+              <tr>{renderHeader()}</tr>
+            </thead>
+            <tbody>{renderBody()}</tbody>
+          </table>
         </TokenizedTableContainer>
       ) : (
         <></>

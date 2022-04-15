@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import ImageSubmit from "../components/imageinput/ImageSubmit";
 import LinkSubmittal from "../components/imageinput/LinkSubmittal";
 import TranslatedText from "../components/textdisplay/TranslatedText";
@@ -9,120 +9,112 @@ import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 import {
-    UploadContainer,
-    UploadColumn,
-    UploadPictureColumn,
-    InputWrapper,
-    NavBarPlaceholder,
-    UploadBackgrounImage,
+  UploadContainer,
+  UploadColumn,
+  UploadPictureColumn,
+  InputWrapper,
+  NavBarPlaceholder,
+  UploadBackgrounImage,
 } from "./PageElements";
 
 function UploadFile(props) {
-    const setImageText=props.setImageText;
-    const imageText=props.imageText;
+  const setImageText = props.setImageText;
+  const imageText = props.imageText;
 
-    const setUploadBox=props.setUploadBox;
-    const uploadBox=props.uploadBox;
+  const setUploadBox = props.setUploadBox;
+  const uploadBox = props.uploadBox;
 
-    const setImageURL=props.setImageURL;
-    const imageURL=props.imageURL;
+  const setImageURL = props.setImageURL;
+  const imageURL = props.imageURL;
 
-    const setUploadOriginalImageSize=props.setUploadOriginalImageSize;
-    const uploadOriginalImageSize=props.uploadOriginalImageSize;
-    
-    //remove?
-    const setUploadImagePath=props.setUploadImagePath;
-    const uploadImagePath=props.uploadImagePath;
+  const setUploadOriginalImageSize = props.setUploadOriginalImageSize;
+  const uploadOriginalImageSize = props.uploadOriginalImageSize;
 
-    //remove?
-    const setLinkImagePath=props.setLinkImagePath;
-    const linkImagePath=props.linkImagePath;
+  //remove?
+  const setUploadImagePath = props.setUploadImagePath;
+  const uploadImagePath = props.uploadImagePath;
 
-    const setTranslatedText=props.setTranslatedText;
-    const translatedText=props.translatedText
+  //remove?
+  const setLinkImagePath = props.setLinkImagePath;
+  const linkImagePath = props.linkImagePath;
 
-    const setTokenizedText=props.setTokenizedText;
-    const tokenizedText=props.tokenizedText;
+  const setTranslatedText = props.setTranslatedText;
+  const translatedText = props.translatedText;
 
-    const setLinkOriginalImageSize=props.setLinkOriginalImageSize;
-    const linkOriginalImageSize=props.linkOriginalImageSize;
+  const setTokenizedText = props.setTokenizedText;
+  const tokenizedText = props.tokenizedText;
 
-    const setLinkBox=props.setLinkBox;
-    const linkBox=props.linkBox;
-    
-    const userData=props.userData;
+  const setLinkOriginalImageSize = props.setLinkOriginalImageSize;
+  const linkOriginalImageSize = props.linkOriginalImageSize;
 
-    const [isOpen, setIsOpen] = useState(false)
+  const setLinkBox = props.setLinkBox;
+  const linkBox = props.linkBox;
 
-    const toggle = () => {
-        setIsOpen(!isOpen)
-    };
+  const userData = props.userData;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
-        <LoggedInSideBar isOpen={isOpen} toggle={toggle}/>
-        <LoggedInNavbar toggle={toggle}/>
-        <UploadContainer>
-            <UploadColumn>
-            <NavBarPlaceholder/>
-            <UploadBackgrounImage/>
-            <InputWrapper>
-
-                <ImageSubmit
-                    setImageText={setImageText}
-                    setUploadBox={setUploadBox}
-                    setImageURL={setImageURL}
-                    setUploadOriginalImageSize={setUploadOriginalImageSize}
-                    setUploadImagePath={setUploadImagePath}
-                    setLinkImagePath={setLinkImagePath}
-                    setTranslatedText={setTranslatedText}
-                    setTokenizedText={setTokenizedText}
-                    userData={userData}
-                />
-
-                    <LinkSubmittal
-                        setLinkOriginalImageSize={setLinkOriginalImageSize}
-                        setLinkBox={setLinkBox}
-                        setImageText={setImageText}
-                        setTranslatedText={setTranslatedText}
-                        setImageURL={setImageURL}
-                        setUploadImagePath={setUploadImagePath}
-                        setLinkImagePath={setLinkImagePath}
-                        setTokenizedText={setTokenizedText}
-                        userData={userData}
-                    />
-
-            </InputWrapper>
-            <div>
-            <TranslatedText
-                translatedText={translatedText}
+      <LoggedInSideBar isOpen={isOpen} toggle={toggle} />
+      <LoggedInNavbar toggle={toggle} />
+      <UploadContainer>
+        <UploadColumn>
+          <NavBarPlaceholder />
+          <UploadBackgrounImage />
+          <InputWrapper>
+            <ImageSubmit
+              setImageText={setImageText}
+              setUploadBox={setUploadBox}
+              setImageURL={setImageURL}
+              setUploadOriginalImageSize={setUploadOriginalImageSize}
+              setUploadImagePath={setUploadImagePath}
+              setLinkImagePath={setLinkImagePath}
+              setTranslatedText={setTranslatedText}
+              setTokenizedText={setTokenizedText}
+              userData={userData}
             />
-            <div>
-            <ImageText
-                imageText={imageText}
+
+            <LinkSubmittal
+              setLinkOriginalImageSize={setLinkOriginalImageSize}
+              setLinkBox={setLinkBox}
+              setImageText={setImageText}
+              setTranslatedText={setTranslatedText}
+              setImageURL={setImageURL}
+              setUploadImagePath={setUploadImagePath}
+              setLinkImagePath={setLinkImagePath}
+              setTokenizedText={setTokenizedText}
+              userData={userData}
             />
-            </div>
-            </div>
+          </InputWrapper>
+          <div>
+            <TranslatedText translatedText={translatedText} />
             <div>
-            <TokenTextTable 
-            tokenizedText={tokenizedText}
-            />
+              <ImageText imageText={imageText} />
             </div>
-                <UploadPictureColumn>
-                <ImageDisplay
-                    linkImagePath={linkImagePath}
-                    linkOriginalImageSize={linkOriginalImageSize}
-                    linkBox={linkBox}
-                    uploadImagePath={uploadImagePath}
-                    uploadOriginalImageSize={uploadOriginalImageSize}
-                    uploadBox={uploadBox}
-                    imageURL={imageURL}
-                />
-                </UploadPictureColumn>
-            </UploadColumn>
-        </UploadContainer>
+          </div>
+          <div>
+            <TokenTextTable tokenizedText={tokenizedText} />
+          </div>
+          <UploadPictureColumn>
+            <ImageDisplay
+              linkImagePath={linkImagePath}
+              linkOriginalImageSize={linkOriginalImageSize}
+              linkBox={linkBox}
+              uploadImagePath={uploadImagePath}
+              uploadOriginalImageSize={uploadOriginalImageSize}
+              uploadBox={uploadBox}
+              imageURL={imageURL}
+            />
+          </UploadPictureColumn>
+        </UploadColumn>
+      </UploadContainer>
     </>
-  )
+  );
 }
 
-export default UploadFile
+export default UploadFile;

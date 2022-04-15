@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   SignInContainer,
@@ -12,11 +12,10 @@ import {
   FormButton,
   IconDiv,
   TextDiv,
-  Text
+  Text,
 } from "./LoginElements";
 
 function SignIn(props) {
-
   let navigate = useNavigate();
 
   const setRoute = props.setRoute;
@@ -26,73 +25,70 @@ function SignIn(props) {
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
 
-  function onUsernameInput(event){
+  function onUsernameInput(event) {
     setSignInUsername(event.target.value);
-  };
+  }
 
-  function onPasswordInput(event){
+  function onPasswordInput(event) {
     setSignInPassword(event.target.value);
-  };
+  }
 
-  function onSubmitSignin(event){
+  function onSubmitSignin(event) {
     event.preventDefault(); //Added to prevent auto refresh. Why? React refreshed auto when submit form is completed.
-    const signInContent ={
+    const signInContent = {
       username: signInUsername,
-      password: signInPassword
-    }
-    async function signInUser(){
-      try{
-        const response = await fetch("http://localhost:3000/signin",{
+      password: signInPassword,
+    };
+    async function signInUser() {
+      try {
+        const response = await fetch("http://localhost:3000/signin", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body:  JSON.stringify({
+          body: JSON.stringify({
             username: signInContent.username,
-            password: signInContent.password
-          })
-        })
+            password: signInContent.password,
+          }),
+        });
         const signInReturn = await response.json();
-        console.log(signInReturn)
-        if(signInReturn.username){
+        console.log(signInReturn);
+        if (signInReturn.username) {
           navigate("/uploadfile");
           setUserData(signInReturn);
           setIfLogin(true);
         }
-      }catch(error) {
-        console.log(
-          "Error logging in"
-        );
+      } catch (error) {
+        console.log("Error logging in");
       }
     }
-  signInUser();
-  };
+    signInUser();
+  }
 
-  return(
+  return (
     <>
-    <SignInContainer>
-      <FormWrap>
-        <IconDiv>
-        <Icon to="/">返る</Icon>
-        </IconDiv>
-        <FormContent>
-          <Form>
-            <FormH1>Sign In</FormH1>
-            <FormLabel htmlFor='for'>Username</FormLabel>
-            <FormInput type='name' onChange={onUsernameInput}/>
-            <FormLabel htmlFor='for'>Password</FormLabel>
-            <FormInput type='password' onChange={onPasswordInput}/>
-            <FormButton type="submit" onClick={onSubmitSignin}>Continue</FormButton>
-            <TextDiv>
-            <Text onClick={() => navigate("/register")}>Register</Text>
-            </TextDiv>
-          </Form>
-        </FormContent>
-      </FormWrap>
-    </SignInContainer>
+      <SignInContainer>
+        <FormWrap>
+          <IconDiv>
+            <Icon to="/">返る</Icon>
+          </IconDiv>
+          <FormContent>
+            <Form>
+              <FormH1>Sign In</FormH1>
+              <FormLabel htmlFor="for">Username</FormLabel>
+              <FormInput type="name" onChange={onUsernameInput} />
+              <FormLabel htmlFor="for">Password</FormLabel>
+              <FormInput type="password" onChange={onPasswordInput} />
+              <FormButton type="submit" onClick={onSubmitSignin}>
+                Continue
+              </FormButton>
+              <TextDiv>
+                <Text onClick={() => navigate("/register")}>Register</Text>
+              </TextDiv>
+            </Form>
+          </FormContent>
+        </FormWrap>
+      </SignInContainer>
     </>
-
   );
-
 }
-
 
 export default SignIn;
