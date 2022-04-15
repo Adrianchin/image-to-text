@@ -48,6 +48,10 @@ export const ProfileColumn = styled.div`
   height: 100%;
   min-height: 100vh;
   z-index: 0;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    padding: 0 0px;
+  }
 `;
 
 export const ProfileBackgrounImage = styled.div`
@@ -63,6 +67,9 @@ export const ProfileBackgrounImage = styled.div`
   width: 85%;
   bottom: 0%;
   box-shadow: inset 0 0px 30px 3px #7a7a7a;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 //UploadFile Elements
@@ -91,6 +98,10 @@ export const UploadColumn = styled.div`
   height: 100%;
   min-height: 100vh;
   z-index: 0;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    padding: 0 0px;
+  }
 `;
 
 export const UploadBackgrounImage = styled.div`
@@ -106,6 +117,10 @@ export const UploadBackgrounImage = styled.div`
   width: 85%;
   bottom: 0%;
   box-shadow: inset 0 0px 30px 3px #7a7a7a;
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const InputWrapper = styled.div`

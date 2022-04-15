@@ -60,6 +60,7 @@ export const TokenizedTableContainer = styled.div`
   position: relative;
   transition: all 0.2s ease-in-out;
   margin-top: 10px;
+  margin-bottom: 10px;
   z-index: 1;
   border-radius: 10px;
 `;
@@ -73,4 +74,7 @@ export const TokenizerTableBackground = styled.div`
   opacity: 0.9;
   z-index: -1;
   border-radius: 10px;
+  @media screen and (max-width: 500px) {
+    opacity: 1;
+  }
 `;
