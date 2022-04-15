@@ -195,7 +195,7 @@ function ImageSubmit(props) {
 
   return (
     <ImageUploadForm onSubmit={onFormSubmit}>
-      <h1 className="center"> File Upload </h1>
+      <h2 className="center"> File Upload </h2>
         <SubmitContainer>
       <label htmlFor={"upload-button"}>
         <UploadFileButton>

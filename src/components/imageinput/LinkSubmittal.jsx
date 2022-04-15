@@ -198,7 +198,7 @@ function LinkSubmittal(props) {
 
   return (
       <InputContainer>
-      <h1 className="center"> Image URL </h1>
+      <h3 className="center"> Image URL </h3>
       <SubmitContainer>
         <InputURL
           type="text"
