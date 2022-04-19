@@ -15,6 +15,7 @@ function Profile(props) {
         const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
         const response = await fetch(getUserDataURL, {
           method: "GET",
+          credentials: 'include',
         });
         const signInReturn = await response.json();
         placeholderDataObject.profile = signInReturn;

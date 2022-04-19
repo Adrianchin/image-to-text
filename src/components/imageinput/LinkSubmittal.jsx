@@ -52,6 +52,7 @@ function LinkSubmittal(props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: imageData,
+          credentials: 'include',
         });
         imageInformation = await response.json();
 
@@ -121,6 +122,7 @@ function LinkSubmittal(props) {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: textData,
+              credentials: 'include',
             }
           );
           const translatedTextInfo = await response.json();
@@ -148,6 +150,7 @@ function LinkSubmittal(props) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: textForTokenizing,
+            credentials: 'include',
           });
           const tokenizedText = await response.json();
 
@@ -173,6 +176,7 @@ function LinkSubmittal(props) {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(requestData),
+          credentials: 'include',
         });
         const responsePostData = await response.json();
         console.log(

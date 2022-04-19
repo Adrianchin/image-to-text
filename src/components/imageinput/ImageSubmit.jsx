@@ -47,6 +47,7 @@ function ImageSubmit(props) {
         const response = await fetch("http://localhost:3000/upload", {
           method: "POST",
           body: formData,
+          credentials: 'include',
         });
         imageInformation = await response.json();
 
@@ -90,6 +91,7 @@ function ImageSubmit(props) {
 
         await fetch(uploadedURL, {
           method: "GET",
+          credentials: 'include',
         });
         //const imageFetchResponse = await response.json(); May remove, no response!!!
         //console.log("This is the image fetchresponse", imageFetchResponse); May remove, no response!!!
@@ -113,6 +115,7 @@ function ImageSubmit(props) {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: textData,
+              credentials: 'include',
             }
           );
           const translatedTextInfo = await response.json();
@@ -140,6 +143,7 @@ function ImageSubmit(props) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: textForTokenizing,
+            credentials: 'include',
           });
           const tokenizedText = await response.json();
 
@@ -162,6 +166,7 @@ function ImageSubmit(props) {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(requestData),
+          credentials: 'include',
         });
         const responsePostData = await response.json();
         console.log(

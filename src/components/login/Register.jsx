@@ -54,6 +54,7 @@ function Register(props) {
               username: signInContent.username,
               email: signInContent.email,
               password: signInContent.password,
+              credentials: 'include',
             }),
           });
           const signInReturn = await response.json();

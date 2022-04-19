@@ -23,6 +23,7 @@ function Tokenizer(props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: textForTokenizing,
+          credentials: 'include',
         });
         const tokenizedText = await response.json();
         setTokenizedText(tokenizedText);

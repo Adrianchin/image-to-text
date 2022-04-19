@@ -25,6 +25,7 @@ function TextToDeepL(props) {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: textData,
+            credentials: 'include',
           }
         );
         const translatedTextInfo = await response.json();
