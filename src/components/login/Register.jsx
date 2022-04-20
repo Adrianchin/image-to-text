@@ -38,7 +38,8 @@ function Register(props) {
     setNewPassword(event.target.value);
   }
 
-  function onSubmitRegister() {
+  function onSubmitRegister(event) {
+    event.preventDefault();
     if (newUsername && newEmail && newPassword) {
       const signInContent = {
         username: newUsername,
@@ -61,7 +62,7 @@ function Register(props) {
           if (signInReturn.username) {
             setUserData(signInReturn);
             setIfLogin(true);
-            navigate("/main");
+            navigate("/");
           }
         } catch (error) {
           console.log("Error registering in");
