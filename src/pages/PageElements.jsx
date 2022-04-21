@@ -187,7 +187,7 @@ export const DisplayDataBackgrounImage = styled.div`
   bottom: 0%;
   box-shadow: inset 0 0px 30px 3px #7a7a7a;
 `;
-
+/* Remove, see component
 export const DisplayPictureColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -221,3 +221,4 @@ export const InputContainer = styled.div`
   z-index: 0;
   margin-top: 80px;
 `;
+*/

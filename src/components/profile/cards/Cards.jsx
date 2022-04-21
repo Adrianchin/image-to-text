@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import {
   CardWrapper,
@@ -13,18 +13,20 @@ import {
   CardBackground,
 } from "./CardElements";
 
+
 function Cards(props) {
   let navigate = useNavigate();
   const userData = props.userData;
   const setUserDisplayData = props.setUserDisplayData;
   const setRoute = props.setRoute;
   const setUserData = props.setUserData;
+  
 
   function onGoButtonClick(event) {
     const id = event.target.id;
     console.log(id);
-    setUserDisplayData(userData.profile[id]);
-    navigate("/displaydata");
+    setUserDisplayData(userData.profile[id]);  
+    navigate("/displaycard")
   }
 
   async function onDeleteButtonClick(event) {

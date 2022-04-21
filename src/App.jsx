@@ -8,7 +8,7 @@ import HomeLoggedIn from './pages/HomeLoggedIn';
 import Signin from './pages/Signin';
 import Register from './pages/Register';
 import Profile from "./pages/Profile";
-import DisplayData from "./pages/DisplayData";
+import DisplayCard from "./pages/DisplayCard";
 import UploadFile from "./pages/UploadFile";
 import ScrollToTop from "./ScrollToTop";
 
@@ -42,7 +42,7 @@ function App() {
 
   const [ifLogin, setIfLogin] = useState(false);
   const [route, setRoute] = useState("other");
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);//I may need to delete some profile information as I no longer use it, push profile data out so its not nested object with array
   const [userDisplayData, setUserDisplayData] = useState(null);
 
   return (
@@ -81,8 +81,8 @@ function App() {
             setUserData={setUserData}
           />}
         />
-        <Route path="/displaydata" element={
-          <DisplayData
+        <Route path="/displaycard" element={
+          <DisplayCard
             userDisplayData={userDisplayData}
             setUserData={setUserData}
           />}

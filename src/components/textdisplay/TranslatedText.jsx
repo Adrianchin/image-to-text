@@ -6,8 +6,8 @@ function TranslatedText(props) {
 
   return (
     <>
-      {translatedText != null ? (
-        <TextContainer>
+      {translatedText != null 
+      ? (<TextContainer>
           <TextBackground />
           <h5 className="center">{`${translatedText}`}</h5>
         </TextContainer>

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import LoggedOutSideBar from "../components/NavigationLoggedOut/SideBar/LoggedOutSideBar";
 import LoggedOutNavbar from "../components/NavigationLoggedOut/LoggedOutNavBar";
-import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
-import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import VideoLanding from "../components/landingpage/VideoSection/VideoLanding";
 import InfoSection from "../components/landingpage/InfoSection/index";
 import Services from "../components/landingpage/Services/index";
@@ -25,17 +23,8 @@ function Home(props) {
 
   return (
     <>
-      {ifLogin ? (
-        <>
-          <LoggedInSideBar isOpen={isOpen} toggle={toggle} />
-          <LoggedInNavbar toggle={toggle} />
-        </>
-      ) : (
-        <>
-          <LoggedOutSideBar isOpen={isOpen} toggle={toggle} />
-          <LoggedOutNavbar toggle={toggle} />
-        </>
-      )}
+      <LoggedOutSideBar isOpen={isOpen} toggle={toggle} />
+      <LoggedOutNavbar toggle={toggle} />
       <VideoLanding />
       <InfoSection {...homeObjOne} />
       <InfoSection {...homeObjTwo} />
