@@ -61,6 +61,7 @@ function DisplayData(props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: data,
+          credentials: 'include',
         });
         const updateDataReturn = await response.json();
         console.log("userData Return: ", updateDataReturn);

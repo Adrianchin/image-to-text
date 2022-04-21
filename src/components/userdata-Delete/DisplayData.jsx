@@ -50,7 +50,8 @@ async function onUpdateData(){
           const response = await fetch(updateUserDataURL,{
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: data
+            body: data,
+            credentials: 'include',
           })
           const updateDataReturn = await response.json();
           console.log("userData Return: ", updateDataReturn)

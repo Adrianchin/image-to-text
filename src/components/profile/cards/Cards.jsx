@@ -40,6 +40,7 @@ function Cards(props) {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: data,
+          credentials: 'include',
         });
         const deleteDocumentReturn = await response.json();
         console.log(deleteDocumentReturn);
@@ -54,6 +55,7 @@ function Cards(props) {
         const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
         const response = await fetch(getUserDataURL, {
           method: "GET",
+          credentials: 'include',
         });
         const userDataReturn = await response.json();
         placeholderDataObject.profile = userDataReturn;
