@@ -15,7 +15,7 @@ function LinkSubmittal(props) {
   const setLinkImagePath = props.setLinkImagePath;
   const setUploadImagePath = props.setUploadImagePath;
   const setTokenizedText = props.setTokenizedText;
-  const userData = props.userData;
+  //const userData = props.userData; Not Needed, relying on cookies
 
   //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState("");
@@ -33,8 +33,8 @@ function LinkSubmittal(props) {
       translatedText: null,
       tokenizedText: null,
       date: new Date(),
-      id: userData._id,
-      username: userData.username,
+      //id: userData._id, Not Needed, relying on cookies
+      //username: userData.username,
     };
 
     let imageInformation;

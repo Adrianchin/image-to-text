@@ -12,13 +12,14 @@ function Profile(props) {
     async function getUserData() {
       try {
         const placeholderDataObject = { ...userData };
-        const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
+        const getUserDataURL = `http://localhost:3000/getProfileData`;
         const response = await fetch(getUserDataURL, {
           method: "GET",
           credentials: 'include',
         });
         const signInReturn = await response.json();
         placeholderDataObject.profile = signInReturn;
+        console.log(placeholderDataObject)
         setUserData(placeholderDataObject);
       } catch (error) {
         console.log("Error getting profile data: ", error);
@@ -29,12 +30,15 @@ function Profile(props) {
 
   return (
     <>
-      <Cards
+    {userData != null
+      ?(<Cards
         userData={userData}
         setUserDisplayData={setUserDisplayData}
         setRoute={setRoute}
         setUserData={setUserData}
-      />
+      />)
+      :(<></>)
+    }
     </>
   );
 }

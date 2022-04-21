@@ -42,7 +42,7 @@ function App() {
 
   const [ifLogin, setIfLogin] = useState(false);
   const [route, setRoute] = useState("other");
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState(null);
   const [userDisplayData, setUserDisplayData] = useState(null);
 
   return (

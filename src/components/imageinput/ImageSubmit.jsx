@@ -15,7 +15,7 @@ function ImageSubmit(props) {
   const setTranslatedText = props.setTranslatedText;
   const setLinkImagePath = props.setLinkImagePath;
   const setTokenizedText = props.setTokenizedText;
-  const userData = props.userData;
+  //const userData = props.userData; Not needed
 
   const [file, setFile] = useState(null);
 
@@ -30,8 +30,8 @@ function ImageSubmit(props) {
       translatedText: null,
       tokenizedText: null,
       date: new Date(),
-      id: userData._id,
-      username: userData.username,
+      //id: userData._id, Not Needed, relying on cookies
+      //username: userData.username, Not Needed, relying on cookies
     };
 
     let imageInformation;

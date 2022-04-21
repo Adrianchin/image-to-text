@@ -52,7 +52,7 @@ function Cards(props) {
     async function getUserData() {
       try {
         const placeholderDataObject = { ...userData };
-        const getUserDataURL = `http://localhost:3000/getProfileData?id=${userData._id}`;
+        const getUserDataURL = `http://localhost:3000/getProfileData`;
         const response = await fetch(getUserDataURL, {
           method: "GET",
           credentials: 'include',
