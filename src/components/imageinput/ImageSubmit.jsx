@@ -22,6 +22,34 @@ function ImageSubmit(props) {
 
   const [file, setFile] = useState(null);
 
+  //TEST - IT WORKS
+  async function onFormSubmitTest(event) {
+    async function initiateUploadImageTest() {
+      try {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append("myImage", file);
+        const response = await fetch("http://localhost:3000/uploadTest", {
+          method: "POST",
+          body: formData,
+          credentials: 'include',
+        });
+        let imageInformation = await response.json();
+
+        console.log(imageInformation)
+
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
+      } catch (error) {
+        console.log("Error submitting photo", error);
+      }
+    }
+    initiateUploadImageTest()
+  }
+
+
   async function onFormSubmit(event) {
 
     const requestData = {
@@ -43,6 +71,7 @@ function ImageSubmit(props) {
     let imageLocation;
     let ImageTextSubmitted;
 
+    
     setLinkImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
     async function initiateUploadImage() {
       try {
@@ -201,7 +230,7 @@ function ImageSubmit(props) {
   };
 
   return (
-    <ImageUploadForm onSubmit={onFormSubmit}>
+    <ImageUploadForm onSubmit={onFormSubmitTest}>
       <h2 className="center"> File Upload </h2>
       <SubmitContainer>
         <label htmlFor={"upload-button"}>
