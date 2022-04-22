@@ -12,17 +12,22 @@ import {
   ServicesP,
 } from "./ServicesElements";
 
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+  if (newWindow) newWindow.opener = null;
+};
+
 const Services = () => {
   return (
     <ServicesContainer id="services">
-      <ServicesH1>Future Services</ServicesH1>
+      <ServicesH1 >Future Services</ServicesH1>
       <ServicesWrapper>
-        <ServicesCard>
+        <ServicesCard onClick={() => openInNewTab("https://en.wikipedia.org/wiki/Korean_language")}>
           <ServicesIcon src={Icon4} />
           <ServicesH2>More Languages</ServicesH2>
           <ServicesP>Tokenization to be expanded for Korean</ServicesP>
         </ServicesCard>
-        <ServicesCard>
+        <ServicesCard onClick={() => openInNewTab("https://en.wikipedia.org/wiki/Tesseract_(software)")}>
           <ServicesIcon src={Icon5} />
           <ServicesH2>Improved Recognition</ServicesH2>
           <ServicesP>
@@ -30,7 +35,7 @@ const Services = () => {
             Tokenization and Translation
           </ServicesP>
         </ServicesCard>
-        <ServicesCard>
+        <ServicesCard onClick={() => openInNewTab("https://en.wikipedia.org/wiki/JMdict")}>
           <ServicesIcon src={Icon6} />
           <ServicesH2>English Dictionary</ServicesH2>
           <ServicesP>

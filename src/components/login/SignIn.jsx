@@ -53,7 +53,7 @@ function SignIn(props) {
         const signInReturn = await response.json();
         console.log(signInReturn);
         if (signInReturn.username) {
-          navigate("/uploadfile");
+          navigate("/home");
           setUserData(signInReturn);
           setIfLogin(true);
         }
