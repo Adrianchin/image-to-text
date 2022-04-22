@@ -34,6 +34,7 @@ function ImageSubmit(props) {
       translatedText: null,
       tokenizedText: null,
       date: new Date(),
+      imageFileName: null,
       //id: userData._id, Not Needed, relying on cookies
       //username: userData.username, Not Needed, relying on cookies
     };
@@ -60,11 +61,13 @@ function ImageSubmit(props) {
           navigate("/signin");
         }
 
-        //const GoogleDataSubmitted=uploadresponse;
+        //const GoogleDataSubmitted=imageInformation;
+       //console.log("This is the Google Data Return:" ,GoogleDataSubmitted)
         ImageTextSubmitted = imageInformation[0].description;
 
-        imageLocation = imageInformation[imageInformation.length - 2];
-        const imageSize = imageInformation[imageInformation.length - 1];
+        imageLocation = imageInformation[imageInformation.length - 3];
+        const imageSize = imageInformation[imageInformation.length - 2];
+        requestData.imageFileName = imageInformation[imageInformation.length - 1];
 
         //Note: Google API is 0,1,2,3, counterclockwise top left, 0,0 is top left.
         const rawImageBox = {
