@@ -31,16 +31,11 @@ const Connect = () => {
         <ConnectH1>Connect With Me</ConnectH1>
         <ConnectBtnWrapper>
           <Button
-            onClick={() => openInNewTab("https://google.com")}
+            onClick={() => openInNewTab("https://www.linkedin.com/in/adrianjchin/.com")}
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             big="true"
             fontBig="true"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            offset={-80}
           >
             Meet the Developer
           </Button>

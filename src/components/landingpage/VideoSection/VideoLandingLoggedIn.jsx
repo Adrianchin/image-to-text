@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Video from "../../../main_page_images/sushi.mp4";
+import Video from "../../../main_page_images/reading.mp4";
 import { Button } from "../NormalButton";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,7 +12,7 @@ import {
   VideoLandingBtnWrapper,
 } from "./VideoLandingElements";
 
-const VideoLanding = () => {
+const VideoLandingLoggedIn = () => {
   let navigate = useNavigate();
   const [hover, setHover] = useState(false);
 
@@ -26,21 +26,19 @@ const VideoLanding = () => {
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </VideoLandingBg>
       <VideoLandingContent>
-        <VideoLandingH1>Reading Japanese Made Easy</VideoLandingH1>
+        <VideoLandingH1>About This App</VideoLandingH1>
         <VideoLandingP>
-          {" "}
-          Get assistance reading Japanese from anywhere. Difficult literiary
-          texts and phrasing made easy!
+        While everyone was locked inside during the Covid pandemic, I chose to become a Software Engineer literate in Japanese
         </VideoLandingP>
         <VideoLandingBtnWrapper>
           <Button
-            onClick={()=>{navigate("/signin")}}
+            onClick={()=>{navigate("/uploadfile")}}
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             big="true"
             fontBig="true"
           >
-            Get Started
+            行きましょう
           </Button>
         </VideoLandingBtnWrapper>
       </VideoLandingContent>
@@ -48,4 +46,4 @@ const VideoLanding = () => {
   );
 };
 
-export default VideoLanding;
+export default VideoLandingLoggedIn;

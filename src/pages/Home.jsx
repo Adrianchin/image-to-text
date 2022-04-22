@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import LoggedOutSideBar from "../components/NavigationLoggedOut/SideBar/LoggedOutSideBar";
 import LoggedOutNavbar from "../components/NavigationLoggedOut/LoggedOutNavBar";
 import VideoLanding from "../components/landingpage/VideoSection/VideoLanding";
-import InfoSection from "../components/landingpage/InfoSection/index";
-import Services from "../components/landingpage/Services/index";
+import InfoSection from "../components/landingpage/InfoSection/Index";
+import Services from "../components/landingpage/Services/Index";
 import Connect from "../components/landingpage/Connect/Connect";
 import {
   homeObjOne,

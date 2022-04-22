@@ -45,7 +45,7 @@ export const ServicesCard = styled.div`
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-  max-height: 340px;
+  max-height: 380px;
   padding: 30px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
@@ -59,7 +59,7 @@ export const ServicesCard = styled.div`
 
 export const ServicesIcon = styled.img`
   height: 160px;
-  width: 160px;
+  width: auto;
   margin-bottom: 10px;
 `;
 

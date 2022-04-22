@@ -12,13 +12,16 @@ export const InfoContainer = styled.div`
 export const InfoWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height: 860px;
+  height: auto;
   width: 100%;
   max-width: 1100px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 0px;
+  padding: 60px 0px;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 export const InfoRow = styled.div`
@@ -70,10 +73,6 @@ export const Heading = styled.h1`
   line-height: 1.1;
   font-weight: 600;
   color: ${({ lightText }) => (lightText ? "#f7f8fa" : "#010606")};
-
-  @media screen and (max-width: 480px) {
-    font-size: 32px;
-  }
 `;
 
 export const Subtitle = styled.p`

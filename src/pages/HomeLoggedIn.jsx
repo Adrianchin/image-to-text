@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
-import VideoLanding from "../components/landingpage/VideoSection/VideoLanding";
-import InfoSection from "../components/landingpage/InfoSection/index";
-import Services from "../components/landingpage/Services/index";
+import VideoLandingLoggedIn from "../components/landingpage/VideoSection/VideoLandingLoggedIn";
+import InfoSection from "../components/landingpage/InfoSection/Index";
+import Services from "../components/landingpage/Services/IndexLoggedIn";
 import Connect from "../components/landingpage/Connect/Connect";
 import {
-  homeObjOne,
-  homeObjTwo,
-  homeObjThree,
-  homeObjFour,
+  homeObjFive,
+  homeObjSix,
+  homeObjSeven,
+  homeObjEight,
 } from "../components/landingpage/InfoSection/Data";
 
 function Home() {
@@ -23,12 +23,12 @@ function Home() {
     <>
       <LoggedInSideBar isOpen={isOpen} toggle={toggle} />
       <LoggedInNavbar toggle={toggle} />
-      <VideoLanding />
-      <InfoSection {...homeObjOne} />
-      <InfoSection {...homeObjTwo} />
+      <VideoLandingLoggedIn />
+      <InfoSection {...homeObjFive} />
+      <InfoSection {...homeObjSix} />
       <Services />
-      <InfoSection {...homeObjThree} />
-      <InfoSection {...homeObjFour} />
+      <InfoSection {...homeObjSeven} />
+      <InfoSection {...homeObjEight} />
       <Connect />
     </>
   );
