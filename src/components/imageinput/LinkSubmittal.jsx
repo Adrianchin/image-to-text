@@ -36,6 +36,7 @@ function LinkSubmittal(props) {
       translatedText: null,
       tokenizedText: null,
       date: new Date(),
+      imageFileName: null,
       //id: userData._id, Not Needed, relying on cookies
       //username: userData.username,
     };
