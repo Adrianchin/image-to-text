@@ -28,7 +28,7 @@ const VideoLandingLoggedIn = () => {
       <VideoLandingContent>
         <VideoLandingH1>About This App</VideoLandingH1>
         <VideoLandingP>
-        While everyone was locked inside during the Covid pandemic, I chose to become a Software Engineer literate in Japanese
+        While everyone was locked inside during the Covid pandemic, I chose to learn Japanese and become a software engineer 
         </VideoLandingP>
         <VideoLandingBtnWrapper>
           <Button

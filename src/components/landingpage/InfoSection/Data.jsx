@@ -103,7 +103,7 @@ export const homeObjSix = {
   description:
     `Japanese is a notoriously difficult language. The United States Foreign Service Institute ranks Japanese as the hardest language for English natives to learn.
     It took me thousands of hours before I felt that I could "read". I have since read numerous novels, yet I am still nowhere near where I want to be. 
-    However, Natural Language Processing has provided a means to implement tools such as hover dictionaries and text parsers. I utilized these very tools during my Japanese journey. 
+    However, Natural Language Processing has provided a means to implement tools such as hover dictionaries and text parsers. I utilized these tools during my Japanese journey. 
     Therefore, I saw an opportunity to understand and implement Natural Language Processing tools while developing a useful application to assist Japanese learners as they encounter Japanese in the wild.`,
   buttonLabel: "What is this?",
   imgStart: true,
