@@ -35,7 +35,7 @@ function Cards(props) {
     async function deleteDocument() {
       try {
         let data = JSON.stringify({
-          _id: userData.profile[id]._id,
+          data: userData.profile[id],
         });
         console.log(data);
         const response = await fetch("http://localhost:3000/deletedocument", {
