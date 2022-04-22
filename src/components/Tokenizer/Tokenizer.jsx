@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   InputContainer,
   SubmitContainer,
@@ -7,6 +8,7 @@ import {
 } from "./TokenizerElements";
 
 function Tokenizer(props) {
+  let navigate = useNavigate();
   const setTokenizedText = props.setTokenizedText;
 
   //Text Input for Json.
@@ -26,6 +28,10 @@ function Tokenizer(props) {
           credentials: 'include',
         });
         const tokenizedText = await response.json();
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
         setTokenizedText(tokenizedText);
         //console.log(tokenizedText);
       } catch (error) {

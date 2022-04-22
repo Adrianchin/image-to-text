@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   UploadFileButton,
   UploadButton,
@@ -7,6 +8,8 @@ import {
 } from "./ImageInputElements";
 
 function ImageSubmit(props) {
+  let navigate = useNavigate();
+  
   const setImageText = props.setImageText;
   const setUploadBox = props.setUploadBox;
   const setImageURL = props.setImageURL;
@@ -20,6 +23,7 @@ function ImageSubmit(props) {
   const [file, setFile] = useState(null);
 
   async function onFormSubmit(event) {
+
     const requestData = {
       linkImagePath: false,
       uploadImagePath: true,
@@ -50,6 +54,11 @@ function ImageSubmit(props) {
           credentials: 'include',
         });
         imageInformation = await response.json();
+
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
 
         //const GoogleDataSubmitted=uploadresponse;
         ImageTextSubmitted = imageInformation[0].description;

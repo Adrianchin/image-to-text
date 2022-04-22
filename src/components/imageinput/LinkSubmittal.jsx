@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   UploadButton,
   InputURL,
@@ -7,6 +8,8 @@ import {
 } from "./ImageInputElements";
 
 function LinkSubmittal(props) {
+  let navigate = useNavigate();
+
   const setLinkOriginalImageSize = props.setLinkOriginalImageSize;
   const setLinkBox = props.setLinkBox;
   const setImageText = props.setImageText;
@@ -55,6 +58,11 @@ function LinkSubmittal(props) {
           credentials: 'include',
         });
         imageInformation = await response.json();
+        
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
 
         requestData.imageInformation = imageInformation; //For MongoDB
         setImageText(imageInformation[0].description);

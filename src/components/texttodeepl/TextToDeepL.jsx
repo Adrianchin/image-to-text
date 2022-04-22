@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   InputContainer,
   SubmitContainer,
@@ -7,6 +8,7 @@ import {
 } from "./TextToDeepLElements";
 
 function TextToDeepL(props) {
+  let navigate = useNavigate();
   const setTranslatedText = props.setTranslatedText;
 
   //Text Input for Json.
@@ -29,6 +31,10 @@ function TextToDeepL(props) {
           }
         );
         const translatedTextInfo = await response.json();
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
         setTranslatedText(translatedTextInfo.translations[0].text);
       } catch (error) {
         console.log("Error fetching Token response for text, try again", error);

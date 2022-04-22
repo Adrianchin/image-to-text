@@ -58,7 +58,7 @@ function SignIn(props) {
           setIfLogin(true);
         }
       } catch (error) {
-        console.log("Error logging in");
+        console.log("Error logging in", error);
       }
     }
     signInUser();

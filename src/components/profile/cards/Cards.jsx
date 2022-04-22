@@ -45,6 +45,10 @@ function Cards(props) {
           credentials: 'include',
         });
         const deleteDocumentReturn = await response.json();
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
         console.log(deleteDocumentReturn);
       } catch (error) {
         console.log("Error deleting document");

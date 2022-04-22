@@ -5,6 +5,7 @@ import TranslatedText from "../textdisplay/TranslatedText";
 import TextToDeepL from "../texttodeepl/TextToDeepL";
 import Tokenizer from "../tokenizer/Tokenizer";
 import TokenTextTable from "../tokenizer/TokenTextTable";
+import { useNavigate } from "react-router-dom";
 
 import {
   PictureColumn,
@@ -13,6 +14,7 @@ import {
 } from "./DisplayDataElements";
 
 function DisplayData(props) {
+  let navigate = useNavigate();
   const userDisplayData = props.userDisplayData;
 
   const [userDisplayTranslatedText, setUserDisplayTranslatedText] = useState(
@@ -48,7 +50,10 @@ function DisplayData(props) {
           credentials: "include",
         });
         const updateDataReturn = await response.json();
-        console.log("userData Return: ", updateDataReturn);
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
       } catch (error) {
         console.log("Error getting profile data: ", error);
       }
