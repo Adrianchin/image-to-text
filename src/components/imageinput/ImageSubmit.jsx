@@ -78,10 +78,11 @@ function ImageSubmit(props) {
             imageSize.height - imageInformation[0].boundingPoly.vertices[2].y,
         };
         //console.log("This is the raw image box: ", rawImageBox)
-
+        requestData.imageURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`
         requestData.imageInformation = imageInformation; //For MongoDB
         requestData.rawImageBox = rawImageBox; //For MongoDB
         requestData.originalImageSize = imageSize; //For MongoDB
+        setImageURL(requestData.imageURL)
         setImageText(ImageTextSubmitted);
         setUploadBox(rawImageBox);
         setUploadOriginalImageSize(imageSize);
@@ -92,7 +93,8 @@ function ImageSubmit(props) {
       }
     }
     await initiateUploadImage(); //1st step
-
+//This is useless - remove
+/*
     async function imageFetch() {
       try {
         const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`;
@@ -112,7 +114,7 @@ function ImageSubmit(props) {
       }
     }
     await imageFetch(); //depends on step 1
-
+  */
     //Send to API for translation
     async function translateText() {
       try {
