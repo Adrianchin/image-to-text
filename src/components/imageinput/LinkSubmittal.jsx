@@ -23,6 +23,70 @@ function LinkSubmittal(props) {
   //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState("");
 
+  async function onImageSubmitTest() {
+
+    let originalImageSize;
+
+    async function imageDimensions() {
+      //IMPORTANT: onload is async, so you need to put shit in it and whatever you are
+      //doing with it in the onload function!
+      //Note. I made a promise beause otherwise, onload will be async and we need the outputs
+      //for the box calculations. This is a general onload promise, which we then use for the image
+      function onLoadPromiseImageFunction(image) {
+        return new Promise((resolve, reject) => {
+          image.onload = () => resolve(image);
+          image.onerror = reject;
+        });
+      }
+
+      let img = new Image();
+      let imgpromise = onLoadPromiseImageFunction(img);
+      img.src = imageInput;
+      await imgpromise;
+
+      const originalHeight = img.height;
+      const originalWidth = img.width;
+
+      originalImageSize = {
+        height: originalHeight,
+        width: originalWidth,
+        type: "url",
+      };
+      console.log("Orig height 1 ",originalImageSize)
+    }
+    await imageDimensions()
+
+  await imageDimensions(); //Step 2, Requires step 1
+    async function fetchImageInfo() {
+      console.log("Orig height 2 ", originalImageSize)
+      try {
+        let imageData = JSON.stringify({
+          link: imageInput,
+          originalImageSize: originalImageSize,
+        });
+        const response = await fetch("http://localhost:3000/imagelinkphototest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: imageData,
+          credentials: 'include',
+        });
+        let imageInformation = await response.json();
+        
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate("/signin");
+        }
+
+        console.log(imageInformation)
+        
+      } catch (error) {
+        console.log("Error fetching API responses for image, try again");
+      }
+    }
+    await fetchImageInfo(); //Step 1
+  }
+
+
   async function onImageSubmit() {
     setUploadImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
 
@@ -214,7 +278,7 @@ function LinkSubmittal(props) {
       <h3 className="center"> Image URL </h3>
       <SubmitContainer>
         <InputURL type="text" onChange={onImageInput} />
-        <UploadButton onClick={onImageButtonSubmit}>Image URL</UploadButton>
+        <UploadButton onClick={onImageSubmitTest}>Image URL</UploadButton>
       </SubmitContainer>
     </InputContainer>
   );
