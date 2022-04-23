@@ -41,10 +41,6 @@ function Tokenizer(props) {
     fetchTokenization();
   }
 
-  function onTextButtonSubmit() {
-    onTextSubmit();
-  }
-
   function onTextInput(event) {
     setTextInput(event.target.value);
   }
@@ -53,7 +49,7 @@ function Tokenizer(props) {
     <InputContainer>
       <SubmitContainer>
         <InputText type="text" onChange={onTextInput} />
-        <UploadButton onClick={onTextButtonSubmit}>
+        <UploadButton onClick={onTextSubmit}>
           Text to Tokenize
         </UploadButton>
       </SubmitContainer>

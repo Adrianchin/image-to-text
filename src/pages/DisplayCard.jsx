@@ -13,6 +13,7 @@ function DisplayCard(props) {
   
   const userDisplayData = props.userDisplayData;
   const setUserDisplayData = props.setUserDisplayData;
+  const notes=props.notes
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,6 +31,7 @@ function DisplayCard(props) {
         ?<DisplayData
           setUserDisplayData={setUserDisplayData}
           userDisplayData={userDisplayData}
+          notes={notes}
           />
         :<></>
         }

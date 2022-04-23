@@ -10,6 +10,9 @@ import {
 function LinkSubmittal(props) {
   let navigate = useNavigate();
 
+  const setSubmitImageData = props.setSubmitImageData;
+
+  const setNotes = props.setNotes;
   const setLinkOriginalImageSize = props.setLinkOriginalImageSize;
   const setLinkBox = props.setLinkBox;
   const setImageText = props.setImageText;
@@ -18,7 +21,6 @@ function LinkSubmittal(props) {
   const setLinkImagePath = props.setLinkImagePath;
   const setUploadImagePath = props.setUploadImagePath;
   const setTokenizedText = props.setTokenizedText;
-  //const userData = props.userData; Not Needed, relying on cookies
 
   //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState("");
@@ -52,13 +54,11 @@ function LinkSubmittal(props) {
         width: originalWidth,
         type: "url",
       };
-      console.log("Orig height 1 ",originalImageSize)
     }
     await imageDimensions()
 
-  await imageDimensions(); //Step 2, Requires step 1
+  await imageDimensions(); 
     async function fetchImageInfo() {
-      console.log("Orig height 2 ", originalImageSize)
       try {
         let imageData = JSON.stringify({
           link: imageInput,
@@ -71,14 +71,25 @@ function LinkSubmittal(props) {
           credentials: 'include',
         });
         let imageInformation = await response.json();
-        
+        console.log(imageInformation)
+
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
           navigate("/signin");
         }
 
-        console.log(imageInformation)
-        
+        setNotes(imageInformation.notes);
+        setImageText(imageInformation.imageInformation[0].description);
+        setLinkBox(imageInformation.rawImageBox);
+        setImageURL(imageInformation.imageURL);
+        setLinkOriginalImageSize(imageInformation.originalImageSize);
+        setUploadImagePath(imageInformation.uploadImagePath);
+        setTranslatedText(imageInformation.translatedText);
+        setLinkImagePath(imageInformation.linkImagePath);
+        setTokenizedText(imageInformation.tokenizedText);
+
+        setSubmitImageData(imageInformation)//Not using yet
+
       } catch (error) {
         console.log("Error fetching API responses for image, try again");
       }
@@ -86,7 +97,7 @@ function LinkSubmittal(props) {
     await fetchImageInfo(); //Step 1
   }
 
-
+/*
   async function onImageSubmit() {
     setUploadImagePath(false); //prevents both calculations from triggering, in onClick so ONLY activated by onclick
 
@@ -264,11 +275,8 @@ function LinkSubmittal(props) {
 
     setLinkImagePath(true); //Sets path for box calculation
   }
-
-  function onImageButtonSubmit() {
-    //calls onImageSubmit for API send
-    onImageSubmit();
-  }
+*/
+  
   function onImageInput(event) {
     setImageInput(event.target.value);
   }

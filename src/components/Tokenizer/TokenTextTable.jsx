@@ -6,8 +6,9 @@ import {
 
 function TokenTextTable(props) {
   const tokenizedText = props.tokenizedText;
+  const notes = props.notes;
 
-  if (tokenizedText === "problem with the API") {
+  if (tokenizedText === null && notes === "Error with Tokenizer") { //To umpliment path with notes
     return (
       <TokenizedTableContainer>
       <TokenizerTableBackground />

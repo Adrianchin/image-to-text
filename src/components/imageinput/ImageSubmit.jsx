@@ -9,7 +9,10 @@ import {
 
 function ImageSubmit(props) {
   let navigate = useNavigate();
+
+  const setSubmitImageData = props.setSubmitImageData;
   
+  const setNotes = props.setNotes;
   const setImageText = props.setImageText;
   const setUploadBox = props.setUploadBox;
   const setImageURL = props.setImageURL;
@@ -18,7 +21,6 @@ function ImageSubmit(props) {
   const setTranslatedText = props.setTranslatedText;
   const setLinkImagePath = props.setLinkImagePath;
   const setTokenizedText = props.setTokenizedText;
-  //const userData = props.userData; Not needed
 
   const [file, setFile] = useState(null);
 
@@ -42,6 +44,19 @@ function ImageSubmit(props) {
           console.log("Error user needs to sign in", response.status);
           navigate("/signin");
         }
+
+        setNotes(imageInformation.notes);
+        setImageText(imageInformation.imageInformation[0].description);
+        setUploadBox(imageInformation.rawImageBox);
+        setImageURL(imageInformation.imageURL);
+        setUploadOriginalImageSize(imageInformation.originalImageSize);
+        setUploadImagePath(imageInformation.uploadImagePath);
+        setTranslatedText(imageInformation.translatedText);
+        setLinkImagePath(imageInformation.linkImagePath);
+        setTokenizedText(imageInformation.tokenizedText);
+
+        setSubmitImageData(imageInformation)//Not using yet
+
       } catch (error) {
         console.log("Error submitting photo", error);
       }
@@ -49,7 +64,7 @@ function ImageSubmit(props) {
     initiateUploadImageTest()
   }
 
-
+/*
   async function onFormSubmit(event) {
 
     const requestData = {
@@ -123,7 +138,7 @@ function ImageSubmit(props) {
     }
     await initiateUploadImage(); //1st step
 //This is useless - remove
-/*
+
     async function imageFetch() {
       try {
         const uploadedURL = `http://localhost:3000/getuploadedpicture?imageLocation=${imageLocation}`;
@@ -143,7 +158,7 @@ function ImageSubmit(props) {
       }
     }
     await imageFetch(); //depends on step 1
-  */
+
     //Send to API for translation
     async function translateText() {
       try {
@@ -224,7 +239,7 @@ function ImageSubmit(props) {
 
     setUploadImagePath(true); //Sets path for box calculation
   }
-
+*/
   const onChange = (event) => {
     setFile(event.target.files[0]);
   };

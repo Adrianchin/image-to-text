@@ -18,6 +18,13 @@ import {
 } from "./PageElements";
 
 function UploadFile(props) {
+
+  const setSubmitImageData=props.setSubmitImageData
+  const submitImageData = props.submitImageData
+
+  const setNotes = props.setNotes;
+  const notes = props.notes;
+
   const setImageText = props.setImageText;
   const imageText = props.imageText;
 
@@ -77,6 +84,9 @@ function UploadFile(props) {
               setTranslatedText={setTranslatedText}
               setTokenizedText={setTokenizedText}
               userData={userData}
+              setNotes={setNotes}
+
+              setSubmitImageData={setSubmitImageData}
             />
 
             <LinkSubmittal
@@ -89,6 +99,9 @@ function UploadFile(props) {
               setLinkImagePath={setLinkImagePath}
               setTokenizedText={setTokenizedText}
               userData={userData}
+              setNotes={setNotes}
+
+              setSubmitImageData={setSubmitImageData}
             />
           </InputWrapper>
           <div>
@@ -98,7 +111,9 @@ function UploadFile(props) {
             </div>
           </div>
           <div>
-            <TokenTextTable tokenizedText={tokenizedText} />
+            <TokenTextTable 
+            tokenizedText={tokenizedText} 
+            notes={notes}/>
           </div>
           <UploadPictureColumn>
             <ImageDisplay

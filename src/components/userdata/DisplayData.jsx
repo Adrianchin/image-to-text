@@ -16,6 +16,7 @@ import {
 function DisplayData(props) {
   let navigate = useNavigate();
   const userDisplayData = props.userDisplayData;
+  const notes = props.notes
 
   const [userDisplayTranslatedText, setUserDisplayTranslatedText] = useState(
     userDisplayData.translatedText
@@ -73,7 +74,9 @@ function DisplayData(props) {
           <ImageText
             imageText={userDisplayData.imageInformation[0].description}
           />
-          <TokenTextTable tokenizedText={userDisplayTokenizedText} />
+          <TokenTextTable 
+          tokenizedText={userDisplayTokenizedText} 
+          notes={notes}/>
           <PictureColumn>
             <ImageDisplay
               linkImagePath={userDisplayData.linkImagePath}

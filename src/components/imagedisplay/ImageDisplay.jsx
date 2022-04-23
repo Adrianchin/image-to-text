@@ -26,7 +26,7 @@ function ImageDisplay(props) {
     //I no longer need the 2 paths? Remove....
 
     //IMAGE LINK PATH!!!!!
-    if (linkImagePath === true) {
+    if (linkImagePath && currentWidth && currentHeight && linkOriginalImageSize && linkBox) {
       //IMAGE LINK PATH!!!!!
       function ImageSubmitBoxCalculationUpload() {
         let imageRatioWidth = currentWidth / linkOriginalImageSize.width;
@@ -45,7 +45,7 @@ function ImageDisplay(props) {
     //I no longer need the 2 paths? Remove....
 
     //IMAGE UPLOAD PATH!!!!!
-    if (uploadImagePath === true) {
+    if (uploadImagePath && uploadOriginalImageSize && currentWidth && currentHeight && uploadBox ) {
       //IMAGE UPLOAD PATH!!!!!
 
       function ImageSubmitBoxCalculationUpload() {

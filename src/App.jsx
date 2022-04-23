@@ -40,10 +40,13 @@ function App() {
 
   const [tokenizedText, setTokenizedText] = useState(null);
 
+  const[submitImageData, setSubmitImageData] = useState();
+
   const [ifLogin, setIfLogin] = useState(false);
   const [route, setRoute] = useState("other");
   const [userData, setUserData] = useState(null);//I may need to delete some profile information as I no longer use it, push profile data out so its not nested object with array
   const [userDisplayData, setUserDisplayData] = useState(null);
+  const [notes, setNotes] = useState(null);
 
   return (
     <>
@@ -85,6 +88,7 @@ function App() {
           <DisplayCard
             userDisplayData={userDisplayData}
             setUserData={setUserData}
+            notes={notes}
           />}
         />
         <Route path="/uploadfile" element={
@@ -110,6 +114,10 @@ function App() {
             setTokenizedText={setTokenizedText}
             tokenizedText={tokenizedText}
             userData={userData}
+            notes={notes}
+            setNotes={setNotes}
+
+            setSubmitImageData={setSubmitImageData}
           />}
         />
       </Routes>
