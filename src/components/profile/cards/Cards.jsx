@@ -80,7 +80,7 @@ function Cards(props) {
     return (
       <Card key={i}>
         <CardBackground />
-        <CardImage variant="top" src={userData.profile[i].imageURL} />
+        <CardImage id={i} variant="top" src={userData.profile[i].imageURL} onClick={onGoButtonClick}/>
         <CardBody>
           <CardTitle>{userData.profile[i].date}</CardTitle>
           <CardText>

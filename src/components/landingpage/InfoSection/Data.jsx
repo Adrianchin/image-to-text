@@ -79,13 +79,16 @@ export const homeObjFive = {
   lightBg: false,
   lightText: true,
   lightTextDesc: true,
-  topLine: "Background",
-  headline: "Why Japanese",
-  description: `I am a highly competitive triathlete who previously worked in the Oil and Gas sector as a Mechanical Engineer. I decided to teach myself Japanese to keep challenging myself while races were cancelled. 
-  I quickly realized how much time I was wasting in a soon-to-be extinct industry run by dinasours. If I love to learn then why shouldn't I be paid to learn? That's when I decided to pursue Software Engineering.`,
-  buttonLabel: "Why this App?",
+  topLine: "Learning Japanese",
+  headline: "The Challenges of Japanese",
+  description:   
+  `Japanese is a notoriously difficult language to learn. The United States Foreign Service Institute ranks Japanese as the hardest language for English natives.
+  It took me thousands of hours before I felt that I could "read". I have since read numerous novels and yet I still feel nowhere near where I want to be. 
+  However, Natural Language Processing has provided a means to implement tools such as hover dictionaries and text parsers. I utilized these tools during my Japanese journey. 
+  Therefore, I saw an opportunity to understand and implement Natural Language Processing tools while developing a useful application to assist Japanese learners as they encounter Japanese in the wild.`,
+  buttonLabel: "これソフト",
   imgStart: false,
-  img: require("../../../main_page_images/me.jpg"),
+  img: require("../../../main_page_images/shop-front.jpg"),
   alt: "thousand_gate_shrine",
   dark: true,
   primary: true,
@@ -98,16 +101,17 @@ export const homeObjSix = {
   lightBg: true,
   lightText: false,
   lightTextDesc: false,
-  topLine: "Learning Japanese",
-  headline: "The Challenges of Japanese",
+  topLine: "This App",
+  headline: "What is Tokenization, OCR and Translation?",
   description:
-    `Japanese is a notoriously difficult language. The United States Foreign Service Institute ranks Japanese as the hardest language for English natives to learn.
-    It took me thousands of hours before I felt that I could "read". I have since read numerous novels, yet I am still nowhere near where I want to be. 
-    However, Natural Language Processing has provided a means to implement tools such as hover dictionaries and text parsers. I utilized these tools during my Japanese journey. 
-    Therefore, I saw an opportunity to understand and implement Natural Language Processing tools while developing a useful application to assist Japanese learners as they encounter Japanese in the wild.`,
-  buttonLabel: "What is this?",
+  `Tokenization is the process of breaking down sentences into base parts. This is a procedure for Natural Language Processing techniques. 
+  Japanese is unique where there are no spaces, there are 3 different alphabets and there are many different kanji combinations to construct the same vocab. Pronunciations change depending 
+  on the writer, context and situation. Conjugations and particles are used extensively to modify actions and tenses. For these reasons, simple tokenization techniques cannot be used and a morphological approach is required.
+  OCR is utilized to recognize text from images as phone dictionary's require knowing kanji and correct stroke order for input. Alternatively, you must somehow already know the spelling without furigana. 
+  Lastly Japanese to English translations are not 1-1 due to the grammatical differences and pro-drop nature of Japanese. However, they remain helpful for learners and are provided.`,
+  buttonLabel: "未来",
   imgStart: true,
-  img: require("../../../main_page_images/shop-front.jpg"),
+  img: require("../../../main_page_images/shop-girl.jpg"),
   alt: "City",
   dark: false,
   primary: false,
@@ -120,18 +124,17 @@ export const homeObjSeven = {
   lightBg: true,
   lightText: false,
   lightTextDesc: false,
-  topLine: "This App",
-  headline: "What is Tokenization, OCR and Translation?",
+  topLine: "App Developments",
+  headline: "The App and The Future",
   description:
-    `Tokenization is the process of breaking down sentences into base parts. This is a procedure for Natural Language Processing techniques. 
-    Japanese is unique where there are no spaces, there are 3 different alphabets and there are many different kanji combinations to construct the same vocab. Pronunciations change depending 
-    on the writer, context and situation. Conjugations and particles are used extensively to modify actions and tenses. For these reasons, simple tokenization techniques cannot be used and a morphological approach is required.
-    OCR is utilized to recognize text from images as phone dictionary's require knowing kanji and correct stroke order for input. Alternatively, you must somehow already know the spelling without furigana. 
-    Lastly Japanese to English translations are not 1-1 due to the grammatical differences and pro-drop nature of Japanese. However, they remain helpful for learners and are provided.`,
-  buttonLabel: "About this App",
+  `This application was built mainly utilizing JavaScript, CSS and Python. React, ExpressJS and MongoDB were utilized with NodeJS. The website is secured with a modern passport implementation.
+  The back end utilizes a MeCab wrapped Natural Language Processing Tokenizer trained with a Japanese dictionary. OCR is utilizes Google's Vision AI. Translation is done via DeepL, a translator known
+  in the Japanese learner community capable of handling idioms and turns-of-phrases well. Plans for future implementation include Anki integration, a JMdict Japanese to English dictionary for 
+  tokenized roots, Korean capability for MeCab and implementing Tesseract OCR`,
+  buttonLabel: "ソフトウェア開発者",
   imgStart: false,
-  img: require("../../../main_page_images/shop-girl.jpg"),
-  alt: "Written",
+  img: require("../../../main_page_images/treewalk.jpg"),
+  alt: "About Me",
   dark: false,
   primary: false,
   darkText: true,
@@ -143,16 +146,17 @@ export const homeObjEight = {
   lightBg: false,
   lightText: true,
   lightTextDesc: true,
-  topLine: "App Developments",
-  headline: "The App and The Future",
+  topLine: "About Me",
+  headline: "",
   description:
-    `This application was built mainly utilizing JavaScript, CSS and Python. React, ExpressJS and MongoDB were utilized with NodeJS. The website is secured with a modern passport implementation.
-    The back end utilizes a MeCab wrapped Natural Language Processing Tokenizer trained with a Japanese dictionary. OCR is utilizes Google's Vision AI. Translation is done via DeepL, a translator known
-    in the Japanese learner community capable of handling idioms and turns-of-phrases well. Plans for future implementation include Anki integration, a JMdict Japanese to English dictionary for 
-    tokenized roots, Korean capability for MeCab and implementing Tesseract OCR`,
+  `I am a highly competitive triathlete who previously worked in the Oil and Gas sector as a Mechanical Engineer. 
+  I decided to teach myself Japanese while races were cancelled. 
+  I quickly realized I was wasting time in an extinct industry run by dinasours. 
+  If I love to learn then I should be paid to learn. That's when I decided to pursue Software Engineering.`
+  ,
   buttonLabel: "行きましょう",
   imgStart: true,
-  img: require("../../../main_page_images/treewalk.jpg"),
+  img: require("../../../main_page_images/me.jpg"),
   alt: "Menu",
   dark: true,
   primary: true,

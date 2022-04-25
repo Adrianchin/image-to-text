@@ -57,7 +57,7 @@ export const ProfileColumn = styled.div`
 export const ProfileBackgrounImage = styled.div`
   background-image: url(${require("../main_page_images/thousand_gate_shrine_2.jpg")});
   background-size: cover;
-  opacity: 1;
+  opacity: 0.9;
   justify-content: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -107,7 +107,7 @@ export const UploadColumn = styled.div`
 export const UploadBackgrounImage = styled.div`
   background-image: url(${require("../main_page_images/writtentoken.jpg")});
   background-size: cover;
-  opacity: 1;
+  opacity: 0.8;
   justify-content: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -133,7 +133,7 @@ export const InputWrapper = styled.div`
   padding: 10px;
 
   //Becomes 1 columns on small screens
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 1000px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -176,7 +176,7 @@ export const DisplayDataColumn = styled.div`
 export const DisplayDataBackgrounImage = styled.div`
   background-image: url(${require("../main_page_images/falltemple.jpg")});
   background-size: cover;
-  opacity: 1;
+  opacity: 0.9;
   justify-content: center;
   background-attachment: fixed;
   background-repeat: no-repeat;

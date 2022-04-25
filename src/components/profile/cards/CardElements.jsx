@@ -58,6 +58,14 @@ export const CardImage = styled.img`
   object-fit: cover;
   border-radius: 10px;
   height: 300px;
+  cursor: pointer;
+
+    //changes button to green on hover
+    &:hover {
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+  }
+
 `;
 
 export const CardBody = styled.div`

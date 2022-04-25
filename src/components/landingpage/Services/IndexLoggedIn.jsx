@@ -20,7 +20,7 @@ const openInNewTab = (url) => {
 const Services = () => {
   return (
     <ServicesContainer id="services">
-      <ServicesH1>これソフト</ServicesH1>
+      <ServicesH1>More Information</ServicesH1>
       <ServicesWrapper>
         <ServicesCard onClick={() => openInNewTab("https://www.state.gov/foreign-language-training/")}>
           <ServicesIcon src={Icon7} />
