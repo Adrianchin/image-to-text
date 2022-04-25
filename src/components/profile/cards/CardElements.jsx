@@ -62,7 +62,7 @@ export const CardImage = styled.img`
 
     //changes button to green on hover
     &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
     transition: all 0.2s ease-in-out;
   }
 

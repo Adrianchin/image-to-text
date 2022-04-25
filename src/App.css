@@ -7,12 +7,4 @@
   justify-content: center;
 }
 
-.boundingbox{
-  position: absolute;
-  box-shadow: 0 0 0 3px #13dbdf inset;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  cursor: pointer;
-}
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./ImageDisplay.css"
 
 function ImageDisplay(props) {
   const linkImagePath = props.linkImagePath;
@@ -103,7 +104,7 @@ function ImageDisplay(props) {
                 left: box.left,
                 bottom: box.bottom,
               }}
-            ></div>
+            />
           </div>
         </div>
       ) : (
