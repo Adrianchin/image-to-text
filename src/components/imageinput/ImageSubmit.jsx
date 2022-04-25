@@ -31,7 +31,7 @@ function ImageSubmit(props) {
         event.preventDefault();
         const formData = new FormData();
         formData.append("myImage", file);
-        const response = await fetch("http://localhost:3000/uploadTest", {
+        const response = await fetch("http://localhost:3000/uploads/uploadimage", {
           method: "POST",
           body: formData,
           credentials: 'include',

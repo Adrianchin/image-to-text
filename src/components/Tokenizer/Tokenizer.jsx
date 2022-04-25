@@ -21,7 +21,7 @@ function Tokenizer(props) {
 
     async function fetchTokenization() {
       try {
-        const response = await fetch(`http://localhost:3000/tokenizetext`, {
+        const response = await fetch(`http://localhost:3000/uploads/tokenizetext`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: textForTokenizing,
