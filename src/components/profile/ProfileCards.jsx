@@ -16,7 +16,7 @@ function Profile(props) {
       let placeholderDataObject=null;
       try {
         const placeholderDataObject = { ...userData };
-        const getUserDataURL = `http://localhost:3000/getProfileData`;
+        const getUserDataURL = `http://localhost:3000/users/getProfileData`;
         const response = await fetch(getUserDataURL, {
           method: "GET",
           credentials: 'include',

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   SidebarContainer,
   Icon,
@@ -11,6 +12,30 @@ import {
 } from "./LoggedInSideBarElements";
 
 const LoggedInSideBar = ({ isOpen, toggle }) => {
+
+  let navigate = useNavigate();
+  
+  function signOut(){
+
+
+    async function signOutUser(){
+      try{
+        const response = await fetch("http://localhost:3000/users/signout", {
+          credentials: 'include',
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({action: "Sign Out"}),
+        })
+        const signOutReturn = await response.json();
+        console.log(signOutReturn);
+      }catch(error){
+        console.log("Error logging out user", error)
+      }
+    }
+    signOutUser()
+    navigate("/");
+  }
+
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
@@ -29,7 +54,7 @@ const LoggedInSideBar = ({ isOpen, toggle }) => {
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute to="/">Sign Out</SidebarRoute>
+          <SidebarRoute to="/" onClick = {signOut}>Sign Out</SidebarRoute>
         </SideBtnWrap>
       </SidebarWrapper>
     </SidebarContainer>

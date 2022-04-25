@@ -22,7 +22,7 @@ function TextToDeepL(props) {
     async function fetchTextTranslation() {
       try {
         const response = await fetch(
-          `http://localhost:3000/textfortranslation`,
+          `http://localhost:3000/uploads/textfortranslation`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

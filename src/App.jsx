@@ -42,8 +42,8 @@ function App() {
 
   const[submitImageData, setSubmitImageData] = useState();
 
-  const [ifLogin, setIfLogin] = useState(false);
-  const [route, setRoute] = useState("other");
+  const [ifLogin, setIfLogin] = useState(false);//No longer needed, delete
+  const [route, setRoute] = useState("other");// No longer needed, delete
   const [userData, setUserData] = useState(null);//I may need to delete some profile information as I no longer use it, push profile data out so its not nested object with array
   const [userDisplayData, setUserDisplayData] = useState(null);
   const [notes, setNotes] = useState(null);

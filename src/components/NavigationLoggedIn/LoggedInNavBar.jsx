@@ -43,7 +43,7 @@ const LoggedInNavbar = ({ toggle }) => {
   function signOut(){
     async function signOutUser(){
       try{
-        const response = await fetch("http://localhost:3000/signout", {
+        const response = await fetch("http://localhost:3000/users/signout", {
           credentials: 'include',
           method: "POST",
           headers: { "Content-Type": "application/json" },

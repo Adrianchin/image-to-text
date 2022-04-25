@@ -41,7 +41,7 @@ function SignIn(props) {
     };
     async function signInUser() {
       try {
-        const response = await fetch("http://localhost:3000/signin", {
+        const response = await fetch("http://localhost:3000/users/signin", {
           credentials: 'include',
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -52,11 +52,7 @@ function SignIn(props) {
         });
         const signInReturn = await response.json();
         console.log(signInReturn);
-        if (signInReturn.username) {
-          navigate("/home");
-          setUserData(signInReturn);
-          setIfLogin(true);
-        }
+        navigate("/home");
       } catch (error) {
         console.log("Error logging in", error);
       }

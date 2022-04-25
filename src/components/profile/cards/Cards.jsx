@@ -38,7 +38,7 @@ function Cards(props) {
           data: userData.profile[id],
         });
         console.log(data);
-        const response = await fetch("http://localhost:3000/deletedocument", {
+        const response = await fetch("http://localhost:3000/uploads/deletedocument", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: data,
@@ -58,7 +58,7 @@ function Cards(props) {
     async function getUserData() {
       try {
         const placeholderDataObject = { ...userData };
-        const getUserDataURL = `http://localhost:3000/getProfileData`;
+        const getUserDataURL = `http://localhost:3000/users/getProfileData`;
         const response = await fetch(getUserDataURL, {
           method: "GET",
           credentials: 'include',

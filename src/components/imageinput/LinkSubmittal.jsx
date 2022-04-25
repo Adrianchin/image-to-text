@@ -64,7 +64,7 @@ function LinkSubmittal(props) {
           link: imageInput,
           originalImageSize: originalImageSize,
         });
-        const response = await fetch("http://localhost:3000/imagelinkphototest", {
+        const response = await fetch("http://localhost:3000/uploads/linkupload", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: imageData,

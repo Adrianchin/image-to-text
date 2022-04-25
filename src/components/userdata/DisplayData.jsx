@@ -43,7 +43,7 @@ function DisplayData(props) {
           tokenizedText: userDataUpload.tokenizedText,
           date: userDataUpload.date,
         });
-        const updateUserDataURL = `http://localhost:3000/updatehistory`;
+        const updateUserDataURL = `http://localhost:3000/uploads/updatehistory`;
         const response = await fetch(updateUserDataURL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,6 +51,7 @@ function DisplayData(props) {
           credentials: "include",
         });
         const updateDataReturn = await response.json();
+        //console.log(updateDataReturn)
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
           navigate("/signin");
