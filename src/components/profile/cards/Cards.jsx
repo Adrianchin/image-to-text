@@ -18,7 +18,6 @@ function Cards(props) {
   let navigate = useNavigate();
   const userData = props.userData;
   const setUserDisplayData = props.setUserDisplayData;
-  const setRoute = props.setRoute;
   const setUserData = props.setUserData;
   
 

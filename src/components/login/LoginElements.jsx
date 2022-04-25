@@ -1,44 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const SignInContainer = styled.div`
-  min-height: 692px;
-  overflow: hidden;
-  background-image: url(${require("../../main_page_images/geisha.jpg")});
-  background-size: cover;
-  opacity: 1;
-  justify-content: center;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0%;
-`;
-
-export const RegisterContainer = styled.div`
-  min-height: 692px;
-  overflow: hidden;
-  background-image: url(${require("../../main_page_images/town.jpg")});
-  background-size: cover;
-  opacity: 1;
-  justify-content: center;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0%;
-`;
-
 export const FormWrap = styled.div`
   height: 100%;
   display: flex;
@@ -148,3 +110,43 @@ export const Text = styled.span`
   font-size: 14px;
   cursor: pointer;
 `;
+
+/* Moved to pages
+export const SignInContainer = styled.div`
+  min-height: 692px;
+  overflow: hidden;
+  background-image: url(${require("../../main_page_images/geisha.jpg")});
+  background-size: cover;
+  opacity: 1;
+  justify-content: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0%;
+`;
+
+export const RegisterContainer = styled.div`
+  min-height: 692px;
+  overflow: hidden;
+  background-image: url(${require("../../main_page_images/town.jpg")});
+  background-size: cover;
+  opacity: 1;
+  justify-content: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0%;
+`;
+*/

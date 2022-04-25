@@ -18,20 +18,20 @@ import "./App.css";
 function App() {
 
   //Displays the image URL of the picture. I think I need so we dont display the image in a moving text
-  const [imageURL, setImageURL] = useState(null);
+  const [imageURL, setImageURL] = useState(null); //Used for the display image only
 
   //Required to move image size from child to parent in upload
-  const [uploadOriginalImageSize, setUploadOriginalImageSize] = useState(null);
+  const [uploadOriginalImageSize, setUploadOriginalImageSize] = useState(null);//combine 1
   //Required to move image size from child to parent in link
-  const [linkOriginalImageSize, setLinkOriginalImageSize] = useState(null);
-  //Required to trigger image function from uploaded image
-  const [uploadImagePath, setUploadImagePath] = useState(false);
+  const [linkOriginalImageSize, setLinkOriginalImageSize] = useState(null);//combine 1
+  //Required to trigger image function from uploaded image 
+  const [uploadImagePath, setUploadImagePath] = useState(false); //Used to determine if it was uploaded or url - Do I really need?
   //Required to trigger image function from link submitted image
-  const [linkImagePath, setLinkImagePath] = useState(false);
+  const [linkImagePath, setLinkImagePath] = useState(false); //Used to determine if it was uploaded or url - Do I really need?
   //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
-  const [uploadBox, setUploadBox] = useState(null);
+  const [uploadBox, setUploadBox] = useState(null); //combine 2
   //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
-  const [linkBox, setLinkBox] = useState(null);
+  const [linkBox, setLinkBox] = useState(null); //combine 2
 
   //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState(null);
@@ -40,13 +40,11 @@ function App() {
 
   const [tokenizedText, setTokenizedText] = useState(null);
 
-  const[submitImageData, setSubmitImageData] = useState();
+  const[submitImageData, setSubmitImageData] = useState();//Not used right now, may convert all states to 1 object
 
-  const [ifLogin, setIfLogin] = useState(false);//No longer needed, delete
-  const [route, setRoute] = useState("other");// No longer needed, delete
   const [userData, setUserData] = useState(null);//I may need to delete some profile information as I no longer use it, push profile data out so its not nested object with array
-  const [userDisplayData, setUserDisplayData] = useState(null);
-  const [notes, setNotes] = useState(null);
+  const [userDisplayData, setUserDisplayData] = useState(null); // Used to store history
+  const [notes, setNotes] = useState(null); // Used to store notes - right now only for errors with tokenizer
 
   return (
     <>
@@ -55,7 +53,6 @@ function App() {
       <Routes>
         <Route path="/" element={
           <Home
-          ifLogin={ifLogin}
           />}
         />
         <Route path="/home" element={
@@ -64,23 +61,16 @@ function App() {
         />
         <Route path="/signin" element={
           <Signin         
-            setIfLogin={setIfLogin}
-            setRoute={setRoute}
-            setUserData={setUserData}
           />}
         />
         <Route path="/register" element={
           <Register
-            setIfLogin={setIfLogin}
-            setRoute={setRoute}
-            setUserData={setUserData}
           />}
         />
         <Route path="/profile" element={
           <Profile
             userData={userData}
             setUserDisplayData={setUserDisplayData}
-            setRoute={setRoute}
             setUserData={setUserData}
           />}
         />

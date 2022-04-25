@@ -12,8 +12,7 @@ import {
   homeObjFour,
 } from "../components/landingpage/InfoSection/Data";
 
-function Home(props) {
-  const ifLogin = props.ifLogin;
+function Home() {
 
   const [isOpen, setIsOpen] = useState(false);
 

@@ -1,19 +1,12 @@
 import React from "react";
 import RegisterForm from "../components/login/Register";
+import { RegisterContainer } from "./PageElements";
 
-function Register(props) {
-  const setIfLogin = props.setIfLogin;
-  const setRoute = props.setRoute;
-  const setUserData = props.setUserData;
-
+function Register() {
   return (
-    <>
-      <RegisterForm
-        setIfLogin={setIfLogin}
-        setRoute={setRoute}
-        setUserData={setUserData}
-      />
-    </>
+    <RegisterContainer>
+      <RegisterForm />
+    </RegisterContainer>
   );
 }
 

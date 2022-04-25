@@ -71,13 +71,6 @@ function DisplayData(props) {
           </InputContainer>
           <TextToDeepL setTranslatedText={setUserDisplayTranslatedText} />
           <Tokenizer setTokenizedText={setUserDisplayTokenizedText} />
-          <TranslatedText translatedText={userDisplayTranslatedText} />
-          <ImageText
-            imageText={userDisplayData.imageInformation[0].description}
-          />
-          <TokenTextTable 
-          tokenizedText={userDisplayTokenizedText} 
-          notes={notes}/>
           <PictureColumn>
             <ImageDisplay
               linkImagePath={userDisplayData.linkImagePath}
@@ -89,6 +82,13 @@ function DisplayData(props) {
               imageURL={userDisplayData.imageURL}
             />
           </PictureColumn>
+          <TranslatedText translatedText={userDisplayTranslatedText} />
+          <ImageText
+            imageText={userDisplayData.imageInformation[0].description}
+          />
+          <TokenTextTable 
+          tokenizedText={userDisplayTokenizedText} 
+          notes={notes}/>
     </>
   );
 }

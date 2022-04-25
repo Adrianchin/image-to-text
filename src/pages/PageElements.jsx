@@ -1,7 +1,14 @@
 import styled from "styled-components";
 
+//General items
+export const NavBarPlaceholder = styled.div`
+  margin-top: 80px;
+`;
+
 //SignIn Elements
 export const SignInContainer = styled.div`
+  min-height: 692px;
+  overflow: hidden;
   background-image: url(${require("../main_page_images/geisha.jpg")});
   background-size: cover;
   opacity: 1;
@@ -18,9 +25,25 @@ export const SignInContainer = styled.div`
   bottom: 0%;
 `;
 
-export const NavBarPlaceholder = styled.div`
-  margin-top: 80px;
+export const RegisterContainer = styled.div`
+  min-height: 692px;
+  overflow: hidden;
+  background-image: url(${require("../main_page_images/town.jpg")});
+  background-size: cover;
+  opacity: 1;
+  justify-content: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0%;
 `;
+
 
 //Profile Elements
 

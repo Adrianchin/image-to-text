@@ -104,17 +104,6 @@ function UploadFile(props) {
               setSubmitImageData={setSubmitImageData}
             />
           </InputWrapper>
-          <div>
-            <TranslatedText translatedText={translatedText} />
-            <div>
-              <ImageText imageText={imageText} />
-            </div>
-          </div>
-          <div>
-            <TokenTextTable 
-            tokenizedText={tokenizedText} 
-            notes={notes}/>
-          </div>
           <UploadPictureColumn>
             <ImageDisplay
               linkImagePath={linkImagePath}
@@ -126,6 +115,17 @@ function UploadFile(props) {
               imageURL={imageURL}
             />
           </UploadPictureColumn>
+          <div>
+            <TranslatedText translatedText={translatedText} />
+            <div>
+              <ImageText imageText={imageText} />
+            </div>
+          </div>
+          <div>
+            <TokenTextTable 
+            tokenizedText={tokenizedText} 
+            notes={notes}/>
+          </div>
         </UploadColumn>
       </UploadContainer>
     </>

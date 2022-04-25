@@ -64,6 +64,33 @@ function ImageSubmit(props) {
     initiateUploadImageTest()
   }
 
+
+  const onChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  return (
+    <ImageUploadForm onSubmit={onFormSubmitTest}>
+      <h2 className="center"> File Upload </h2>
+      <SubmitContainer>
+        <label htmlFor={"upload-button"}>
+          <UploadFileButton>Choose JPG File</UploadFileButton>
+        </label>
+        <input
+          type="file"
+          name="myImage"
+          id="upload-button"
+          style={{ display: "none" }}
+          onChange={onChange}
+        />
+        <UploadButton type="submit">Upload</UploadButton>
+      </SubmitContainer>
+    </ImageUploadForm>
+  );
+}
+
+export default ImageSubmit;
+
 /*
   async function onFormSubmit(event) {
 
@@ -240,28 +267,3 @@ function ImageSubmit(props) {
     setUploadImagePath(true); //Sets path for box calculation
   }
 */
-  const onChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  return (
-    <ImageUploadForm onSubmit={onFormSubmitTest}>
-      <h2 className="center"> File Upload </h2>
-      <SubmitContainer>
-        <label htmlFor={"upload-button"}>
-          <UploadFileButton>Choose JPG File</UploadFileButton>
-        </label>
-        <input
-          type="file"
-          name="myImage"
-          id="upload-button"
-          style={{ display: "none" }}
-          onChange={onChange}
-        />
-        <UploadButton type="submit">Upload</UploadButton>
-      </SubmitContainer>
-    </ImageUploadForm>
-  );
-}
-
-export default ImageSubmit;

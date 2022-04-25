@@ -13,7 +13,6 @@ import {
 function Profile(props) {
   const userData = props.userData;
   const setUserDisplayData = props.setUserDisplayData;
-  const setRoute = props.setRoute;
   const setUserData = props.setUserData;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +32,6 @@ function Profile(props) {
           <ProfileCards
             userData={userData}
             setUserDisplayData={setUserDisplayData}
-            setRoute={setRoute}
             setUserData={setUserData}
           />
         </ProfileColumn>

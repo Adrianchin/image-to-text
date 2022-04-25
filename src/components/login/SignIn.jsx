@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  SignInContainer,
   FormWrap,
   Icon,
   FormContent,
@@ -15,12 +14,8 @@ import {
   Text,
 } from "./LoginElements";
 
-function SignIn(props) {
+function SignIn() {
   let navigate = useNavigate();
-
-  const setRoute = props.setRoute;
-  const setIfLogin = props.setIfLogin;
-  const setUserData = props.setUserData;
 
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
@@ -42,7 +37,7 @@ function SignIn(props) {
     async function signInUser() {
       try {
         const response = await fetch("http://localhost:3000/users/signin", {
-          credentials: 'include',
+          credentials: "include",
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -61,30 +56,26 @@ function SignIn(props) {
   }
 
   return (
-    <>
-      <SignInContainer>
-        <FormWrap>
-          <IconDiv>
-            <Icon to="/">返る</Icon>
-          </IconDiv>
-          <FormContent>
-            <Form>
-              <FormH1>Sign In</FormH1>
-              <FormLabel htmlFor="for">Username</FormLabel>
-              <FormInput type="name" onChange={onUsernameInput} />
-              <FormLabel htmlFor="for">Password</FormLabel>
-              <FormInput type="password" onChange={onPasswordInput} />
-              <FormButton type="submit" onClick={onSubmitSignin}>
-                Continue
-              </FormButton>
-              <TextDiv>
-                <Text onClick={() => navigate("/register")}>Register</Text>
-              </TextDiv>
-            </Form>
-          </FormContent>
-        </FormWrap>
-      </SignInContainer>
-    </>
+    <FormWrap>
+      <IconDiv>
+        <Icon to="/">返る</Icon>
+      </IconDiv>
+      <FormContent>
+        <Form>
+          <FormH1>Sign In</FormH1>
+          <FormLabel htmlFor="for">Username</FormLabel>
+          <FormInput type="name" onChange={onUsernameInput} />
+          <FormLabel htmlFor="for">Password</FormLabel>
+          <FormInput type="password" onChange={onPasswordInput} />
+          <FormButton type="submit" onClick={onSubmitSignin}>
+            Continue
+          </FormButton>
+          <TextDiv>
+            <Text onClick={() => navigate("/register")}>Register</Text>
+          </TextDiv>
+        </Form>
+      </FormContent>
+    </FormWrap>
   );
 }
 

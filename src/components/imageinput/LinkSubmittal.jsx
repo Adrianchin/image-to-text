@@ -96,6 +96,24 @@ function LinkSubmittal(props) {
     }
     await fetchImageInfo(); //Step 1
   }
+  
+  function onImageInput(event) {
+    setImageInput(event.target.value);
+  }
+
+  return (
+    <InputContainer>
+      <h3 className="center"> Image URL </h3>
+      <SubmitContainer>
+        <InputURL type="text" onChange={onImageInput} />
+        <UploadButton onClick={onImageSubmitTest}>Image URL</UploadButton>
+      </SubmitContainer>
+    </InputContainer>
+  );
+}
+
+export default LinkSubmittal;
+
 
 /*
   async function onImageSubmit() {
@@ -276,20 +294,3 @@ function LinkSubmittal(props) {
     setLinkImagePath(true); //Sets path for box calculation
   }
 */
-  
-  function onImageInput(event) {
-    setImageInput(event.target.value);
-  }
-
-  return (
-    <InputContainer>
-      <h3 className="center"> Image URL </h3>
-      <SubmitContainer>
-        <InputURL type="text" onChange={onImageInput} />
-        <UploadButton onClick={onImageSubmitTest}>Image URL</UploadButton>
-      </SubmitContainer>
-    </InputContainer>
-  );
-}
-
-export default LinkSubmittal;
