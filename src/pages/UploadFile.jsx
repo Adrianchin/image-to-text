@@ -18,9 +18,8 @@ import {
 } from "./PageElements";
 
 function UploadFile(props) {
-
-  const rawImageBox= props.rawImageBox
-  const setRawImageBox= props.setRawImageBox
+  const rawImageBox = props.rawImageBox;
+  const setRawImageBox = props.setRawImageBox;
 
   const uploadBox = props.uploadBox;
   const linkBox = props.linkBox;
@@ -28,18 +27,18 @@ function UploadFile(props) {
   const setImageText = props.setImageText;
   const imageText = props.imageText;
 
-  const setSubmitImageData=props.setSubmitImageData
-  const submitImageData = props.submitImageData
+  const setSubmitImageData = props.setSubmitImageData;
+  const submitImageData = props.submitImageData;
 
   const setNotes = props.setNotes;
   const notes = props.notes;
 
   const setImageURL = props.setImageURL;
   const imageURL = props.imageURL;
-  
+
   const setTranslatedText = props.setTranslatedText;
   const translatedText = props.translatedText;
-  
+
   const setTokenizedText = props.setTokenizedText;
   const tokenizedText = props.tokenizedText;
 
@@ -69,7 +68,6 @@ function UploadFile(props) {
               setNotes={setNotes}
               setRawImageBox={setRawImageBox}
               setOriginalImageSize={setOriginalImageSize}
-
               setSubmitImageData={setSubmitImageData}
             />
 
@@ -81,7 +79,6 @@ function UploadFile(props) {
               setNotes={setNotes}
               setRawImageBox={setRawImageBox}
               setOriginalImageSize={setOriginalImageSize}
-
               setSubmitImageData={setSubmitImageData}
             />
           </InputWrapper>
@@ -92,17 +89,9 @@ function UploadFile(props) {
               originalImageSize={originalImageSize}
             />
           </UploadPictureColumn>
-          <div>
-            <TranslatedText translatedText={translatedText} />
-            <div>
-              <ImageText imageText={imageText} />
-            </div>
-          </div>
-          <div>
-            <TokenTextTable 
-            tokenizedText={tokenizedText} 
-            notes={notes}/>
-          </div>
+          <TranslatedText translatedText={translatedText} />
+          <ImageText imageText={imageText} />
+          <TokenTextTable tokenizedText={tokenizedText} notes={notes} />
         </UploadColumn>
       </UploadContainer>
     </>

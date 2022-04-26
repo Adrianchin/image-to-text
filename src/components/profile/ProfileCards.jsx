@@ -12,7 +12,6 @@ function Profile(props) {
   //Adds update from history to profile upon load
   useEffect(() => {
     async function getUserData() {
-      let placeholderDataObject=null;
       try {
         const placeholderDataObject = { ...userData };
         const getUserDataURL = `http://localhost:3000/users/getProfileData`;
