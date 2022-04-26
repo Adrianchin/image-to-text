@@ -73,12 +73,8 @@ function DisplayData(props) {
           <Tokenizer setTokenizedText={setUserDisplayTokenizedText} />
           <PictureColumn>
             <ImageDisplay
-              linkImagePath={userDisplayData.linkImagePath}
-              linkOriginalImageSize={userDisplayData.originalImageSize}
-              linkBox={userDisplayData.rawImageBox}
-              uploadImagePath={userDisplayData.uploadImagePath}
-              uploadOriginalImageSize={userDisplayData.originalImageSize}
-              uploadBox={userDisplayData.rawImageBox}
+              rawImageBox={userDisplayData.rawImageBox}
+              originalImageSize={userDisplayData.originalImageSize}
               imageURL={userDisplayData.imageURL}
             />
           </PictureColumn>

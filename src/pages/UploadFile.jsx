@@ -19,45 +19,32 @@ import {
 
 function UploadFile(props) {
 
+  const rawImageBox= props.rawImageBox
+  const setRawImageBox= props.setRawImageBox
+
+  const uploadBox = props.uploadBox;
+  const linkBox = props.linkBox;
+
+  const setImageText = props.setImageText;
+  const imageText = props.imageText;
+
   const setSubmitImageData=props.setSubmitImageData
   const submitImageData = props.submitImageData
 
   const setNotes = props.setNotes;
   const notes = props.notes;
 
-  const setImageText = props.setImageText;
-  const imageText = props.imageText;
-
-  const setUploadBox = props.setUploadBox;
-  const uploadBox = props.uploadBox;
-
   const setImageURL = props.setImageURL;
   const imageURL = props.imageURL;
-
-  const setUploadOriginalImageSize = props.setUploadOriginalImageSize;
-  const uploadOriginalImageSize = props.uploadOriginalImageSize;
-
-  //remove?
-  const setUploadImagePath = props.setUploadImagePath;
-  const uploadImagePath = props.uploadImagePath;
-
-  //remove?
-  const setLinkImagePath = props.setLinkImagePath;
-  const linkImagePath = props.linkImagePath;
-
+  
   const setTranslatedText = props.setTranslatedText;
   const translatedText = props.translatedText;
-
+  
   const setTokenizedText = props.setTokenizedText;
   const tokenizedText = props.tokenizedText;
 
-  const setLinkOriginalImageSize = props.setLinkOriginalImageSize;
-  const linkOriginalImageSize = props.linkOriginalImageSize;
-
-  const setLinkBox = props.setLinkBox;
-  const linkBox = props.linkBox;
-
-  const userData = props.userData;
+  const setOriginalImageSize = props.setOriginalImageSize;
+  const originalImageSize = props.originalImageSize;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -76,43 +63,33 @@ function UploadFile(props) {
           <InputWrapper>
             <ImageSubmit
               setImageText={setImageText}
-              setUploadBox={setUploadBox}
               setImageURL={setImageURL}
-              setUploadOriginalImageSize={setUploadOriginalImageSize}
-              setUploadImagePath={setUploadImagePath}
-              setLinkImagePath={setLinkImagePath}
               setTranslatedText={setTranslatedText}
               setTokenizedText={setTokenizedText}
-              userData={userData}
               setNotes={setNotes}
+              setRawImageBox={setRawImageBox}
+              setOriginalImageSize={setOriginalImageSize}
 
               setSubmitImageData={setSubmitImageData}
             />
 
             <LinkSubmittal
-              setLinkOriginalImageSize={setLinkOriginalImageSize}
-              setLinkBox={setLinkBox}
               setImageText={setImageText}
               setTranslatedText={setTranslatedText}
               setImageURL={setImageURL}
-              setUploadImagePath={setUploadImagePath}
-              setLinkImagePath={setLinkImagePath}
               setTokenizedText={setTokenizedText}
-              userData={userData}
               setNotes={setNotes}
+              setRawImageBox={setRawImageBox}
+              setOriginalImageSize={setOriginalImageSize}
 
               setSubmitImageData={setSubmitImageData}
             />
           </InputWrapper>
           <UploadPictureColumn>
             <ImageDisplay
-              linkImagePath={linkImagePath}
-              linkOriginalImageSize={linkOriginalImageSize}
-              linkBox={linkBox}
-              uploadImagePath={uploadImagePath}
-              uploadOriginalImageSize={uploadOriginalImageSize}
-              uploadBox={uploadBox}
               imageURL={imageURL}
+              rawImageBox={rawImageBox}
+              originalImageSize={originalImageSize}
             />
           </UploadPictureColumn>
           <div>

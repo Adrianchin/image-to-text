@@ -14,13 +14,11 @@ function ImageSubmit(props) {
   
   const setNotes = props.setNotes;
   const setImageText = props.setImageText;
-  const setUploadBox = props.setUploadBox;
+  const setRawImageBox= props.setRawImageBox;
   const setImageURL = props.setImageURL;
-  const setUploadOriginalImageSize = props.setUploadOriginalImageSize;
-  const setUploadImagePath = props.setUploadImagePath;
   const setTranslatedText = props.setTranslatedText;
-  const setLinkImagePath = props.setLinkImagePath;
   const setTokenizedText = props.setTokenizedText;
+  const setOriginalImageSize = props.setOriginalImageSize;
 
   const [file, setFile] = useState(null);
 
@@ -47,12 +45,10 @@ function ImageSubmit(props) {
 
         setNotes(imageInformation.notes);
         setImageText(imageInformation.imageInformation[0].description);
-        setUploadBox(imageInformation.rawImageBox);
+        setRawImageBox(imageInformation.rawImageBox);
         setImageURL(imageInformation.imageURL);
-        setUploadOriginalImageSize(imageInformation.originalImageSize);
-        setUploadImagePath(imageInformation.uploadImagePath);
+        setOriginalImageSize(imageInformation.originalImageSize);
         setTranslatedText(imageInformation.translatedText);
-        setLinkImagePath(imageInformation.linkImagePath);
         setTokenizedText(imageInformation.tokenizedText);
 
         setSubmitImageData(imageInformation)//Not using yet

@@ -74,7 +74,7 @@ function Cards(props) {
     await getUserData();
   }
 
-  const cardComponent = userData.profile.map((empty, i) => {
+  const cardComponent = userData.profile.map((entry, i) => {
     //console.log(`This is userData${i} from Cards run: `, userData)
     return (
       <Card key={i}>

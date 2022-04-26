@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./ImageDisplay.css"
 
 function ImageDisplay(props) {
-  const linkImagePath = props.linkImagePath;
-  const linkOriginalImageSize = props.linkOriginalImageSize;
-  const linkBox = props.linkBox;
-  const uploadImagePath = props.uploadImagePath;
-  const uploadOriginalImageSize = props.uploadOriginalImageSize;
-  const uploadBox = props.uploadBox;
   const imageURL = props.imageURL;
+  const rawImageBox= props.rawImageBox
+  const originalImageSize = props.originalImageSize;
 
   const [box, setBox] = useState("");
   const [currentWidth, setCurrentWidth] = useState("");
@@ -24,58 +20,22 @@ function ImageDisplay(props) {
   };
 
   useEffect(() => {
-    //I no longer need the 2 paths? Remove....
-
-    //IMAGE LINK PATH!!!!!
-    if (linkImagePath && currentWidth && currentHeight && linkOriginalImageSize && linkBox) {
-      //IMAGE LINK PATH!!!!!
-      function ImageSubmitBoxCalculationUpload() {
-        let imageRatioWidth = currentWidth / linkOriginalImageSize.width;
-        let imageRatioHeight = currentHeight / linkOriginalImageSize.height;
+    if (currentWidth && currentHeight && originalImageSize && rawImageBox) {
+        let imageRatioWidth = currentWidth / originalImageSize.width;
+        let imageRatioHeight = currentHeight / originalImageSize.height;
 
         setBox({
-          top: linkBox.top * imageRatioHeight,
-          right: currentWidth - linkBox.right * imageRatioWidth,
-          left: linkBox.left * imageRatioWidth,
-          bottom: linkBox.bottom * imageRatioHeight,
+          top: rawImageBox.top * imageRatioHeight,
+          right: currentWidth - rawImageBox.right * imageRatioWidth,
+          left: rawImageBox.left * imageRatioWidth,
+          bottom: rawImageBox.bottom * imageRatioHeight,
         });
-      }
-      ImageSubmitBoxCalculationUpload();
-    }
-
-    //I no longer need the 2 paths? Remove....
-
-    //IMAGE UPLOAD PATH!!!!!
-    if (uploadImagePath && uploadOriginalImageSize && currentWidth && currentHeight && uploadBox ) {
-      //IMAGE UPLOAD PATH!!!!!
-
-      function ImageSubmitBoxCalculationUpload() {
-        //IMAGE UPLOAD PATH!!!!!
-
-        let originalHeight = uploadOriginalImageSize.height;
-        let originalWidth = uploadOriginalImageSize.width;
-
-        let imageRatioWidth = currentWidth / originalWidth;
-        let imageRatioHeight = currentHeight / originalHeight;
-
-        setBox({
-          top: uploadBox.top * imageRatioHeight,
-          right: currentWidth - uploadBox.right * imageRatioWidth,
-          left: uploadBox.left * imageRatioWidth,
-          bottom: uploadBox.bottom * imageRatioHeight,
-        });
-      }
-      ImageSubmitBoxCalculationUpload();
     }
   }, [
-    linkBox,
-    uploadImagePath,
-    linkImagePath,
     currentHeight,
     currentWidth,
-    uploadOriginalImageSize,
-    linkOriginalImageSize,
-    uploadBox,
+    originalImageSize,
+    rawImageBox
   ]);
 
   return (

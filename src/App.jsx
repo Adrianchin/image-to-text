@@ -20,18 +20,9 @@ function App() {
   //Displays the image URL of the picture. I think I need so we dont display the image in a moving text
   const [imageURL, setImageURL] = useState(null); //Used for the display image only
 
-  //Required to move image size from child to parent in upload
-  const [uploadOriginalImageSize, setUploadOriginalImageSize] = useState(null);//combine 1
-  //Required to move image size from child to parent in link
-  const [linkOriginalImageSize, setLinkOriginalImageSize] = useState(null);//combine 1
-  //Required to trigger image function from uploaded image 
-  const [uploadImagePath, setUploadImagePath] = useState(false); //Used to determine if it was uploaded or url - Do I really need?
-  //Required to trigger image function from link submitted image
-  const [linkImagePath, setLinkImagePath] = useState(false); //Used to determine if it was uploaded or url - Do I really need?
-  //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
-  const [uploadBox, setUploadBox] = useState(null); //combine 2
-  //required to send the box from the back end. Can't use the other box as I do not want to upload box and render before updating box again
-  const [linkBox, setLinkBox] = useState(null); //combine 2
+  const [originalImageSize, setOriginalImageSize] = useState(null);
+
+  const [rawImageBox, setRawImageBox] = useState(null);
 
   //Displays translated text from DeepL
   const [translatedText, setTranslatedText] = useState(null);
@@ -85,27 +76,18 @@ function App() {
           <UploadFile
             setImageText={setImageText}
             imageText={imageText}
-            setUploadBox={setUploadBox}
-            uploadBox={uploadBox}
-            setLinkBox={setLinkBox}
-            linkBox={linkBox}
             setImageURL={setImageURL}
             imageURL={imageURL}
-            setUploadOriginalImageSize={setUploadOriginalImageSize}
-            uploadOriginalImageSize={uploadOriginalImageSize}
-            setLinkOriginalImageSize={setLinkOriginalImageSize}
-            linkOriginalImageSize={linkOriginalImageSize}
-            setUploadImagePath={setUploadImagePath}
-            uploadImagePath={uploadImagePath}
-            setLinkImagePath={setLinkImagePath}
-            linkImagePath={linkImagePath}
             setTranslatedText={setTranslatedText}
             translatedText={translatedText}
             setTokenizedText={setTokenizedText}
             tokenizedText={tokenizedText}
-            userData={userData}
             notes={notes}
             setNotes={setNotes}
+            setOriginalImageSize={setOriginalImageSize}
+            originalImageSize={originalImageSize}
+            rawImageBox={rawImageBox}
+            setRawImageBox={setRawImageBox}
 
             setSubmitImageData={setSubmitImageData}
           />}

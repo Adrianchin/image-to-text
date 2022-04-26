@@ -11,16 +11,13 @@ function LinkSubmittal(props) {
   let navigate = useNavigate();
 
   const setSubmitImageData = props.setSubmitImageData;
-
+  const setRawImageBox= props.setRawImageBox;
   const setNotes = props.setNotes;
-  const setLinkOriginalImageSize = props.setLinkOriginalImageSize;
-  const setLinkBox = props.setLinkBox;
   const setImageText = props.setImageText;
   const setTranslatedText = props.setTranslatedText;
   const setImageURL = props.setImageURL;
-  const setLinkImagePath = props.setLinkImagePath;
-  const setUploadImagePath = props.setUploadImagePath;
   const setTokenizedText = props.setTokenizedText;
+  const setOriginalImageSize = props.setOriginalImageSize;
 
   //Live update of input for image url. May be dubplicated, see imageURL. May be changed to global var?
   const [imageInput, setImageInput] = useState("");
@@ -80,12 +77,10 @@ function LinkSubmittal(props) {
 
         setNotes(imageInformation.notes);
         setImageText(imageInformation.imageInformation[0].description);
-        setLinkBox(imageInformation.rawImageBox);
+        setRawImageBox(imageInformation.rawImageBox);
         setImageURL(imageInformation.imageURL);
-        setLinkOriginalImageSize(imageInformation.originalImageSize);
-        setUploadImagePath(imageInformation.uploadImagePath);
+        setOriginalImageSize(imageInformation.originalImageSize);
         setTranslatedText(imageInformation.translatedText);
-        setLinkImagePath(imageInformation.linkImagePath);
         setTokenizedText(imageInformation.tokenizedText);
 
         setSubmitImageData(imageInformation)//Not using yet
@@ -94,7 +89,7 @@ function LinkSubmittal(props) {
         console.log("Error fetching API responses for image, try again");
       }
     }
-    await fetchImageInfo(); //Step 1
+    await fetchImageInfo(); 
   }
   
   function onImageInput(event) {
