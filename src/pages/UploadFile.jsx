@@ -3,7 +3,7 @@ import ImageSubmit from "../components/imageinput/ImageSubmit";
 import LinkSubmittal from "../components/imageinput/LinkSubmittal";
 import TranslatedText from "../components/textdisplay/TranslatedText";
 import ImageText from "../components/textdisplay/ImageText";
-import TokenTextTable from "../components/tokenizer/TokenTextTable";
+import TokenSortingTable from "../components/tokenizer/TokenSortingTable";
 import ImageDisplay from "../components/imagedisplay/ImageDisplay";
 import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
@@ -82,6 +82,12 @@ function UploadFile(props) {
               setSubmitImageData={setSubmitImageData}
             />
           </InputWrapper>
+          {tokenizedText
+          ?<TokenSortingTable tokenizedText={tokenizedText} notes={notes} />
+          :<></>
+          }
+          <ImageText imageText={imageText} />
+          <TranslatedText translatedText={translatedText} />
           <UploadPictureColumn>
             <ImageDisplay
               imageURL={imageURL}
@@ -89,9 +95,6 @@ function UploadFile(props) {
               originalImageSize={originalImageSize}
             />
           </UploadPictureColumn>
-          <TranslatedText translatedText={translatedText} />
-          <ImageText imageText={imageText} />
-          <TokenTextTable tokenizedText={tokenizedText} notes={notes} />
         </UploadColumn>
       </UploadContainer>
     </>

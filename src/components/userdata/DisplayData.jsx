@@ -4,8 +4,8 @@ import ImageText from "../textdisplay/ImageText";
 import TranslatedText from "../textdisplay/TranslatedText";
 import TextToDeepL from "../texttodeepl/TextToDeepL";
 import Tokenizer from "../tokenizer/Tokenizer";
-import TokenTextTable from "../tokenizer/TokenTextTable";
 import { useNavigate } from "react-router-dom";
+import TokenSortingTable from "../tokenizer/TokenSortingTable";
 
 import {
   PictureColumn,
@@ -71,6 +71,13 @@ function DisplayData(props) {
           </InputContainer>
           <TextToDeepL setTranslatedText={setUserDisplayTranslatedText} />
           <Tokenizer setTokenizedText={setUserDisplayTokenizedText} />
+          <TokenSortingTable
+          tokenizedText={userDisplayTokenizedText} 
+          notes={notes}/>
+          <ImageText
+            imageText={userDisplayData.imageInformation[0].description}
+          />
+          <TranslatedText translatedText={userDisplayTranslatedText} />
           <PictureColumn>
             <ImageDisplay
               rawImageBox={userDisplayData.rawImageBox}
@@ -78,13 +85,6 @@ function DisplayData(props) {
               imageURL={userDisplayData.imageURL}
             />
           </PictureColumn>
-          <TranslatedText translatedText={userDisplayTranslatedText} />
-          <ImageText
-            imageText={userDisplayData.imageInformation[0].description}
-          />
-          <TokenTextTable 
-          tokenizedText={userDisplayTokenizedText} 
-          notes={notes}/>
     </>
   );
 }
