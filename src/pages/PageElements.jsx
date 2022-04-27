@@ -89,7 +89,7 @@ export const ProfileBackgrounImage = styled.div`
   top: 0%;
   width: 85%;
   bottom: 0%;
-  box-shadow: inset 0 0px 30px 3px #7a7a7a;
+  box-shadow: inset 0 0px 10px 3px #7a7a7a;
   @media screen and (max-width: 700px) {
     width: 100%;
   }
@@ -139,7 +139,7 @@ export const UploadBackgrounImage = styled.div`
   top: 0%;
   width: 85%;
   bottom: 0%;
-  box-shadow: inset 0 0px 30px 3px #7a7a7a;
+  box-shadow: inset 0 0px 10px 3px #7a7a7a;
 
   @media screen and (max-width: 700px) {
     width: 100%;
@@ -212,7 +212,7 @@ export const DisplayDataBackgrounImage = styled.div`
   top: 0%;
   width: 85%;
   bottom: 0%;
-  box-shadow: inset 0 0px 30px 3px #7a7a7a;
+  box-shadow: inset 0 0px 10px 3px #7a7a7a;
 
   @media screen and (max-width: 700px) {
     width: 100%;;
