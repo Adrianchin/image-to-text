@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ImageContainer = styled.div`
-  padding: 25px;
+  padding: 0px;
   position: relative;
   transition: all 0.2s ease-in-out;
   display: flex;
