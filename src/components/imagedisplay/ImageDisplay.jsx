@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./ImageDisplay.css"
+import {
+  ImageContainer,
+  ImageBackground
+} from "./ImageDisplayElements";
 
 function ImageDisplay(props) {
   const imageURL = props.imageURL;
@@ -39,7 +43,8 @@ function ImageDisplay(props) {
   ]);
 
   return (
-    <>
+    <ImageContainer>
+      <ImageBackground/>
       {imageURL ? (
         <div
           className="center"
@@ -70,7 +75,7 @@ function ImageDisplay(props) {
       ) : (
         <></>
       )}
-    </>
+    </ImageContainer>
   );
 }
 

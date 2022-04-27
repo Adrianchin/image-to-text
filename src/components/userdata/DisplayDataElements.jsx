@@ -2,6 +2,7 @@
 
 import styled from "styled-components";
 
+/* Remove
 export const PictureColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,6 +10,7 @@ export const PictureColumn = styled.div`
   align-items: center;
   background: #ffffff;
 `;
+*/
 
 export const UpdateButton = styled.button`
   border-radius: 5px;

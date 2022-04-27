@@ -88,13 +88,11 @@ function UploadFile(props) {
           }
           <ImageText imageText={imageText} />
           <TranslatedText translatedText={translatedText} />
-          <UploadPictureColumn>
             <ImageDisplay
               imageURL={imageURL}
               rawImageBox={rawImageBox}
               originalImageSize={originalImageSize}
             />
-          </UploadPictureColumn>
         </UploadColumn>
       </UploadContainer>
     </>

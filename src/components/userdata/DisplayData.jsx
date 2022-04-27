@@ -78,13 +78,12 @@ function DisplayData(props) {
             imageText={userDisplayData.imageInformation[0].description}
           />
           <TranslatedText translatedText={userDisplayTranslatedText} />
-          <PictureColumn>
+
             <ImageDisplay
               rawImageBox={userDisplayData.rawImageBox}
               originalImageSize={userDisplayData.originalImageSize}
               imageURL={userDisplayData.imageURL}
             />
-          </PictureColumn>
     </>
   );
 }
