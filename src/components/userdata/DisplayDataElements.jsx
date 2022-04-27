@@ -2,16 +2,6 @@
 
 import styled from "styled-components";
 
-/* Remove
-export const PictureColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  background: #ffffff;
-`;
-*/
-
 export const UpdateButton = styled.button`
   border-radius: 5px;
   background: #000000;
@@ -38,46 +28,29 @@ export const InputContainer = styled.div`
   margin-top: 80px;
 `;
 
-
-/* Remove, see main page
-export const DisplayDataContainer = styled.div`
+export const TokenizedTableContainer = styled.div`
+  padding: 25px;
+  position: relative;
+  transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  height: 100%;
-  min-height: 100vh;
   width: 100%;
-  background: #010606;
-  background-size: cover;
-  z-index: -2;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  z-index: 1;
+  border-radius: 0px;
 `;
-
-export const DisplayDataColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  background: #ffffff;
-  padding: 0 50px;
-  width: 85%;
+export const TokenizerTableBackground = styled.div`
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  min-height: 100vh;
-  z-index: 0;
+  width: 100%;
+  opacity: 0.9;
+  z-index: -1;
+  border-radius: 0px;
+  @media screen and (max-width: 500px) {
+    opacity: 1;
+  }
 `;
-
-export const DisplayDataBackgrounImage = styled.div`
-  background-image: url(${require("../../main_page_images/falltemple.jpg")});
-  background-size: cover;
-  opacity: 1;
-  justify-content: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  position: fixed;
-  z-index: 0;
-  top: 0%;
-  width: 85%;
-  bottom: 0%;
-  box-shadow: inset 0 0px 30px 3px #7a7a7a;
-`;
-*/

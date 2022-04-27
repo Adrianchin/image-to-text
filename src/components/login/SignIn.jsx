@@ -14,6 +14,11 @@ import {
   Text,
 } from "./LoginElements";
 
+const signinEndpoint = "http://localhost:3000/users/signin";
+const loginHomeLink = "/home";
+const registerLink = "/register";
+const logoutHomeLink = "/";
+
 function SignIn() {
   let navigate = useNavigate();
 
@@ -36,7 +41,7 @@ function SignIn() {
     };
     async function signInUser() {
       try {
-        const response = await fetch("http://localhost:3000/users/signin", {
+        const response = await fetch(signinEndpoint, {
           credentials: "include",
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -47,7 +52,7 @@ function SignIn() {
         });
         const signInReturn = await response.json();
         console.log(signInReturn);
-        navigate("/home");
+        navigate(loginHomeLink);
       } catch (error) {
         console.log("Error logging in", error);
       }
@@ -58,7 +63,7 @@ function SignIn() {
   return (
     <FormWrap>
       <IconDiv>
-        <Icon to="/">返る</Icon>
+        <Icon to={logoutHomeLink}>返る</Icon>
       </IconDiv>
       <FormContent>
         <Form>
@@ -71,7 +76,7 @@ function SignIn() {
             Continue
           </FormButton>
           <TextDiv>
-            <Text onClick={() => navigate("/register")}>Register</Text>
+            <Text onClick={() => navigate(registerLink)}>Register</Text>
           </TextDiv>
         </Form>
       </FormContent>

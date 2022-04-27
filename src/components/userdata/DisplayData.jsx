@@ -8,10 +8,14 @@ import { useNavigate } from "react-router-dom";
 import TokenSortingTable from "../tokenizer/TokenSortingTable";
 
 import {
-  PictureColumn,
+  TokenizedTableContainer,
+  TokenizerTableBackground,
   UpdateButton,
   InputContainer,
 } from "./DisplayDataElements";
+
+const updateUserEndpoint = `http://localhost:3000/uploads/updatehistory`;
+const signinLink = "/signin";
 
 function DisplayData(props) {
   let navigate = useNavigate();
@@ -43,7 +47,7 @@ function DisplayData(props) {
           tokenizedText: userDataUpload.tokenizedText,
           date: userDataUpload.date,
         });
-        const updateUserDataURL = `http://localhost:3000/uploads/updatehistory`;
+        const updateUserDataURL = updateUserEndpoint;
         const response = await fetch(updateUserDataURL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,10 +55,10 @@ function DisplayData(props) {
           credentials: "include",
         });
         const updateDataReturn = await response.json();
-        //console.log(updateDataReturn)
+        console.log(updateDataReturn)
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
-          navigate("/signin");
+          navigate(signinLink);
         }
       } catch (error) {
         console.log("Error getting profile data: ", error);
@@ -71,9 +75,14 @@ function DisplayData(props) {
           </InputContainer>
           <TextToDeepL setTranslatedText={setUserDisplayTranslatedText} />
           <Tokenizer setTokenizedText={setUserDisplayTokenizedText} />
-          <TokenSortingTable
-          tokenizedText={userDisplayTokenizedText} 
-          notes={notes}/>
+          {userDisplayTokenizedText
+          ?<TokenSortingTable
+            tokenizedText={userDisplayTokenizedText} 
+            notes={userDisplayData.notes}/>
+          :<TokenizedTableContainer>
+            <TokenizerTableBackground />
+                  <h1>Error with Tokenization and table. Review input and tokenize again</h1>
+          </TokenizedTableContainer>}
           <ImageText
             imageText={userDisplayData.imageInformation[0].description}
           />

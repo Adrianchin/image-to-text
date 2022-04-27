@@ -12,6 +12,8 @@ import {
   VideoLandingBtnWrapper,
 } from "./VideoLandingElements";
 
+const signinLink = "/signin";
+
 const VideoLanding = () => {
   let navigate = useNavigate();
   const [hover, setHover] = useState(false);
@@ -34,7 +36,7 @@ const VideoLanding = () => {
         </VideoLandingP>
         <VideoLandingBtnWrapper>
           <Button
-            onClick={()=>{navigate("/signin")}}
+            onClick={()=>{navigate(signinLink)}}
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             big="true"

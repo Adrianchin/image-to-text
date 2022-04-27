@@ -14,6 +14,9 @@ import {
   NavBtnLink,
 } from "./LoggedOutNavBarElements";
 
+const signinLink = "/signin";
+const homeLink = "/";
+
 const LoggedOutNavbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
   //This is the scroll effect. We define the state as fale for scrollNav and make it run true when the window scroll passes 80 pixles in the Y
@@ -42,7 +45,7 @@ const LoggedOutNavbar = ({ toggle }) => {
       <IconContext.Provider value={{ color: "#fff" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-            <NavLogo to="/" onClick={toggleHome}>
+            <NavLogo to={homeLink} onClick={toggleHome}>
               日本語に勉強しましょう!
             </NavLogo>
             <MobileIcon onClick={toggle}>
@@ -118,7 +121,7 @@ const LoggedOutNavbar = ({ toggle }) => {
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin?#">Sign In</NavBtnLink>
+              <NavBtnLink to={signinLink}>Sign In</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

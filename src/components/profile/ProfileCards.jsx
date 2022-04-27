@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import Cards from "./cards/Cards";
 import { useNavigate } from "react-router-dom";
 
+const getProfileDataEndpoint = `http://localhost:3000/users/getProfileData`;
+const signinLink = "/signin";
+
 function Profile(props) {
   let navigate = useNavigate();
 
@@ -14,18 +17,18 @@ function Profile(props) {
     async function getUserData() {
       try {
         const placeholderDataObject = { ...userData };
-        const getUserDataURL = `http://localhost:3000/users/getProfileData`;
+        const getUserDataURL = getProfileDataEndpoint;
         const response = await fetch(getUserDataURL, {
           method: "GET",
           credentials: 'include',
         });
-        const signInReturn = await response.json();
+        const getProfileDataReturn = await response.json();
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
-          navigate("/signin");
+          navigate(signinLink);
         }
-        console.log(signInReturn)
-        placeholderDataObject.profile = signInReturn;
+        //console.log(getProfileDataReturn)
+        placeholderDataObject.profile = getProfileDataReturn;
         setUserData(placeholderDataObject);
       } catch (error) {
         console.log("Error getting profile data: ", error);

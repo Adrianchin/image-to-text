@@ -13,6 +13,10 @@ import {
   CardBackground,
 } from "./CardElements";
 
+const deleteDocumentEndpoint = "http://localhost:3000/uploads/deletedocument";
+const getUserDataEndpoint = `http://localhost:3000/users/getProfileData`;
+const signinLink = "/signin";
+const displayCardLink = "/displaycard";
 
 function Cards(props) {
   let navigate = useNavigate();
@@ -23,9 +27,8 @@ function Cards(props) {
 
   function onGoButtonClick(event) {
     const id = event.target.id;
-    console.log(id);
     setUserDisplayData(userData.profile[id]);  
-    navigate("/displaycard")
+    navigate(displayCardLink)
   }
 
   async function onDeleteButtonClick(event) {
@@ -36,8 +39,8 @@ function Cards(props) {
         let data = JSON.stringify({
           data: userData.profile[id],
         });
-        console.log(data);
-        const response = await fetch("http://localhost:3000/uploads/deletedocument", {
+        //console.log(data);
+        const response = await fetch(deleteDocumentEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: data,
@@ -46,7 +49,7 @@ function Cards(props) {
         const deleteDocumentReturn = await response.json();
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
-          navigate("/signin");
+          navigate(signinLink);
         }
         console.log(deleteDocumentReturn);
       } catch (error) {
@@ -57,13 +60,16 @@ function Cards(props) {
     async function getUserData() {
       try {
         const placeholderDataObject = { ...userData };
-        const getUserDataURL = `http://localhost:3000/users/getProfileData`;
-        const response = await fetch(getUserDataURL, {
+        const response = await fetch(getUserDataEndpoint, {
           method: "GET",
           credentials: 'include',
         });
         const userDataReturn = await response.json();
-        placeholderDataObject.profile = userDataReturn;
+        if(response.status===401){
+          console.log("Error user needs to sign in", response.status);
+          navigate(signinLink);
+        }
+        placeholderDataObject.profile = userDataReturn;//done to keep state
         setUserData(placeholderDataObject);
       } catch (error) {
         console.log("Error getting profile data: ", error);

@@ -7,6 +7,9 @@ import {
   SubmitContainer,
 } from "./ImageInputElements";
 
+const linkSubmitEndpoint = "http://localhost:3000/uploads/linkupload";
+const signinLink = "/signin";
+
 function LinkSubmittal(props) {
   let navigate = useNavigate();
 
@@ -59,9 +62,7 @@ function LinkSubmittal(props) {
             link: imageInput,
             originalImageSize: originalImageSize,
           });
-          const response = await fetch(
-            "http://localhost:3000/uploads/linkupload",
-            {
+          const response = await fetch(linkSubmitEndpoint,{
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: imageData,
@@ -69,11 +70,12 @@ function LinkSubmittal(props) {
             }
           );
           let imageInformation = await response.json();
-          console.log(imageInformation);
+
+          //console.log("Information back from server:", imageInformation)
 
           if (response.status === 401) {
             console.log("Error user needs to sign in", response.status);
-            navigate("/signin");
+            navigate(signinLink);
           }
 
           setNotes(imageInformation.notes);

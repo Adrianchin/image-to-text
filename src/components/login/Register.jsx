@@ -14,6 +14,11 @@ import {
   Text,
 } from "./LoginElements";
 
+const registerEndpoint = "http://localhost:3000/users/register";
+const loginHomeLink = "/home";
+const logoutHomeLink = "/";
+const signinLink = "/signin";
+
 function Register() {
   let navigate = useNavigate();
 
@@ -43,7 +48,7 @@ function Register() {
       };
       async function registerUser() {
         try {
-          const response = await fetch("http://localhost:3000/users/register", {
+          const response = await fetch(registerEndpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -55,7 +60,7 @@ function Register() {
           });
           const signInReturn = await response.json();
           if (signInReturn.username) {
-            navigate("/");
+            navigate(loginHomeLink);
           }
         } catch (error) {
           console.log("Error registering in");
@@ -70,7 +75,7 @@ function Register() {
   return (
     <FormWrap>
       <IconDiv>
-        <Icon to="/">返る</Icon>
+        <Icon to={logoutHomeLink}>返る</Icon>
       </IconDiv>
       <FormContent>
         <Form action="#">
@@ -85,7 +90,7 @@ function Register() {
             Continue
           </FormButton>
           <TextDiv>
-            <Text onClick={() => navigate("/signin")}>Sign In</Text>
+            <Text onClick={() => navigate(signinLink)}>Sign In</Text>
           </TextDiv>
         </Form>
       </FormContent>

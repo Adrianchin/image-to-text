@@ -9,9 +9,10 @@ import LoggedInNavbar from "../components/NavigationLoggedIn/LoggedInNavBar";
 import LoggedInSideBar from "../components/NavigationLoggedIn/SideBar/LoggedInSideBar";
 
 import {
+  TokenizedTableContainer,
+  TokenizerTableBackground,
   UploadContainer,
   UploadColumn,
-  UploadPictureColumn,
   InputWrapper,
   NavBarPlaceholder,
   UploadBackgrounImage,
@@ -82,9 +83,16 @@ function UploadFile(props) {
               setSubmitImageData={setSubmitImageData}
             />
           </InputWrapper>
-          {tokenizedText
-          ?<TokenSortingTable tokenizedText={tokenizedText} notes={notes} />
-          :<></>
+          {tokenizedText 
+          ?<TokenSortingTable 
+          tokenizedText={tokenizedText} 
+          notes={notes} />
+          :!tokenizedText && notes === "Error with Tokenizer"
+            ?<TokenizedTableContainer>
+            <TokenizerTableBackground />
+                  <h1>Error with Tokenization and table. Review tokenized input in profile and retokenize again</h1>
+            </TokenizedTableContainer>
+            :<></>
           }
           <ImageText imageText={imageText} />
           <TranslatedText translatedText={translatedText} />

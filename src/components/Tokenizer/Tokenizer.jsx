@@ -7,6 +7,9 @@ import {
   UploadButton,
 } from "./TokenizerElements";
 
+const tokenizeEndpoint = `http://localhost:3000/uploads/tokenizetext`;
+const signinLink = "/signin";
+
 function Tokenizer(props) {
   let navigate = useNavigate();
   const setTokenizedText = props.setTokenizedText;
@@ -21,7 +24,7 @@ function Tokenizer(props) {
 
     async function fetchTokenization() {
       try {
-        const response = await fetch(`http://localhost:3000/uploads/tokenizetext`, {
+        const response = await fetch(tokenizeEndpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: textForTokenizing,
@@ -30,12 +33,13 @@ function Tokenizer(props) {
         const tokenizedText = await response.json();
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
-          navigate("/signin");
+          navigate(signinLink);
         }
         setTokenizedText(tokenizedText);
         //console.log(tokenizedText);
       } catch (error) {
         console.log("Error fetching Token response for text, try again", error);
+        setTokenizedText(null)
       }
     }
     fetchTokenization();

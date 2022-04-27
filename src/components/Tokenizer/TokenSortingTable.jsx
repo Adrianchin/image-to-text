@@ -12,50 +12,6 @@ function TokenSortingTable(props) {
 
   const tokenizedText = props.tokenizedText;
   const notes = props.notes;
-  
-  //The blueprint, could import a seperate file
-  const COLUMNS = [
-    {
-      Header: 'ID',
-      Footer:'ID',
-      accessor: 'id', // accessor is the "key" in the data
-    },
-    {
-      Header: 'Token',
-      Footer: 'Token',
-      accessor: 'token',
-    },
-      {
-        Header: 'Kana',
-        Footer: 'Kana',
-        accessor: 'pronunciation', // accessor is the "key" in the data
-      },
-      {
-        Header: 'Root',
-        Footer: 'Root',
-        accessor: 'tokenRoot',
-      },
-      {
-        Header: 'Kana',
-        Footer: 'Kana',
-        accessor: 'pronunciationBase', // accessor is the "key" in the data
-      },
-      {
-        Header: 'Type',
-        Footer: 'Type',
-        accessor: 'wordType',
-      },
-      {
-        Header: 'Conj-Type',
-        Footer: 'Conj-Type',
-        accessor: 'conjugationType', // accessor is the "key" in the data
-      },
-      {
-        Header: 'Conj-Form',
-        Footer: 'Conj-Form',
-        accessor: 'conjugationForm', // accessor is the "key" in the data
-      },
-    ]
     
     const GROUPEDCOLUMNS = [
       {
@@ -140,7 +96,7 @@ function TokenSortingTable(props) {
     return (
       <TokenizedTableContainer>
       <TokenizerTableBackground />
-              <p>Error with Tokenization and table. Input character error. Please review and resubmit in profile</p>
+              <h1>Error with Tokenization and table. Input character error. Please review and resubmit in profile</h1>
       </TokenizedTableContainer>
     )
   }else {
@@ -225,7 +181,7 @@ function TokenSortingTable(props) {
             const pageNumber = event.target.value ? Number(event.target.value) - 1 : 0
             gotoPage(pageNumber)
           }}
-          style={{width: "40px"}}/>
+          style={{width: "50px"}}/>
         </span>
         <select value={pageSize} onChange={event => setPageSize(Number(event.target.value))}>
           {

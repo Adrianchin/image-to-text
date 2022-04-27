@@ -10,6 +10,8 @@ import {
   SidebarRoute,
 } from "./LoggedOutSideBarElements";
 
+const signinLink = "/signin";
+
 const LoggedOutSideBar = ({ isOpen, toggle }) => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
@@ -35,7 +37,7 @@ const LoggedOutSideBar = ({ isOpen, toggle }) => {
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
-          <SidebarRoute to="/signin">Sign In</SidebarRoute>
+          <SidebarRoute to={signinLink}>Sign In</SidebarRoute>
         </SideBtnWrap>
       </SidebarWrapper>
     </SidebarContainer>

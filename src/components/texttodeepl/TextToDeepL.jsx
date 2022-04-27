@@ -7,6 +7,9 @@ import {
   UploadButton,
 } from "./TextToDeepLElements";
 
+const translationEndpoint = `http://localhost:3000/uploads/textfortranslation`;
+const signinLink = "/signin";
+
 function TextToDeepL(props) {
   let navigate = useNavigate();
   const setTranslatedText = props.setTranslatedText;
@@ -22,7 +25,7 @@ function TextToDeepL(props) {
     async function fetchTextTranslation() {
       try {
         const response = await fetch(
-          `http://localhost:3000/uploads/textfortranslation`,
+          translationEndpoint,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -33,7 +36,7 @@ function TextToDeepL(props) {
         const translatedTextInfo = await response.json();
         if(response.status===401){
           console.log("Error user needs to sign in", response.status);
-          navigate("/signin");
+          navigate(signinLink);
         }
         setTranslatedText(translatedTextInfo.translations[0].text);
       } catch (error) {

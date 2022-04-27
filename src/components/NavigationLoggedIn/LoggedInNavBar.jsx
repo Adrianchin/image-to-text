@@ -15,6 +15,12 @@ import {
   NavBtnLink,
 } from "./LoggedInNavBarElements";
 
+const signoutEndpoint = "http://localhost:3000/users/signout";
+const loginHomeLink = "/home";
+const profileLink = "/profile";
+const uploadLink = "/uploadfile";
+const logoutHomeLink ="/";
+
 const LoggedInNavbar = ({ toggle }) => {
 
   let navigate = useNavigate();
@@ -43,20 +49,20 @@ const LoggedInNavbar = ({ toggle }) => {
   function signOut(){
     async function signOutUser(){
       try{
-        const response = await fetch("http://localhost:3000/users/signout", {
+        const response = await fetch(signoutEndpoint, {
           credentials: 'include',
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({action: "Sign Out"}),
         })
         const signOutReturn = await response.json();
-        console.log("Successful Signout! ", signOutReturn);
+        console.log(signOutReturn);
       }catch(error){
         console.log("Error logging out user", error)
       }
     }
     signOutUser()
-    navigate("/");
+    navigate(logoutHomeLink);
     //Delete all state stuff
   }
 
@@ -66,7 +72,7 @@ const LoggedInNavbar = ({ toggle }) => {
       <IconContext.Provider value={{ color: "#fff" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-            <NavLogo to="/home" onClick={toggleHome}>
+            <NavLogo to={loginHomeLink} onClick={toggleHome}>
               日本語に勉強しましょう!
             </NavLogo>
             <MobileIcon onClick={toggle}>
@@ -74,14 +80,14 @@ const LoggedInNavbar = ({ toggle }) => {
             </MobileIcon>
             <NavMenu>
               <NavItem>
-                <NavLinks to="/profile">My Profile</NavLinks>
+                <NavLinks to={profileLink}>My Profile</NavLinks>
               </NavItem>
               <NavItem>
-                <NavLinks to="/uploadfile">Upload Image</NavLinks>
+                <NavLinks to={uploadLink}>Upload Image</NavLinks>
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/" onClick = {signOut}>Sign Out</NavBtnLink>
+              <NavBtnLink to={logoutHomeLink} onClick = {signOut}>Sign Out</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

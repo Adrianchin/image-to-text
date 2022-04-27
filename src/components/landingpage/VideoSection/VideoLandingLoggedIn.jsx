@@ -12,6 +12,8 @@ import {
   VideoLandingBtnWrapper,
 } from "./VideoLandingElements";
 
+const uploadFileLink = "/uploadfile"
+
 const VideoLandingLoggedIn = () => {
   let navigate = useNavigate();
   const [hover, setHover] = useState(false);
@@ -32,7 +34,7 @@ const VideoLandingLoggedIn = () => {
         </VideoLandingP>
         <VideoLandingBtnWrapper>
           <Button
-            onClick={()=>{navigate("/uploadfile")}}
+            onClick={()=>{navigate(uploadFileLink)}}
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             big="true"
