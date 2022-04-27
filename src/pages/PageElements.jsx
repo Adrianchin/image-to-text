@@ -160,7 +160,7 @@ export const InputWrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-
+/*
 export const UploadPictureColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -168,7 +168,7 @@ export const UploadPictureColumn = styled.div`
   align-items: center;
   background: #ffffff;
 `;
-
+*/
 //Display Data Elements
 export const DisplayDataContainer = styled.div`
   display: flex;
