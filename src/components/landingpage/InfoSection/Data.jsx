@@ -151,8 +151,8 @@ export const homeObjEight = {
   description:
   `I am a highly competitive triathlete who previously worked in the Oil and Gas sector as a Mechanical Engineer. 
   I decided to teach myself Japanese while races were cancelled. 
-  I quickly realized I was wasting time in an extinct industry run by dinasours. 
-  If I love to learn then I should be paid to learn. That's when I decided to pursue Software Engineering.`
+  I quickly realized I was wasting time in a dead industry run by dinasours. 
+  I love to learn and I put my money where my mouth is. That's why I decided to pursue Software Engineering.`
   ,
   buttonLabel: "行きましょう",
   imgStart: true,
