@@ -108,9 +108,8 @@ function TokenSortingTable(props) {
     ]
 
     //The data itself, could import a seperate file
-    const data = useMemo(() => tokenizedText,
-      []
-    )
+    const data = tokenizedText; //Not using useMemo because we need to update tokenized text live
+
     const columns = useMemo(() => GROUPEDCOLUMNS,
      []
     )
