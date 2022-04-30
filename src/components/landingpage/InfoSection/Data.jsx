@@ -82,10 +82,10 @@ export const homeObjFive = {
   topLine: "Learning Japanese",
   headline: "The Challenges of Japanese",
   description:   
-  `Japanese is a notoriously difficult language to learn. The United States Foreign Service Institute ranks Japanese as the hardest language for English natives.
-  It took me thousands of hours before I felt that I could "read". I have since read numerous novels and yet I still feel nowhere near where I want to be. 
-  However, Natural Language Processing has provided a means to implement tools such as hover dictionaries and text parsers. I utilized these tools during my Japanese journey. 
-  Therefore, I saw an opportunity to understand and implement Natural Language Processing tools while developing a useful application to assist Japanese learners as they encounter Japanese in the wild.`,
+  `Japanese is a notoriously difficult language to learn. The United States Foreign Service Institute ranks Japanese as the hardest language for learners.
+  It took me thousands of hours before I felt that I could "read". I have since read numerous novels and yet I feel nowhere near where I want to be. 
+  However, Natural Language Processing has provided a means to implement tools such as hover dictionaries and text parsers. I utilized these tools when I learned to read. 
+  I saw an opportunity to understand and implement Natural Language Processing tools while developing a useful application to assist Japanese learners as they encounter Japanese in the wild.`,
   buttonLabel: "これソフト",
   imgStart: false,
   img: require("../../../main_page_images/shop-front.jpg"),
@@ -104,8 +104,8 @@ export const homeObjSix = {
   topLine: "This App",
   headline: "What is Tokenization, OCR and Translation?",
   description:
-  `Tokenization is the process of breaking down sentences into base parts. This is a procedure for Natural Language Processing techniques. 
-  Japanese is unique where there are no spaces, there are 3 different alphabets and there are many different kanji combinations to construct the same vocab. Pronunciations change depending 
+  `Tokenization is the process of breaking down sentences into base parts for Natural Language Processing techniques. 
+  Japanese is unique where there are no spaces, there are 3 different alphabets and there are many different kanji combinations to construct the same vocabulary. Pronunciations change depending 
   on the writer, context and situation. Conjugations and particles are used extensively to modify actions and tenses. For these reasons, simple tokenization techniques cannot be used and a morphological approach is required.
   OCR is utilized to recognize text from images as phone dictionary's require knowing kanji and correct stroke order for input. Alternatively, you must somehow already know the spelling without furigana. 
   Lastly Japanese to English translations are not 1-1 due to the grammatical differences and pro-drop nature of Japanese. However, they remain helpful for learners and are provided.`,
@@ -127,9 +127,9 @@ export const homeObjSeven = {
   topLine: "App Developments",
   headline: "The App and The Future",
   description:
-  `This application was built mainly utilizing JavaScript, CSS and Python. React, ExpressJS and MongoDB were utilized with NodeJS. The website is secured with a modern passport implementation.
-  The back end utilizes a MeCab wrapped Natural Language Processing Tokenizer trained with a Japanese dictionary. OCR is utilizes Google's Vision AI. Translation is done via DeepL, a translator known
-  in the Japanese learner community capable of handling idioms and turns-of-phrases well. Plans for future implementation include Anki integration, a JMdict Japanese to English dictionary for 
+  `This application was built utilizing JavaScript, CSS and Python. React, ExpressJS and MongoDB make up the full stack application. The website is secured with a modern passport implementation.
+  This application is deployed utilizing Docker and a Google Cloud Compute Engine virtual machine. The back end utilizes a MeCab wrapped Natural Language Processing Tokenizer trained with a Japanese dictionary. 
+  The OCR utilizes Google's Vision AI. Translation is done via DeepL, which handles idioms and turns-of-phrases well. Plans for future implementation include Anki integration, a JMdict Japanese to English dictionary for 
   tokenized roots, Korean capability for MeCab and implementing Tesseract OCR`,
   buttonLabel: "ソフトウェア開発者",
   imgStart: false,
@@ -149,10 +149,10 @@ export const homeObjEight = {
   topLine: "About Me",
   headline: "",
   description:
-  `I am a highly competitive triathlete who previously worked in the Oil and Gas sector as a Mechanical Engineer. 
-  I decided to teach myself Japanese while races were cancelled. 
+  `I am a highly competitive triathlete and Mechanical Engineer who worked in the Oil and Gas sector. 
+  During Covid I decided to teach myself Japanese while races were cancelled. 
   I quickly realized I was wasting time in a dead industry run by dinasours. 
-  I love to learn and I put my money where my mouth is. That's why I decided to pursue Software Engineering.`
+  I love to learn and I put my money where my mouth is. That's when I decided to pursue Software Engineering.`
   ,
   buttonLabel: "行きましょう",
   imgStart: true,
