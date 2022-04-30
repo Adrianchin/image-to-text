@@ -128,7 +128,7 @@ export const homeObjSeven = {
   headline: "The App and The Future",
   description:
   `This application was built utilizing JavaScript, CSS and Python. React, ExpressJS and MongoDB make up the full stack application. The website is secured with a modern passport implementation.
-  This application is deployed utilizing Docker and a Google Cloud Compute Engine virtual machine. The back end utilizes a MeCab wrapped Natural Language Processing Tokenizer trained with a Japanese dictionary. 
+  This application is deployed leveraging Docker and an IaaS platform in Google's Cloud Compute Engine. The back end utilizes a MeCab wrapped Natural Language Processing Tokenizer trained with a Japanese dictionary. 
   The OCR utilizes Google's Vision AI. Translation is done via DeepL, which handles idioms and turns-of-phrases well. Plans for future implementation include Anki integration, a JMdict Japanese to English dictionary for 
   tokenized roots, Korean capability for MeCab and implementing Tesseract OCR`,
   buttonLabel: "ソフトウェア開発者",
@@ -152,7 +152,8 @@ export const homeObjEight = {
   `I am a highly competitive triathlete and Mechanical Engineer who worked in the Oil and Gas sector. 
   During Covid I decided to teach myself Japanese while races were cancelled. 
   I quickly realized I was wasting time in a dead industry run by dinasours. 
-  I love to learn and I put my money where my mouth is. That's when I decided to pursue Software Engineering.`
+  I am a self-taught developer and I made this entire application myself. 
+  If you are interested in working together on an exciting project, please get in touch!`
   ,
   buttonLabel: "行きましょう",
   imgStart: true,
