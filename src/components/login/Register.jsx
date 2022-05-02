@@ -18,7 +18,6 @@ const serverURL=process.env.REACT_APP_SERVER_URL;
 const endpoint ="/users/register";
 const registerEndpoint = serverURL+endpoint;
 
-const loginHomeLink = "/home";
 const logoutHomeLink = "/";
 const signinLink = "/signin";
 
@@ -63,7 +62,7 @@ function Register() {
           });
           const signInReturn = await response.json();
           if (signInReturn.username) {
-            navigate(loginHomeLink);
+            navigate(signinLink);
           }
         } catch (error) {
           console.log("Error registering in");

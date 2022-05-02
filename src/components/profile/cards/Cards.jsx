@@ -14,7 +14,7 @@ import {
 } from "./CardElements";
 
 const serverURL=process.env.REACT_APP_SERVER_URL;
-const deleteEndpoint = "/users/getProfileData";
+const deleteEndpoint = "/uploads/deletedocument";
 const userDataEndpoint = "/users/getProfileData";
 const deleteDocumentEndpoint = serverURL+deleteEndpoint;
 const getUserDataEndpoint = serverURL+userDataEndpoint;
