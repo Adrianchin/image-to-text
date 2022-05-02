@@ -13,8 +13,8 @@ import {
   CardBackground,
 } from "./CardElements";
 
-const deleteDocumentEndpoint = "http://localhost:3000/uploads/deletedocument";
-const getUserDataEndpoint = `http://localhost:3000/users/getProfileData`;
+const deleteDocumentEndpoint = "http://35.233.167.60:3000/uploads/deletedocument";
+const getUserDataEndpoint = `http://35.233.167.60:3000/users/getProfileData`;
 const signinLink = "/signin";
 const displayCardLink = "/displaycard";
 

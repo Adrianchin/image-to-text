@@ -14,7 +14,7 @@ import {
   Text,
 } from "./LoginElements";
 
-const signinEndpoint = "http://localhost:3000/users/signin";
+const signinEndpoint = "http://35.233.167.60:3000/users/signin";
 const loginHomeLink = "/home";
 const registerLink = "/register";
 const logoutHomeLink = "/";

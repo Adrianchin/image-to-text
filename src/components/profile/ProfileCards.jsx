@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Cards from "./cards/Cards";
 import { useNavigate } from "react-router-dom";
 
-const getProfileDataEndpoint = `http://localhost:3000/users/getProfileData`;
+const getProfileDataEndpoint = `http://35.233.167.60:3000/users/getProfileData`;
 const signinLink = "/signin";
 
 function Profile(props) {

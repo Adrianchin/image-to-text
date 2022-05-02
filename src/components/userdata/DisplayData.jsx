@@ -14,7 +14,7 @@ import {
   InputContainer,
 } from "./DisplayDataElements";
 
-const updateUserEndpoint = `http://localhost:3000/uploads/updatehistory`;
+const updateUserEndpoint = `http://35.233.167.60:3000/uploads/updatehistory`;
 const signinLink = "/signin";
 
 function DisplayData(props) {

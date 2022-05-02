@@ -7,7 +7,7 @@ import {
   UploadButton,
 } from "./TextToDeepLElements";
 
-const translationEndpoint = `http://localhost:3000/uploads/textfortranslation`;
+const translationEndpoint = `http://35.233.167.60:3000/uploads/textfortranslation`;
 const signinLink = "/signin";
 
 function TextToDeepL(props) {

@@ -7,7 +7,7 @@ import {
   UploadButton,
 } from "./TokenizerElements";
 
-const tokenizeEndpoint = `http://localhost:3000/uploads/tokenizetext`;
+const tokenizeEndpoint = `http://35.233.167.60:3000/uploads/tokenizetext`;
 const signinLink = "/signin";
 
 function Tokenizer(props) {

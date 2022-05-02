@@ -7,7 +7,7 @@ import {
   SubmitContainer,
 } from "./ImageInputElements";
 
-const linkSubmitEndpoint = "http://localhost:3000/uploads/linkupload";
+const linkSubmitEndpoint = "http://35.233.167.60:3000/uploads/linkupload";
 const signinLink = "/signin";
 
 function LinkSubmittal(props) {
