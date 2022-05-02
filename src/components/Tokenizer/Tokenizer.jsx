@@ -7,7 +7,10 @@ import {
   UploadButton,
 } from "./TokenizerElements";
 
-const tokenizeEndpoint = `http://35.233.167.60:3000/uploads/tokenizetext`;
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint = "/uploads/tokenizetext";
+const tokenizeEndpoint = serverURL+endpoint;
+
 const signinLink = "/signin";
 
 function Tokenizer(props) {

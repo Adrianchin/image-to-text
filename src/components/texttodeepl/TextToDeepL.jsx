@@ -7,7 +7,10 @@ import {
   UploadButton,
 } from "./TextToDeepLElements";
 
-const translationEndpoint = `http://35.233.167.60:3000/uploads/textfortranslation`;
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint = "/uploads/textfortranslation";
+const translationEndpoint =serverURL+endpoint;
+
 const signinLink = "/signin";
 
 function TextToDeepL(props) {

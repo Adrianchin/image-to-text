@@ -14,8 +14,10 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./LoggedInNavBarElements";
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint = "/users/signout";
+const signoutEndpoint = serverURL+endpoint;
 
-const signoutEndpoint = "http://localhost:3000/users/signout";
 const loginHomeLink = "/home";
 const profileLink = "/profile";
 const uploadLink = "/uploadfile";

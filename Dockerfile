@@ -6,8 +6,8 @@ COPY ["package.json", "package-lock.json", "./"]
 
 COPY . .
 
-RUN npm install --production
+RUN npm install -g serve
 
-EXPOSE 3001
+EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "serve"]

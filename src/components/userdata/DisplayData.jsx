@@ -14,7 +14,10 @@ import {
   InputContainer,
 } from "./DisplayDataElements";
 
-const updateUserEndpoint = `http://35.233.167.60:3000/uploads/updatehistory`;
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint = "/uploads/updatehistory";
+const updateUserEndpoint = serverURL+endpoint;
+
 const signinLink = "/signin";
 
 function DisplayData(props) {

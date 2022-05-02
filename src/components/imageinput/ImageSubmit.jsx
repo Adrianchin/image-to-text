@@ -7,7 +7,10 @@ import {
   SubmitContainer,
 } from "./ImageInputElements";
 
-const imageSubmitEndpoint = "http://http://35.233.167.60:3000/uploads/uploadimage";
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint ="/uploads/uploadimage"
+const imageSubmitEndpoint = serverURL+endpoint;
+
 const signinLink = "/signin";
 
 function ImageSubmit(props) {

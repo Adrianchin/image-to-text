@@ -11,7 +11,10 @@ import {
   SidebarRoute,
 } from "./LoggedInSideBarElements";
 
-const signoutEndpoint = "http://localhost:3000/users/signout";
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint = "/users/signout";
+const signoutEndpoint = serverURL+endpoint;
+
 const loginHomeLink = "/home";
 const profileLink = "/profile";
 const uploadLink = "/uploadfile";

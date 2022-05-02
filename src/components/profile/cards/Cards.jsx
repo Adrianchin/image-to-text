@@ -13,8 +13,12 @@ import {
   CardBackground,
 } from "./CardElements";
 
-const deleteDocumentEndpoint = "http://35.233.167.60:3000/uploads/deletedocument";
-const getUserDataEndpoint = `http://35.233.167.60:3000/users/getProfileData`;
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const deleteEndpoint = "/users/getProfileData";
+const userDataEndpoint = "/users/getProfileData";
+const deleteDocumentEndpoint = serverURL+deleteEndpoint;
+const getUserDataEndpoint = serverURL+userDataEndpoint;
+
 const signinLink = "/signin";
 const displayCardLink = "/displaycard";
 

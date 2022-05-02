@@ -7,7 +7,10 @@ import {
   SubmitContainer,
 } from "./ImageInputElements";
 
-const linkSubmitEndpoint = "http://35.233.167.60:3000/uploads/linkupload";
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint ="/uploads/linkupload";
+const linkSubmitEndpoint = serverURL+endpoint;
+
 const signinLink = "/signin";
 
 function LinkSubmittal(props) {

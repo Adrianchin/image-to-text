@@ -14,7 +14,10 @@ import {
   Text,
 } from "./LoginElements";
 
-const signinEndpoint = "http://35.233.167.60:3000/users/signin";
+const serverURL=process.env.REACT_APP_SERVER_URL;
+const endpoint ="/users/signin";
+const signinEndpoint = serverURL+endpoint;
+
 const loginHomeLink = "/home";
 const registerLink = "/register";
 const logoutHomeLink = "/";
