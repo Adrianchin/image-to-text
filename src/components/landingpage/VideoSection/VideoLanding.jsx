@@ -31,7 +31,7 @@ const VideoLanding = () => {
         <VideoLandingH1>Reading Japanese Made Easy</VideoLandingH1>
         <VideoLandingP>
           {" "}
-          Get assistance reading Japanese from anywhere. Difficult literiary
+          Get assistance reading Japanese from anywhere. Difficult literary
           texts and phrasing made easy!
         </VideoLandingP>
         <VideoLandingBtnWrapper>

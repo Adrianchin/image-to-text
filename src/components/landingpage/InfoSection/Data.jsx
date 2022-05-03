@@ -25,7 +25,7 @@ export const homeObjTwo = {
   topLine: "Text Translation",
   headline: "Provides Japanese Text Translation for English Only Speakers",
   description:
-    "Utilizes the best Japanese to English translations available. Handles Japanese to English phrasing of idioms and complex turns of phrases. Superior to Google-Translate for literiary works.",
+    "Utilizes the best Japanese to English translations available. Handles Japanese to English phrasing of idioms and complex turns of phrases. Superior to Google-Translate for literary works.",
   buttonLabel: "Translate Image Text",
   imgStart: false,
   img: require("../../../main_page_images/city.jpg"),
@@ -44,7 +44,7 @@ export const homeObjThree = {
   topLine: "Text Tokenization and Phrasing",
   headline: "Provides tokenization for intermediate Japanese learners",
   description:
-    "Uses machine learning algorythms to tokenize Japanese text into morphemes. Allows learners to interpret complex Japanese particles, clauses and grammical devices.",
+    "Uses machine learning algorithms to tokenize Japanese text into morphemes. Allows learners to interpret complex Japanese particles, clauses and grammatical devices.",
   buttonLabel: "Phrase Native Text",
   imgStart: true,
   img: require("../../../main_page_images/written_works.jpg"),
@@ -151,7 +151,7 @@ export const homeObjEight = {
   description:
   `I am a highly competitive triathlete and Mechanical Engineer who worked in the Oil and Gas sector. 
   During Covid I decided to teach myself Japanese while races were cancelled. 
-  I quickly realized I was wasting time in a dead industry run by dinasours. 
+  I quickly realized I was wasting time in a dead industry run by dinosaurs. 
   I am a self-taught developer and I made this entire application myself. 
   If you are interested in working together on an exciting project, please get in touch!`
   ,
