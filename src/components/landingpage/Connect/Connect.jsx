@@ -31,7 +31,7 @@ const Connect = () => {
         <ConnectH1>Connect With Me</ConnectH1>
         <ConnectBtnWrapper>
           <Button
-            onClick={() => openInNewTab("https://www.linkedin.com/in/adrianjchin/.com")}
+            onClick={() => openInNewTab("https://www.linkedin.com/in/adrianjchin.com")}
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             big="true"
