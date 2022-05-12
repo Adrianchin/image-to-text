@@ -21,6 +21,8 @@ WORKDIR /usr/share/nginx/html
 ## Remove default nginx index page
 RUN rm -rf ./*
 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Copy from the stage 1
 COPY --from=builder /app/build .
 
